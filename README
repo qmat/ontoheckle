@@ -1,0 +1,16 @@
+The ontoheckle demo is a proof of concept that visualises the semantic
+structure and contents of a video that has been marked up with using the BBC
+Stories Ontology (http://www.contextus.net/stories/), alongside timed
+transcripts of conversations in the form of tweets and 'heckles' between
+audience members during a screening of the same video.
+
+It consists of:
+
+- A triple store (4store) 
+- Two N3 formatted RDF files containing annotations of the video and
+  RDF-formatted 'heckles'
+- A javascript processing library for the visualisation component
+- An HTML5 video player and some custom javascript functions to orchestrate the
+  timing and display of the semantic properties of the video.
+
+For installation instructions see the INSTALL file.
