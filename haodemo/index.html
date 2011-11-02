@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Heckling at Ontologies</title>
+<script type="text/javascript" src="sparql.js"></script>
+<script type="text/javascript" src="processing-1.2.3.js"></script>
+<script type="text/javascript" src="tbz-stories-v07.js"></script>
+<script type="text/javascript">
+	window.addEventListener('load', 
+	  function() {
+	    var stage = document.getElementById('stage');
+	    var log = document.getElementById('logger');
+	    var seqlog = document.getElementById('loggersequences');
+	    var v = document.getElementsByTagName('video')[0];
+	    but = document.createElement('button');
+	    but.innerHTML = 'click to pause';
+	    but.addEventListener('click',function(e) {
+	      v.pause();
+	      e.preventDefault();
+	    },false);
+	    var now = 0;
+	    v.addEventListener('timeupdate',function(o){
+	      var full = parseInt(v.currentTime);
+	      if(full >= now) {
+		now = now + 1;
+		var triggers=eventSecs();
+		for (s in triggers)
+		  {
+		  if (triggers[s] == now)
+		    {
+		    handleEventAtSec(now);
+		    }
+		  }
+	      }
+	
+	    },false);
+	  }, 
+	false); 
+</script>
+</head>
+
+<body style="margin:0px; background-color:#000;">
+
+//// VIDEO
+
+<div id="stage">
+  <video poster ="../haodemovids/poster.png" loop autoplay controls tabindex="0" width="100%">
+    <source src="../haodemovids/s04e01.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src="../haodemovids/s04e01.theora.ogv" type='video/ogg; codecs="theora, vorbis"'> 
+    <source src="../haodemovids/s04e01.webm" type='video/webm; codecs="vorbis,vp8"'>
+  </video>
+</div>
+<div id="logger"></div>
+<div id="loggersequences"></div>
+
+
+<canvas id="pCanvas" width="1024" height="576" style="z-index:10; position:absolute; top:0; left:0;"></canvas> 
+
+<script type="text/javascript" src="tbz-stories-v07.pjs"></script>
+
+<script type="text/javascript">
+
+///// LOAD PROCESSING SKETCH FUNCTION
+
+// Needs to be in body to initialise correctly
+// See script enclosure directly above
+
+//// SETUP SPARQL
+	
+// Create SPARQL service and make globally accessible
+window.sparqler = new SPARQL.Service("/haosparql/");
+
+// Necessary for 4Store to return JSON not XML
+sparqler.setRequestHeader("Accept", "application/sparql-results+json");
+
+// The function to call if a SPARQL query fails
+function sparqlFailure() 
+{
+	alert("SPARQL Query Failed");
+}
+
+//// SETUP GLOBAL OBJECT DICTIONARY
+
+// All sparql object returns will write to this. This allows 
+// i. aysnc operation 
+// ii. caching
+
+window.downloadedObjects = new Object();
+window.downloadedObjectsActioned = new Object();
+
+//// SETUP GLOBAL OBJECT DOWNLOADED CALLBACK
+
+// This should be overriden by whatever wants to know
+
+window.objectDownloadedCallback = function() {console.log("objectDownloadedCallback: override me")};
+
+//// PROCESSING.JS INIT
+
+var canvas = document.getElementById("pCanvas");
+
+// Attach the sketchProc function to the canvas
+var p = new Processing(canvas, sketch);
+
+// SHALL WE START WITH A STORY?
+
+//p.setCurrentStory("http://contextus.net/who/s4e1/highLevelStory");
+
+//p.setCurrentStory("http://contextus.net/who/s4e1/plotBeatsStory");
+
+// OR SHALL WE START WITH A TIMELINE AND AWAIT TIMED CALLBACKS
+objectQuery("http://contextus.net/who/s4e1/programmeTimeline");
+</script>
+
+</body>
+</html>
