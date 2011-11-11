@@ -1,3 +1,15 @@
+/***
+
+    H E C K L I N G   A T   O N T O L O G I E S
+    Asking what we can learn from comparing authorial and audience descriptions of the same media object.
+
+	Saul Albert and Toby Harris
+	Media & Arts Technology, Queen Mary University of London
+	
+	http://heckle.at/ontologies
+	
+***/
+
 The ontoheckle demo is a proof of concept that visualises the semantic
 structure and contents of a video that has been marked up with using the BBC
 Stories Ontology (http://www.contextus.net/stories/), alongside timed
@@ -9,7 +21,7 @@ It consists of:
 - A triple store (4store) 
 - Two N3 formatted RDF files containing annotations of the video and
   RDF-formatted 'heckles'
-- A javascript processing library for the visualisation component
+- A javascript processing sketch for the visualisation component
 - An HTML5 video player and some custom javascript functions to orchestrate the
   timing and display of the semantic properties of the video.
 
