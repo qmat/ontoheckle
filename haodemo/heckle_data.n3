@@ -1,0 +1,1797 @@
+@prefix heckle:         <http://theps.net/ho/heckle/>.
+
+### HECKLE USERS
+
+heckle:cyan a foaf:Person
+  foaf:name "cyan".
+
+heckle:magenta a foaf:Person
+  foaf:name "magenta".
+
+heckle:slategrey a foaf:Person
+  foaf:name "slategrey".
+
+heckle:lightblue a foaf:Person
+  foaf:name "lightblue".
+
+heckle:darkorange a foaf:Person
+  foaf:name "darkorange".
+
+heckle:lightgreen a foaf:Person
+  foaf:name "lightgreen".
+
+heckle:yellow a foaf:Person
+  foaf:name "yellow".
+
+heckle:darkblue a foaf:Person
+  foaf:name "darkblue".
+
+heckle:red foaf:Person
+  foaf:name "red".
+
+
+### Heckle Session 1
+
+:heckle1.1 a heckle:Heckle;
+		rdfs:label "Heckle 1.1";
+		rdfs:comment "so, like, when do we start?  cos this is awesome.";
+		heckle:time "0:00:00"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.2 a heckle:Heckle;
+		rdfs:label "Heckle 1.2";
+		rdfs:comment "i am going to have a fag";
+		heckle:time "0:00:01"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.3 a heckle:Heckle;
+		rdfs:label "Heckle 1.3";
+		rdfs:comment "I've never seen dr who";
+		heckle:time "0:00:11"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.4 a heckle:Heckle;
+		rdfs:label "Heckle 1.4";
+		rdfs:comment "anyone coming?";
+		heckle:time "0:00:12"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.5 a heckle:Heckle;
+		rdfs:label "Heckle 1.5";
+		rdfs:comment "me too";
+		heckle:time "0:00:29"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.6 a heckle:Heckle;
+		rdfs:label "Heckle 1.6";
+		rdfs:comment "who is going to have a fag?";
+		heckle:time "0:00:34"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.7 a heckle:Heckle;
+		rdfs:label "Heckle 1.7";
+		rdfs:comment " circling galaxy ";
+		heckle:time "0:00:43"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.8 a heckle:Heckle;
+		rdfs:label "Heckle 1.8";
+		rdfs:comment "are we going to fill up the entire screen?";
+		heckle:time "0:00:45"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.9 a heckle:Heckle;
+		rdfs:label "Heckle 1.9";
+		rdfs:comment "we are going to end up covering the screen";
+		heckle:time "0:00:46"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.10 a heckle:Heckle;
+		rdfs:label "Heckle 1.10";
+		rdfs:comment "it's exciting and weird  i want a fag too";
+		heckle:time "0:00:48"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.11 a heckle:Heckle;
+		rdfs:label "Heckle 1.11";
+		rdfs:comment "Zolti course";
+		heckle:time "0:00:51"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.12 a heckle:Heckle;
+		rdfs:label "Heckle 1.12";
+		rdfs:comment "i thought he is a singer";
+		heckle:time "0:01:04"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.13 a heckle:Heckle;
+		rdfs:label "Heckle 1.13";
+		rdfs:comment "i want my previous msgs back!!!!";
+		heckle:time "0:01:11"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.14 a heckle:Heckle;
+		rdfs:label "Heckle 1.14";
+		rdfs:comment "is that the red-head everyone says is really fit, or what?";
+		heckle:time "0:01:12"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.15 a heckle:Heckle;
+		rdfs:label "Heckle 1.15";
+		rdfs:comment "can we smoke inside?";
+		heckle:time "0:01:13"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.16 a heckle:Heckle;
+		rdfs:label "Heckle 1.16";
+		rdfs:comment "who?";
+		heckle:time "0:01:18"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.17 a heckle:Heckle;
+		rdfs:label "Heckle 1.17";
+		rdfs:comment "oh god health and safety";
+		heckle:time "0:01:30"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.19 a heckle:Heckle;
+		rdfs:label "Heckle 1.19";
+		rdfs:comment "nice feet";
+		heckle:time "0:01:35"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.20 a heckle:Heckle;
+		rdfs:label "Heckle 1.20";
+		rdfs:comment "who else is  mr orange?";
+		heckle:time "0:01:36"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.21 a heckle:Heckle;
+		rdfs:label "Heckle 1.21";
+		rdfs:comment "cathrine tate?";
+		heckle:time "0:01:38"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.22 a heckle:Heckle;
+		rdfs:label "Heckle 1.22";
+		rdfs:comment "i like pills";
+		heckle:time "0:01:50"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.23 a heckle:Heckle;
+		rdfs:label "Heckle 1.23";
+		rdfs:comment "i think you should be able to send a text just by clicking return";
+		heckle:time "0:01:52"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.24 a heckle:Heckle;
+		rdfs:label "Heckle 1.24";
+		rdfs:comment "sounds good, sign me up";
+		heckle:time "0:02:01"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.25 a heckle:Heckle;
+		rdfs:label "Heckle 1.25";
+		rdfs:comment "can we play tetris here????";
+		heckle:time "0:02:08"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.27 a heckle:Heckle;
+		rdfs:label "Heckle 1.27";
+		rdfs:comment "where is my message  I lost few words";
+		heckle:time "0:02:12"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.28 a heckle:Heckle;
+		rdfs:label "Heckle 1.28";
+		rdfs:comment "fat chance";
+		heckle:time "0:02:13"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.29 a heckle:Heckle;
+		rdfs:label "Heckle 1.29";
+		rdfs:comment "eek";
+		heckle:time "0:02:14"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.30 a heckle:Heckle;
+		rdfs:label "Heckle 1.30";
+		rdfs:comment "lol";
+		heckle:time "0:02:21"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.31 a heckle:Heckle;
+		rdfs:label "Heckle 1.31";
+		rdfs:comment "x  x  xxxx";
+		heckle:time "0:02:22"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.32 a heckle:Heckle;
+		rdfs:label "Heckle 1.32";
+		rdfs:comment "my messages doesn't go up!";
+		heckle:time "0:02:28"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.33 a heckle:Heckle;
+		rdfs:label "Heckle 1.33";
+		rdfs:comment "do you think the observer got paid for product placement";
+		heckle:time "0:02:38"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.34 a heckle:Heckle;
+		rdfs:label "Heckle 1.34";
+		rdfs:comment "cant see whats going on";
+		heckle:time "0:02:40"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.35 a heckle:Heckle;
+		rdfs:label "Heckle 1.35";
+		rdfs:comment "it did now";
+		heckle:time "0:02:49"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.36 a heckle:Heckle;
+		rdfs:label "Heckle 1.36";
+		rdfs:comment "could be a hard job cleaning up the screen";
+		heckle:time "0:02:52"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.37 a heckle:Heckle;
+		rdfs:label "Heckle 1.37";
+		rdfs:comment "FLAME  FLAME  FLAME  FLAME  FLAME FLAMEFLAMEFLAMEFLAME";
+		heckle:time "0:03:02"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.38 a heckle:Heckle;
+		rdfs:label "Heckle 1.38";
+		rdfs:comment "i want to design a cutout of asia as a paper doll with different fat sizes just like that diagram";
+		heckle:time "0:03:12"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.39 a heckle:Heckle;
+		rdfs:label "Heckle 1.39";
+		rdfs:comment "the reverse of the wall-e future";
+		heckle:time "0:03:18"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.40 a heckle:Heckle;
+		rdfs:label "Heckle 1.40";
+		rdfs:comment "is britain fat?";
+		heckle:time "0:03:29"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.41 a heckle:Heckle;
+		rdfs:label "Heckle 1.41";
+		rdfs:comment "IF YOU DELETE THIS MSG I AM OUT!!!";
+		heckle:time "0:03:40"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.42 a heckle:Heckle;
+		rdfs:label "Heckle 1.42";
+		rdfs:comment "no one is orange";
+		heckle:time "0:03:42"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.43 a heckle:Heckle;
+		rdfs:label "Heckle 1.43";
+		rdfs:comment "i'm hot";
+		heckle:time "0:03:55"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.44 a heckle:Heckle;
+		rdfs:label "Heckle 1.44";
+		rdfs:comment "silly";
+		heckle:time "0:04:14"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.45 a heckle:Heckle;
+		rdfs:label "Heckle 1.45";
+		rdfs:comment "they've got more computers than we do";
+		heckle:time "0:04:18"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.46 a heckle:Heckle;
+		rdfs:label "Heckle 1.46";
+		rdfs:comment "i think you should have the messages of individual colors overlap themselves, then they don't take up space all over the screen";
+		heckle:time "0:04:19"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.48 a heckle:Heckle;
+		rdfs:label "Heckle 1.48";
+		rdfs:comment "I VE ALREADY LOST THE PLOT";
+		heckle:time "0:04:23"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.49 a heckle:Heckle;
+		rdfs:label "Heckle 1.49";
+		rdfs:comment "i know right, who chooses what gets to be on screen? #grandhighpoobah";
+		heckle:time "0:04:33"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.50 a heckle:Heckle;
+		rdfs:label "Heckle 1.50";
+		rdfs:comment "she makes me want to vomit";
+		heckle:time "0:04:48"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.51 a heckle:Heckle;
+		rdfs:label "Heckle 1.51";
+		rdfs:comment "they are trying to get rid of fat people. come on KEEP UP!";
+		heckle:time "0:04:55"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.52 a heckle:Heckle;
+		rdfs:label "Heckle 1.52";
+		rdfs:comment "we know you're hot zoba";
+		heckle:time "0:04:57"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.53 a heckle:Heckle;
+		rdfs:label "Heckle 1.53";
+		rdfs:comment "who, the anti-fat lady?";
+		heckle:time "0:05:00"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.54 a heckle:Heckle;
+		rdfs:label "Heckle 1.54";
+		rdfs:comment "you're the color purple";
+		heckle:time "0:05:09"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.55 a heckle:Heckle;
+		rdfs:label "Heckle 1.55";
+		rdfs:comment "i'll be health you'll be safety. good line";
+		heckle:time "0:05:16"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.56 a heckle:Heckle;
+		rdfs:label "Heckle 1.56";
+		rdfs:comment "yes the anti fat lady";
+		heckle:time "0:05:18"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.58 a heckle:Heckle;
+		rdfs:label "Heckle 1.58";
+		rdfs:comment "that was me";
+		heckle:time "0:05:19"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.59 a heckle:Heckle;
+		rdfs:label "Heckle 1.59";
+		rdfs:comment "ZOBAAAA IS HOT! GOD BLESS HER";
+		heckle:time "0:05:28"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.60 a heckle:Heckle;
+		rdfs:label "Heckle 1.60";
+		rdfs:comment "so who's taken diet pills here, aka speed?";
+		heckle:time "0:05:38"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.61 a heckle:Heckle;
+		rdfs:label "Heckle 1.61";
+		rdfs:comment "valued customer is quite nice as a chubba munk";
+		heckle:time "0:05:42"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.63 a heckle:Heckle;
+		rdfs:label "Heckle 1.63";
+		rdfs:comment "plus what's wrong w this pill, what's the catch?";
+		heckle:time "0:05:57"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.64 a heckle:Heckle;
+		rdfs:label "Heckle 1.64";
+		rdfs:comment "i am purple";
+		heckle:time "0:06:03"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.65 a heckle:Heckle;
+		rdfs:label "Heckle 1.65";
+		rdfs:comment "i've been on pills and felt awful";
+		heckle:time "0:06:07"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.66 a heckle:Heckle;
+		rdfs:label "Heckle 1.66";
+		rdfs:comment "IF WE SET IT TO PROPER ASPECT RATIO THE WEIGHT LOSS WOULDBE MORE APPARENT IMHO";
+		heckle:time "0:06:10"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.67 a heckle:Heckle;
+		rdfs:label "Heckle 1.67";
+		rdfs:comment "the pill's evil";
+		heckle:time "0:06:17"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.68 a heckle:Heckle;
+		rdfs:label "Heckle 1.68";
+		rdfs:comment "i used to take hella diet pills m8";
+		heckle:time "0:06:17"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.70 a heckle:Heckle;
+		rdfs:label "Heckle 1.70";
+		rdfs:comment "obvs";
+		heckle:time "0:06:28"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.71 a heckle:Heckle;
+		rdfs:label "Heckle 1.71";
+		rdfs:comment "but what does it have to do with dr. who";
+		heckle:time "0:06:38"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.72 a heckle:Heckle;
+		rdfs:label "Heckle 1.72";
+		rdfs:comment "it is a bit thriller like huh?";
+		heckle:time "0:06:52"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.73 a heckle:Heckle;
+		rdfs:label "Heckle 1.73";
+		rdfs:comment "my period's been all screwed up since i've been off the pill";
+		heckle:time "0:07:26"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.74 a heckle:Heckle;
+		rdfs:label "Heckle 1.74";
+		rdfs:comment "DELETE SOME MORE SHIT SAUL IT'S GETTING HARD TO CONCENTRATE";
+		heckle:time "0:07:28"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.75 a heckle:Heckle;
+		rdfs:label "Heckle 1.75";
+		rdfs:comment "WHAT KIND OF PILLS I WONDER";
+		heckle:time "0:07:31"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.76 a heckle:Heckle;
+		rdfs:label "Heckle 1.76";
+		rdfs:comment "i'm not watching this film , it's much more fun to talk to you guys";
+		heckle:time "0:07:42"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.77 a heckle:Heckle;
+		rdfs:label "Heckle 1.77";
+		rdfs:comment "shes gonna blow";
+		heckle:time "0:07:51"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.78 a heckle:Heckle;
+		rdfs:label "Heckle 1.78";
+		rdfs:comment "ooohhh EWWWWWW!!";
+		heckle:time "0:07:54"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.79 a heckle:Heckle;
+		rdfs:label "Heckle 1.79";
+		rdfs:comment "in what sense :blow?: #thatswhatshesaid";
+		heckle:time "0:08:15"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.80 a heckle:Heckle;
+		rdfs:label "Heckle 1.80";
+		rdfs:comment "hmmm lovely";
+		heckle:time "0:08:24"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.81 a heckle:Heckle;
+		rdfs:label "Heckle 1.81";
+		rdfs:comment "yummie";
+		heckle:time "0:08:25"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.82 a heckle:Heckle;
+		rdfs:label "Heckle 1.82";
+		rdfs:comment "you should be able to delete your own texts, in fact they should automatically delete when you send the next one. if you want to resend tho";
+		heckle:time "0:08:31"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.83 a heckle:Heckle;
+		rdfs:label "Heckle 1.83";
+		rdfs:comment "OMG!!!";
+		heckle:time "0:08:32"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.84 a heckle:Heckle;
+		rdfs:label "Heckle 1.84";
+		rdfs:comment "little fatty babies";
+		heckle:time "0:08:37"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.85 a heckle:Heckle;
+		rdfs:label "Heckle 1.85";
+		rdfs:comment "oh i HAVE seen this";
+		heckle:time "0:08:38"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.86 a heckle:Heckle;
+		rdfs:label "Heckle 1.86";
+		rdfs:comment "i think fat people should go on a diet";
+		heckle:time "0:08:39"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.87 a heckle:Heckle;
+		rdfs:label "Heckle 1.87";
+		rdfs:comment "EXPLODE";
+		heckle:time "0:08:48"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.88 a heckle:Heckle;
+		rdfs:label "Heckle 1.88";
+		rdfs:comment "wish u wr all 2x texters";
+		heckle:time "0:08:48"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.90 a heckle:Heckle;
+		rdfs:label "Heckle 1.90";
+		rdfs:comment "what in christ just happened, i don't get it";
+		heckle:time "0:09:00"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.91 a heckle:Heckle;
+		rdfs:label "Heckle 1.91";
+		rdfs:comment "squish em";
+		heckle:time "0:09:07"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.93 a heckle:Heckle;
+		rdfs:label "Heckle 1.93";
+		rdfs:comment "under foot";
+		heckle:time "0:09:21"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.94 a heckle:Heckle;
+		rdfs:label "Heckle 1.94";
+		rdfs:comment "what the f is that ! ?";
+		heckle:time "0:09:23"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.95 a heckle:Heckle;
+		rdfs:label "Heckle 1.95";
+		rdfs:comment "creepiness";
+		heckle:time "0:09:23"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.96 a heckle:Heckle;
+		rdfs:label "Heckle 1.96";
+		rdfs:comment "sentient fat machine!";
+		heckle:time "0:09:26"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.97 a heckle:Heckle;
+		rdfs:label "Heckle 1.97";
+		rdfs:comment "the babies consume the fat";
+		heckle:time "0:09:44"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.98 a heckle:Heckle;
+		rdfs:label "Heckle 1.98";
+		rdfs:comment "whoa";
+		heckle:time "0:09:49"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.99 a heckle:Heckle;
+		rdfs:label "Heckle 1.99";
+		rdfs:comment "don't you love the idea deco";
+		heckle:time "0:10:10"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.101 a heckle:Heckle;
+		rdfs:label "Heckle 1.101";
+		rdfs:comment "ikea";
+		heckle:time "0:10:18"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.102 a heckle:Heckle;
+		rdfs:label "Heckle 1.102";
+		rdfs:comment "was this after taking the pill?";
+		heckle:time "0:10:22"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.106 a heckle:Heckle;
+		rdfs:label "Heckle 1.106";
+		rdfs:comment "got to love the ott soundtrack";
+		heckle:time "0:10:54"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.107 a heckle:Heckle;
+		rdfs:label "Heckle 1.107";
+		rdfs:comment "this is madness!";
+		heckle:time "0:10:55"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.108 a heckle:Heckle;
+		rdfs:label "Heckle 1.108";
+		rdfs:comment "dudes in cars, men in black vibe. save the fat ladies from themselves. monster inside. succubus alien. blah blah";
+		heckle:time "0:11:01"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.109 a heckle:Heckle;
+		rdfs:label "Heckle 1.109";
+		rdfs:comment "RUN RUN RUN";
+		heckle:time "0:11:04"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.110 a heckle:Heckle;
+		rdfs:label "Heckle 1.110";
+		rdfs:comment "HECKLING!";
+		heckle:time "0:11:12"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.112 a heckle:Heckle;
+		rdfs:label "Heckle 1.112";
+		rdfs:comment "which one is the dr. who?";
+		heckle:time "0:11:31"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.113 a heckle:Heckle;
+		rdfs:label "Heckle 1.113";
+		rdfs:comment "soundtrack is off the fuckin CHAIN";
+		heckle:time "0:11:40"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.114 a heckle:Heckle;
+		rdfs:label "Heckle 1.114";
+		rdfs:comment "is he the hot one?";
+		heckle:time "0:11:41"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.115 a heckle:Heckle;
+		rdfs:label "Heckle 1.115";
+		rdfs:comment "Gone dammit";
+		heckle:time "0:11:45"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle1.116 a heckle:Heckle;
+		rdfs:label "Heckle 1.116";
+		rdfs:comment "the hottest thing so far has been the fat gyal who exploded";
+		heckle:time "0:12:13"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.119 a heckle:Heckle;
+		rdfs:label "Heckle 1.119";
+		rdfs:comment "I'd rather watch Seksmisja";
+		heckle:time "0:12:35"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.120 a heckle:Heckle;
+		rdfs:label "Heckle 1.120";
+		rdfs:comment "bowties are cool";
+		heckle:time "0:12:44"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.122 a heckle:Heckle;
+		rdfs:label "Heckle 1.122";
+		rdfs:comment "dr. who sexgod";
+		heckle:time "0:12:57"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.123 a heckle:Heckle;
+		rdfs:label "Heckle 1.123";
+		rdfs:comment "Knock Knock!";
+		heckle:time "0:12:57"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.124 a heckle:Heckle;
+		rdfs:label "Heckle 1.124";
+		rdfs:comment "is the evil lady the woman from the weakest link?";
+		heckle:time "0:13:00"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.127 a heckle:Heckle;
+		rdfs:label "Heckle 1.127";
+		rdfs:comment "dr who in joke; how sad am i?";
+		heckle:time "0:13:18"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.129 a heckle:Heckle;
+		rdfs:label "Heckle 1.129";
+		rdfs:comment "Hello where is Jens?";
+		heckle:time "0:13:25"^^xsd:int;
+		heckle:author heckle:cyan
+:heckle1.130 a heckle:Heckle;
+		rdfs:label "Heckle 1.130";
+		rdfs:comment "why is it all dreamlike, are they on pills";
+		heckle:time "0:13:26"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.131 a heckle:Heckle;
+		rdfs:label "Heckle 1.131";
+		rdfs:comment "there is lots of sexy girls in Seksmisja";
+		heckle:time "0:13:27"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle1.132 a heckle:Heckle;
+		rdfs:label "Heckle 1.132";
+		rdfs:comment "dont answer that one Rick";
+		heckle:time "0:13:28"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle1.133 a heckle:Heckle;
+		rdfs:label "Heckle 1.133";
+		rdfs:comment "KNOCK KNOCK";
+		heckle:time "0:13:32"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.135 a heckle:Heckle;
+		rdfs:label "Heckle 1.135";
+		rdfs:comment "he is a sexgod! i love this version of dr. who";
+		heckle:time "0:13:43"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.137 a heckle:Heckle;
+		rdfs:label "Heckle 1.137";
+		rdfs:comment "peeping tom";
+		heckle:time "0:13:53"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.139 a heckle:Heckle;
+		rdfs:label "Heckle 1.139";
+		rdfs:comment "i know i'm trying to find pics w/his clothes off";
+		heckle:time "0:14:09"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.140 a heckle:Heckle;
+		rdfs:label "Heckle 1.140";
+		rdfs:comment "women rule the world ... beyonce told me so";
+		heckle:time "0:14:31"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle1.141 a heckle:Heckle;
+		rdfs:label "Heckle 1.141";
+		rdfs:comment "zoba, can you find him nekked?";
+		heckle:time "0:14:33"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle1.142 a heckle:Heckle;
+		rdfs:label "Heckle 1.142";
+		rdfs:comment "WHOS THAT?";
+		heckle:time "0:14:34"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.143 a heckle:Heckle;
+		rdfs:label "Heckle 1.143";
+		rdfs:comment "Cash!";
+		heckle:time "0:14:57"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.145 a heckle:Heckle;
+		rdfs:label "Heckle 1.145";
+		rdfs:comment "i like this :kindly old man: archetype <3";
+		heckle:time "0:15:03"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle1.146 a heckle:Heckle;
+		rdfs:label "Heckle 1.146";
+		rdfs:comment "CASH WHO??";
+		heckle:time "0:15:08"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle1.147 a heckle:Heckle;
+		rdfs:label "Heckle 1.147";
+		rdfs:comment "he dies in the next scene";
+		heckle:time "0:15:24"^^xsd:int;
+		heckle:author heckle:red
+:heckle1.148 a heckle:Heckle;
+		rdfs:label "Heckle 1.148";
+		rdfs:comment "No thanks, but I’d like some peanuts!";
+		heckle:time "0:15:24"^^xsd:int;
+		heckle:author heckle:darkorange
+
+### Heckle session 2
+
+:heckle2.1 a heckle:Heckle;
+		rdfs:label "Heckle 2.1";
+		rdfs:comment "dom du-du-dom du-du-dom-dom";
+		heckle:time "0:00:00"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.2 a heckle:Heckle;
+		rdfs:label "Heckle 2.2";
+		rdfs:comment "woo ee ooooooo";
+		heckle:time "0:00:06"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.3 a heckle:Heckle;
+		rdfs:label "Heckle 2.3";
+		rdfs:comment "Meow";
+		heckle:time "0:00:09"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.4 a heckle:Heckle;
+		rdfs:label "Heckle 2.4";
+		rdfs:comment "my lap's gettnig too warm";
+		heckle:time "0:00:21"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.6 a heckle:Heckle;
+		rdfs:label "Heckle 2.6";
+		rdfs:comment "oooooooo";
+		heckle:time "0:00:32"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.7 a heckle:Heckle;
+		rdfs:label "Heckle 2.7";
+		rdfs:comment "Kind of the the queens nose";
+		heckle:time "0:00:40"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.8 a heckle:Heckle;
+		rdfs:label "Heckle 2.8";
+		rdfs:comment "This version of the theme tune is better the newer one";
+		heckle:time "0:00:43"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.9 a heckle:Heckle;
+		rdfs:label "Heckle 2.9";
+		rdfs:comment "Back to Russell and David T - phew!";
+		heckle:time "0:00:51"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.10 a heckle:Heckle;
+		rdfs:label "Heckle 2.10";
+		rdfs:comment "Hello adipose industries says insider knowledge";
+		heckle:time "0:00:53"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.11 a heckle:Heckle;
+		rdfs:label "Heckle 2.11";
+		rdfs:comment "i like the newer one";
+		heckle:time "0:00:59"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.12 a heckle:Heckle;
+		rdfs:label "Heckle 2.12";
+		rdfs:comment "horns all the way";
+		heckle:time "0:01:10"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.13 a heckle:Heckle;
+		rdfs:label "Heckle 2.13";
+		rdfs:comment "Gothenburg sonic scredriver";
+		heckle:time "0:01:18"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.14 a heckle:Heckle;
+		rdfs:label "Heckle 2.14";
+		rdfs:comment "blob";
+		heckle:time "0:01:26"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.15 a heckle:Heckle;
+		rdfs:label "Heckle 2.15";
+		rdfs:comment "ADIPOSE";
+		heckle:time "0:01:27"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.16 a heckle:Heckle;
+		rdfs:label "Heckle 2.16";
+		rdfs:comment "And the psychic paper!";
+		heckle:time "0:01:35"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.17 a heckle:Heckle;
+		rdfs:label "Heckle 2.17";
+		rdfs:comment "Ah I remember - cute blobbies coming";
+		heckle:time "0:01:47"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.18 a heckle:Heckle;
+		rdfs:label "Heckle 2.18";
+		rdfs:comment "Whats the ending dom?";
+		heckle:time "0:01:56"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.19 a heckle:Heckle;
+		rdfs:label "Heckle 2.19";
+		rdfs:comment "take the red pill, sir";
+		heckle:time "0:01:57"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.20 a heckle:Heckle;
+		rdfs:label "Heckle 2.20";
+		rdfs:comment "SPOILER: it literally walks away";
+		heckle:time "0:01:59"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.21 a heckle:Heckle;
+		rdfs:label "Heckle 2.21";
+		rdfs:comment "twiglets!!";
+		heckle:time "0:02:04"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.23 a heckle:Heckle;
+		rdfs:label "Heckle 2.23";
+		rdfs:comment "I think we might see the journalist again";
+		heckle:time "0:02:18"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.24 a heckle:Heckle;
+		rdfs:label "Heckle 2.24";
+		rdfs:comment "the worse bit is when Dobby dies";
+		heckle:time "0:02:25"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.25 a heckle:Heckle;
+		rdfs:label "Heckle 2.25";
+		rdfs:comment "Psychic paper again!";
+		heckle:time "0:02:42"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.27 a heckle:Heckle;
+		rdfs:label "Heckle 2.27";
+		rdfs:comment "100% street legal";
+		heckle:time "0:02:46"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.28 a heckle:Heckle;
+		rdfs:label "Heckle 2.28";
+		rdfs:comment "the fat or dobby?";
+		heckle:time "0:02:57"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.30 a heckle:Heckle;
+		rdfs:label "Heckle 2.30";
+		rdfs:comment "too hard to multi-task, watch and write";
+		heckle:time "0:03:14"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.31 a heckle:Heckle;
+		rdfs:label "Heckle 2.31";
+		rdfs:comment "Future workplace for phd students";
+		heckle:time "0:03:20"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.33 a heckle:Heckle;
+		rdfs:label "Heckle 2.33";
+		rdfs:comment "Anyone else find Tate annoying?";
+		heckle:time "0:03:47"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.34 a heckle:Heckle;
+		rdfs:label "Heckle 2.34";
+		rdfs:comment "war of the ginger assistants";
+		heckle:time "0:03:47"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.35 a heckle:Heckle;
+		rdfs:label "Heckle 2.35";
+		rdfs:comment "whats adipose?";
+		heckle:time "0:04:09"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.36 a heckle:Heckle;
+		rdfs:label "Heckle 2.36";
+		rdfs:comment "Anyone else find Tate annoying?";
+		heckle:time "0:04:20"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.37 a heckle:Heckle;
+		rdfs:label "Heckle 2.37";
+		rdfs:comment "jelllyfish?";
+		heckle:time "0:04:21"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.38 a heckle:Heckle;
+		rdfs:label "Heckle 2.38";
+		rdfs:comment "re adipose: watch and you'll find out";
+		heckle:time "0:04:22"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.39 a heckle:Heckle;
+		rdfs:label "Heckle 2.39";
+		rdfs:comment "SPOILER: Adipose? *the* adipose";
+		heckle:time "0:04:54"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.40 a heckle:Heckle;
+		rdfs:label "Heckle 2.40";
+		rdfs:comment "horrible, would you like that?";
+		heckle:time "0:04:55"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.42 a heckle:Heckle;
+		rdfs:label "Heckle 2.42";
+		rdfs:comment "is that a fat suit?";
+		heckle:time "0:05:39"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.43 a heckle:Heckle;
+		rdfs:label "Heckle 2.43";
+		rdfs:comment "Anyone else find Tate annoying?";
+		heckle:time "0:05:43"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.46 a heckle:Heckle;
+		rdfs:label "Heckle 2.46";
+		rdfs:comment "it walked off?";
+		heckle:time "0:06:01"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.47 a heckle:Heckle;
+		rdfs:label "Heckle 2.47";
+		rdfs:comment "This isn't going to end well...";
+		heckle:time "0:06:04"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.49 a heckle:Heckle;
+		rdfs:label "Heckle 2.49";
+		rdfs:comment "I'm no fan of Tate but thought she were dead good in dr. who";
+		heckle:time "0:06:11"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.51 a heckle:Heckle;
+		rdfs:label "Heckle 2.51";
+		rdfs:comment "No I think it's a great institution";
+		heckle:time "0:06:19"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.54 a heckle:Heckle;
+		rdfs:label "Heckle 2.54";
+		rdfs:comment "who is that guy? whoooo";
+		heckle:time "0:06:37"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.56 a heckle:Heckle;
+		rdfs:label "Heckle 2.56";
+		rdfs:comment "i like cats";
+		heckle:time "0:06:51"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.57 a heckle:Heckle;
+		rdfs:label "Heckle 2.57";
+		rdfs:comment "she will blow soon";
+		heckle:time "0:06:51"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.58 a heckle:Heckle;
+		rdfs:label "Heckle 2.58";
+		rdfs:comment "he's just some guy who's lost weight";
+		heckle:time "0:06:56"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.59 a heckle:Heckle;
+		rdfs:label "Heckle 2.59";
+		rdfs:comment "Need a reference to the cat-people he's talking about";
+		heckle:time "0:07:07"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.61 a heckle:Heckle;
+		rdfs:label "Heckle 2.61";
+		rdfs:comment "hahahahahahhaha meeeoooow";
+		heckle:time "0:07:18"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.62 a heckle:Heckle;
+		rdfs:label "Heckle 2.62";
+		rdfs:comment "Uh-oh";
+		heckle:time "0:07:26"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.64 a heckle:Heckle;
+		rdfs:label "Heckle 2.64";
+		rdfs:comment "blobbies are coming weeeee!!!!!!";
+		heckle:time "0:07:38"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.65 a heckle:Heckle;
+		rdfs:label "Heckle 2.65";
+		rdfs:comment "It's like alien";
+		heckle:time "0:07:40"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.68 a heckle:Heckle;
+		rdfs:label "Heckle 2.68";
+		rdfs:comment "wait, is this sci fi or something?";
+		heckle:time "0:07:57"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.69 a heckle:Heckle;
+		rdfs:label "Heckle 2.69";
+		rdfs:comment "Gadget!";
+		heckle:time "0:07:59"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.71 a heckle:Heckle;
+		rdfs:label "Heckle 2.71";
+		rdfs:comment "she will blow up now";
+		heckle:time "0:08:15"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.72 a heckle:Heckle;
+		rdfs:label "Heckle 2.72";
+		rdfs:comment "euh";
+		heckle:time "0:08:18"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.74 a heckle:Heckle;
+		rdfs:label "Heckle 2.74";
+		rdfs:comment "awwwwwwww!";
+		heckle:time "0:08:26"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.75 a heckle:Heckle;
+		rdfs:label "Heckle 2.75";
+		rdfs:comment "it's a FAT BABY";
+		heckle:time "0:08:30"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.76 a heckle:Heckle;
+		rdfs:label "Heckle 2.76";
+		rdfs:comment "cute!";
+		heckle:time "0:08:34"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.77 a heckle:Heckle;
+		rdfs:label "Heckle 2.77";
+		rdfs:comment "blobby blobby blobby yeah!!";
+		heckle:time "0:08:43"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.78 a heckle:Heckle;
+		rdfs:label "Heckle 2.78";
+		rdfs:comment "cute cat fat";
+		heckle:time "0:08:43"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.79 a heckle:Heckle;
+		rdfs:label "Heckle 2.79";
+		rdfs:comment "just wait until they start eating the humans";
+		heckle:time "0:09:04"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.80 a heckle:Heckle;
+		rdfs:label "Heckle 2.80";
+		rdfs:comment "i wanted a fat baby";
+		heckle:time "0:09:13"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.83 a heckle:Heckle;
+		rdfs:label "Heckle 2.83";
+		rdfs:comment "who writes the script";
+		heckle:time "0:09:56"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.84 a heckle:Heckle;
+		rdfs:label "Heckle 2.84";
+		rdfs:comment "cute";
+		heckle:time "0:10:00"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.85 a heckle:Heckle;
+		rdfs:label "Heckle 2.85";
+		rdfs:comment "better than cybermen";
+		heckle:time "0:10:01"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.86 a heckle:Heckle;
+		rdfs:label "Heckle 2.86";
+		rdfs:comment "i am so bored of cybermen";
+		heckle:time "0:10:14"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.87 a heckle:Heckle;
+		rdfs:label "Heckle 2.87";
+		rdfs:comment "Indeed - more blobbies I say";
+		heckle:time "0:10:28"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.88 a heckle:Heckle;
+		rdfs:label "Heckle 2.88";
+		rdfs:comment "tom baker";
+		heckle:time "0:10:31"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.89 a heckle:Heckle;
+		rdfs:label "Heckle 2.89";
+		rdfs:comment "matt smith put the alien back in doctor who";
+		heckle:time "0:10:46"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.90 a heckle:Heckle;
+		rdfs:label "Heckle 2.90";
+		rdfs:comment "where is my scdriver ?";
+		heckle:time "0:10:48"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.92 a heckle:Heckle;
+		rdfs:label "Heckle 2.92";
+		rdfs:comment "Tom baker - you've just got scarf envy";
+		heckle:time "0:11:00"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.93 a heckle:Heckle;
+		rdfs:label "Heckle 2.93";
+		rdfs:comment "Van number plate says 'euh'";
+		heckle:time "0:11:09"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.94 a heckle:Heckle;
+		rdfs:label "Heckle 2.94";
+		rdfs:comment "grumpy london cabbie, big shock";
+		heckle:time "0:11:42"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.95 a heckle:Heckle;
+		rdfs:label "Heckle 2.95";
+		rdfs:comment "Taxi drivers, the real victims";
+		heckle:time "0:11:45"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.96 a heckle:Heckle;
+		rdfs:label "Heckle 2.96";
+		rdfs:comment "That device looks and sounds rubbish";
+		heckle:time "0:11:48"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.97 a heckle:Heckle;
+		rdfs:label "Heckle 2.97";
+		rdfs:comment "who lives with their mums still??";
+		heckle:time "0:13:19"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.98 a heckle:Heckle;
+		rdfs:label "Heckle 2.98";
+		rdfs:comment "most recent doctor who assistants I think";
+		heckle:time "0:13:34"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.99 a heckle:Heckle;
+		rdfs:label "Heckle 2.99";
+		rdfs:comment "my son lives with his mum";
+		heckle:time "0:13:41"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.100 a heckle:Heckle;
+		rdfs:label "Heckle 2.100";
+		rdfs:comment "yea! love him!";
+		heckle:time "0:13:52"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.101 a heckle:Heckle;
+		rdfs:label "Heckle 2.101";
+		rdfs:comment "what a loser";
+		heckle:time "0:13:53"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.103 a heckle:Heckle;
+		rdfs:label "Heckle 2.103";
+		rdfs:comment "The original right said Fred - yay! Have a cuppa tea and....";
+		heckle:time "0:14:25"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.104 a heckle:Heckle;
+		rdfs:label "Heckle 2.104";
+		rdfs:comment "her grandad";
+		heckle:time "0:14:27"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.105 a heckle:Heckle;
+		rdfs:label "Heckle 2.105";
+		rdfs:comment "my friend said she has a star called after her name and NASA paper to confirm it!";
+		heckle:time "0:14:45"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.106 a heckle:Heckle;
+		rdfs:label "Heckle 2.106";
+		rdfs:comment "[We need conversation view / in reply to]";
+		heckle:time "0:15:07"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.109 a heckle:Heckle;
+		rdfs:label "Heckle 2.109";
+		rdfs:comment "OFF!!";
+		heckle:time "0:15:37"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.110 a heckle:Heckle;
+		rdfs:label "Heckle 2.110";
+		rdfs:comment "Mash up!";
+		heckle:time "0:15:41"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.111 a heckle:Heckle;
+		rdfs:label "Heckle 2.111";
+		rdfs:comment "is he your grandad?";
+		heckle:time "0:15:43"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.112 a heckle:Heckle;
+		rdfs:label "Heckle 2.112";
+		rdfs:comment "I am watching plot!";
+		heckle:time "0:15:49"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.114 a heckle:Heckle;
+		rdfs:label "Heckle 2.114";
+		rdfs:comment "So how did he get an adipose in his 1960s video - cooooooool";
+		heckle:time "0:16:10"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.116 a heckle:Heckle;
+		rdfs:label "Heckle 2.116";
+		rdfs:comment "Bring the moomin things back I'm bored";
+		heckle:time "0:16:39"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.118 a heckle:Heckle;
+		rdfs:label "Heckle 2.118";
+		rdfs:comment "this is the "ahhh he's all alone bit"";
+		heckle:time "0:17:10"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.119 a heckle:Heckle;
+		rdfs:label "Heckle 2.119";
+		rdfs:comment "awww. They're both so alone";
+		heckle:time "0:17:19"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.122 a heckle:Heckle;
+		rdfs:label "Heckle 2.122";
+		rdfs:comment "They should just have a shag";
+		heckle:time "0:17:32"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.123 a heckle:Heckle;
+		rdfs:label "Heckle 2.123";
+		rdfs:comment "Mash-up de house!";
+		heckle:time "0:17:45"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.124 a heckle:Heckle;
+		rdfs:label "Heckle 2.124";
+		rdfs:comment "cute cat fat";
+		heckle:time "0:17:47"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.126 a heckle:Heckle;
+		rdfs:label "Heckle 2.126";
+		rdfs:comment "I hate the moomins";
+		heckle:time "0:17:57"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.127 a heckle:Heckle;
+		rdfs:label "Heckle 2.127";
+		rdfs:comment "We need a backbeat button";
+		heckle:time "0:17:59"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.128 a heckle:Heckle;
+		rdfs:label "Heckle 2.128";
+		rdfs:comment "the moomins or the characters?";
+		heckle:time "0:18:18"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.129 a heckle:Heckle;
+		rdfs:label "Heckle 2.129";
+		rdfs:comment "How can you hate the moomins???";
+		heckle:time "0:18:32"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.130 a heckle:Heckle;
+		rdfs:label "Heckle 2.130";
+		rdfs:comment "tobi, can you pass wine pls";
+		heckle:time "0:18:34"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.131 a heckle:Heckle;
+		rdfs:label "Heckle 2.131";
+		rdfs:comment "Sweepstake:how long till they meet";
+		heckle:time "0:18:38"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.132 a heckle:Heckle;
+		rdfs:label "Heckle 2.132";
+		rdfs:comment "How can you hate the moomins???";
+		heckle:time "0:18:45"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.133 a heckle:Heckle;
+		rdfs:label "Heckle 2.133";
+		rdfs:comment "Sweepstake:how long till they meet";
+		heckle:time "0:19:18"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.134 a heckle:Heckle;
+		rdfs:label "Heckle 2.134";
+		rdfs:comment "%$^&^%$£ moomins stupid";
+		heckle:time "0:19:20"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.135 a heckle:Heckle;
+		rdfs:label "Heckle 2.135";
+		rdfs:comment "my name is Louis and I want to kiss David Tennant because I lurrrve him";
+		heckle:time "0:19:39"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.137 a heckle:Heckle;
+		rdfs:label "Heckle 2.137";
+		rdfs:comment "Horny old ladies and doctor who...";
+		heckle:time "0:19:52"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.138 a heckle:Heckle;
+		rdfs:label "Heckle 2.138";
+		rdfs:comment "Bit odd when you used to watch her in Corrie with a Salford accent";
+		heckle:time "0:20:02"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.139 a heckle:Heckle;
+		rdfs:label "Heckle 2.139";
+		rdfs:comment "go on!";
+		heckle:time "0:20:06"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.140 a heckle:Heckle;
+		rdfs:label "Heckle 2.140";
+		rdfs:comment "the music tells you this is scary";
+		heckle:time "0:20:09"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.142 a heckle:Heckle;
+		rdfs:label "Heckle 2.142";
+		rdfs:comment "my name is Louis and I want to kiss David Tennant because I lurrrve him";
+		heckle:time "0:20:37"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.143 a heckle:Heckle;
+		rdfs:label "Heckle 2.143";
+		rdfs:comment "I didn't know Gavin was in Tate's show";
+		heckle:time "0:21:01"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.144 a heckle:Heckle;
+		rdfs:label "Heckle 2.144";
+		rdfs:comment "james bond moment!";
+		heckle:time "0:21:12"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.146 a heckle:Heckle;
+		rdfs:label "Heckle 2.146";
+		rdfs:comment "What happens if we send an X rated video..........";
+		heckle:time "0:21:46"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.147 a heckle:Heckle;
+		rdfs:label "Heckle 2.147";
+		rdfs:comment "There's an xkcd about YouTube parties";
+		heckle:time "0:21:58"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.148 a heckle:Heckle;
+		rdfs:label "Heckle 2.148";
+		rdfs:comment "%$^&^%$£ moomins stupid";
+		heckle:time "0:22:03"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.149 a heckle:Heckle;
+		rdfs:label "Heckle 2.149";
+		rdfs:comment "What did i miss?";
+		heckle:time "0:22:07"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.150 a heckle:Heckle;
+		rdfs:label "Heckle 2.150";
+		rdfs:comment "go ahead - if you can find one on youtube";
+		heckle:time "0:22:08"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.151 a heckle:Heckle;
+		rdfs:label "Heckle 2.151";
+		rdfs:comment "Baron Greenback was better";
+		heckle:time "0:22:23"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.153 a heckle:Heckle;
+		rdfs:label "Heckle 2.153";
+		rdfs:comment "Baron greenback was *way* better";
+		heckle:time "0:22:44"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.155 a heckle:Heckle;
+		rdfs:label "Heckle 2.155";
+		rdfs:comment "She's much better like that!";
+		heckle:time "0:23:17"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.156 a heckle:Heckle;
+		rdfs:label "Heckle 2.156";
+		rdfs:comment "she's got good teeth";
+		heckle:time "0:23:19"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.157 a heckle:Heckle;
+		rdfs:label "Heckle 2.157";
+		rdfs:comment "whats going on?";
+		heckle:time "0:23:36"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.158 a heckle:Heckle;
+		rdfs:label "Heckle 2.158";
+		rdfs:comment "is sound comes from different video?";
+		heckle:time "0:23:50"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.159 a heckle:Heckle;
+		rdfs:label "Heckle 2.159";
+		rdfs:comment "o yea action !!!!!!";
+		heckle:time "0:24:21"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.160 a heckle:Heckle;
+		rdfs:label "Heckle 2.160";
+		rdfs:comment "Down, not up!";
+		heckle:time "0:24:21"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.161 a heckle:Heckle;
+		rdfs:label "Heckle 2.161";
+		rdfs:comment "who cares";
+		heckle:time "0:24:33"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.162 a heckle:Heckle;
+		rdfs:label "Heckle 2.162";
+		rdfs:comment "it's all kicking off now";
+		heckle:time "0:24:33"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.163 a heckle:Heckle;
+		rdfs:label "Heckle 2.163";
+		rdfs:comment "when and where is this?";
+		heckle:time "0:24:36"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.164 a heckle:Heckle;
+		rdfs:label "Heckle 2.164";
+		rdfs:comment "love for ever!";
+		heckle:time "0:24:56"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.165 a heckle:Heckle;
+		rdfs:label "Heckle 2.165";
+		rdfs:comment "So which thread does this go with then.....";
+		heckle:time "0:25:08"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.166 a heckle:Heckle;
+		rdfs:label "Heckle 2.166";
+		rdfs:comment "it's "now" in london";
+		heckle:time "0:25:09"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.167 a heckle:Heckle;
+		rdfs:label "Heckle 2.167";
+		rdfs:comment "stupid moomins";
+		heckle:time "0:25:18"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.168 a heckle:Heckle;
+		rdfs:label "Heckle 2.168";
+		rdfs:comment "so how does she have cops with machine guns?";
+		heckle:time "0:25:36"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.169 a heckle:Heckle;
+		rdfs:label "Heckle 2.169";
+		rdfs:comment "I fink she just might have one of them";
+		heckle:time "0:25:52"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.170 a heckle:Heckle;
+		rdfs:label "Heckle 2.170";
+		rdfs:comment "Told her she should have gone down straight away";
+		heckle:time "0:26:17"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.171 a heckle:Heckle;
+		rdfs:label "Heckle 2.171";
+		rdfs:comment "Is that a new screwdriver or is she just pleased to see him?";
+		heckle:time "0:26:20"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.172 a heckle:Heckle;
+		rdfs:label "Heckle 2.172";
+		rdfs:comment "thanks god for the Internet";
+		heckle:time "0:26:23"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.173 a heckle:Heckle;
+		rdfs:label "Heckle 2.173";
+		rdfs:comment "bang!";
+		heckle:time "0:26:50"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.174 a heckle:Heckle;
+		rdfs:label "Heckle 2.174";
+		rdfs:comment "weeeeeee";
+		heckle:time "0:27:05"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.175 a heckle:Heckle;
+		rdfs:label "Heckle 2.175";
+		rdfs:comment "Let her go";
+		heckle:time "0:27:07"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.176 a heckle:Heckle;
+		rdfs:label "Heckle 2.176";
+		rdfs:comment "yea!";
+		heckle:time "0:27:17"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.177 a heckle:Heckle;
+		rdfs:label "Heckle 2.177";
+		rdfs:comment "What a convenient bit of bar to hold onto";
+		heckle:time "0:27:31"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.178 a heckle:Heckle;
+		rdfs:label "Heckle 2.178";
+		rdfs:comment "Hate it when that happens";
+		heckle:time "0:27:42"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.179 a heckle:Heckle;
+		rdfs:label "Heckle 2.179";
+		rdfs:comment "Catch!";
+		heckle:time "0:27:44"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.180 a heckle:Heckle;
+		rdfs:label "Heckle 2.180";
+		rdfs:comment "i want one of those scdrives!";
+		heckle:time "0:27:52"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.181 a heckle:Heckle;
+		rdfs:label "Heckle 2.181";
+		rdfs:comment "was that a little boat?";
+		heckle:time "0:28:05"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.182 a heckle:Heckle;
+		rdfs:label "Heckle 2.182";
+		rdfs:comment "wind wind";
+		heckle:time "0:28:12"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.184 a heckle:Heckle;
+		rdfs:label "Heckle 2.184";
+		rdfs:comment "SPLATTT";
+		heckle:time "0:28:33"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.185 a heckle:Heckle;
+		rdfs:label "Heckle 2.185";
+		rdfs:comment "take a lift!";
+		heckle:time "0:28:57"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.186 a heckle:Heckle;
+		rdfs:label "Heckle 2.186";
+		rdfs:comment "wasn't there a kids programme called SPLAT? it was about aliens!";
+		heckle:time "0:29:04"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.187 a heckle:Heckle;
+		rdfs:label "Heckle 2.187";
+		rdfs:comment "No, penny, we're not. If you were James bond, of course, we might...";
+		heckle:time "0:29:08"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.188 a heckle:Heckle;
+		rdfs:label "Heckle 2.188";
+		rdfs:comment "I love it when she talks dirty about screwdrivers";
+		heckle:time "0:29:37"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.189 a heckle:Heckle;
+		rdfs:label "Heckle 2.189";
+		rdfs:comment "that sounds dirty";
+		heckle:time "0:29:46"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.192 a heckle:Heckle;
+		rdfs:label "Heckle 2.192";
+		rdfs:comment "finally in terms we can understand";
+		heckle:time "0:30:15"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.194 a heckle:Heckle;
+		rdfs:label "Heckle 2.194";
+		rdfs:comment "haha I thought that said tennis instead of terms";
+		heckle:time "0:30:41"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.195 a heckle:Heckle;
+		rdfs:label "Heckle 2.195";
+		rdfs:comment "Cate as the straight-man, who would have thought";
+		heckle:time "0:30:43"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.197 a heckle:Heckle;
+		rdfs:label "Heckle 2.197";
+		rdfs:comment "he's getting tough";
+		heckle:time "0:30:51"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.198 a heckle:Heckle;
+		rdfs:label "Heckle 2.198";
+		rdfs:comment "they're not identical";
+		heckle:time "0:30:56"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.199 a heckle:Heckle;
+		rdfs:label "Heckle 2.199";
+		rdfs:comment "INDUCER";
+		heckle:time "0:32:40"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.200 a heckle:Heckle;
+		rdfs:label "Heckle 2.200";
+		rdfs:comment "TRANSDUCER";
+		heckle:time "0:32:48"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.201 a heckle:Heckle;
+		rdfs:label "Heckle 2.201";
+		rdfs:comment "I see the props dept went all out again";
+		heckle:time "0:32:48"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.202 a heckle:Heckle;
+		rdfs:label "Heckle 2.202";
+		rdfs:comment "SONIC";
+		heckle:time "0:32:55"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.203 a heckle:Heckle;
+		rdfs:label "Heckle 2.203";
+		rdfs:comment "VAGUELY TECHNICAL TERM";
+		heckle:time "0:33:03"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.204 a heckle:Heckle;
+		rdfs:label "Heckle 2.204";
+		rdfs:comment "TRANSISTOR";
+		heckle:time "0:33:06"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.205 a heckle:Heckle;
+		rdfs:label "Heckle 2.205";
+		rdfs:comment "Bring the moomin things back I'm bored";
+		heckle:time "0:33:09"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.206 a heckle:Heckle;
+		rdfs:label "Heckle 2.206";
+		rdfs:comment "nooooooo NO MOOMINS";
+		heckle:time "0:33:30"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.207 a heckle:Heckle;
+		rdfs:label "Heckle 2.207";
+		rdfs:comment "FLUX CAPACITOR";
+		heckle:time "0:33:31"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.208 a heckle:Heckle;
+		rdfs:label "Heckle 2.208";
+		rdfs:comment "my lap is really getting hot";
+		heckle:time "0:33:34"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.209 a heckle:Heckle;
+		rdfs:label "Heckle 2.209";
+		rdfs:comment "That device looks and sounds rubbish";
+		heckle:time "0:33:36"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.210 a heckle:Heckle;
+		rdfs:label "Heckle 2.210";
+		rdfs:comment "JOHNSON RODS";
+		heckle:time "0:33:39"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.211 a heckle:Heckle;
+		rdfs:label "Heckle 2.211";
+		rdfs:comment "I see the BBC props dept went all out again";
+		heckle:time "0:33:43"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.212 a heckle:Heckle;
+		rdfs:label "Heckle 2.212";
+		rdfs:comment "PROGRAM";
+		heckle:time "0:34:11"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.213 a heckle:Heckle;
+		rdfs:label "Heckle 2.213";
+		rdfs:comment "CUTTLE FISH";
+		heckle:time "0:34:27"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.214 a heckle:Heckle;
+		rdfs:label "Heckle 2.214";
+		rdfs:comment "Cate as the straight-man, who would have thought";
+		heckle:time "0:34:30"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.215 a heckle:Heckle;
+		rdfs:label "Heckle 2.215";
+		rdfs:comment "I think they are coming..";
+		heckle:time "0:34:35"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.217 a heckle:Heckle;
+		rdfs:label "Heckle 2.217";
+		rdfs:comment "woo ee oooo";
+		heckle:time "0:36:23"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.219 a heckle:Heckle;
+		rdfs:label "Heckle 2.219";
+		rdfs:comment "nooooooo NO MOOMINS";
+		heckle:time "0:37:21"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.222 a heckle:Heckle;
+		rdfs:label "Heckle 2.222";
+		rdfs:comment "cool";
+		heckle:time "0:40:42"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.223 a heckle:Heckle;
+		rdfs:label "Heckle 2.223";
+		rdfs:comment "go boys and girls! lets tag it mad";
+		heckle:time "0:42:05"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.224 a heckle:Heckle;
+		rdfs:label "Heckle 2.224";
+		rdfs:comment "its my birthday!";
+		heckle:time "0:43:20"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.227 a heckle:Heckle;
+		rdfs:label "Heckle 2.227";
+		rdfs:comment "its not really";
+		heckle:time "0:43:30"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.230 a heckle:Heckle;
+		rdfs:label "Heckle 2.230";
+		rdfs:comment "Really?";
+		heckle:time "0:43:33"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.233 a heckle:Heckle;
+		rdfs:label "Heckle 2.233";
+		rdfs:comment "Uh-oh";
+		heckle:time "0:43:38"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.234 a heckle:Heckle;
+		rdfs:label "Heckle 2.234";
+		rdfs:comment "ah cute : )";
+		heckle:time "0:43:57"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.235 a heckle:Heckle;
+		rdfs:label "Heckle 2.235";
+		rdfs:comment "happy one!";
+		heckle:time "0:43:59"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.236 a heckle:Heckle;
+		rdfs:label "Heckle 2.236";
+		rdfs:comment "cat flap fat";
+		heckle:time "0:44:15"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.237 a heckle:Heckle;
+		rdfs:label "Heckle 2.237";
+		rdfs:comment "fat flap";
+		heckle:time "0:44:25"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.238 a heckle:Heckle;
+		rdfs:label "Heckle 2.238";
+		rdfs:comment "";
+		heckle:time "0:44:27"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.239 a heckle:Heckle;
+		rdfs:label "Heckle 2.239";
+		rdfs:comment "extras not very good";
+		heckle:time "0:44:34"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.240 a heckle:Heckle;
+		rdfs:label "Heckle 2.240";
+		rdfs:comment "Cool game idea?  Drive over the blobbies?";
+		heckle:time "0:44:42"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.241 a heckle:Heckle;
+		rdfs:label "Heckle 2.241";
+		rdfs:comment "Can't type and munch";
+		heckle:time "0:44:47"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.242 a heckle:Heckle;
+		rdfs:label "Heckle 2.242";
+		rdfs:comment "look amazed now!";
+		heckle:time "0:45:02"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.243 a heckle:Heckle;
+		rdfs:label "Heckle 2.243";
+		rdfs:comment "Where's ghostbusters when you need em";
+		heckle:time "0:45:27"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.244 a heckle:Heckle;
+		rdfs:label "Heckle 2.244";
+		rdfs:comment "die! die now!";
+		heckle:time "0:45:42"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.245 a heckle:Heckle;
+		rdfs:label "Heckle 2.245";
+		rdfs:comment "fatty fat fat";
+		heckle:time "0:46:00"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.246 a heckle:Heckle;
+		rdfs:label "Heckle 2.246";
+		rdfs:comment "wish I could type faster";
+		heckle:time "0:46:10"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.247 a heckle:Heckle;
+		rdfs:label "Heckle 2.247";
+		rdfs:comment "1 miiiilion people (puts little finger to corner of mouth)";
+		heckle:time "0:46:18"^^xsd:int;
+		heckle:author heckle:lightblue
+:heckle2.248 a heckle:Heckle;
+		rdfs:label "Heckle 2.248";
+		rdfs:comment "The bloods on his hands";
+		heckle:time "0:46:18"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.249 a heckle:Heckle;
+		rdfs:label "Heckle 2.249";
+		rdfs:comment "Ta-da!";
+		heckle:time "0:46:21"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.250 a heckle:Heckle;
+		rdfs:label "Heckle 2.250";
+		rdfs:comment "yihaa!!!";
+		heckle:time "0:46:26"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.252 a heckle:Heckle;
+		rdfs:label "Heckle 2.252";
+		rdfs:comment "stay fat for ever!";
+		heckle:time "0:46:41"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.254 a heckle:Heckle;
+		rdfs:label "Heckle 2.254";
+		rdfs:comment "Is this PC?";
+		heckle:time "0:46:54"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.256 a heckle:Heckle;
+		rdfs:label "Heckle 2.256";
+		rdfs:comment "Thheyre going to kill her";
+		heckle:time "0:47:17"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.258 a heckle:Heckle;
+		rdfs:label "Heckle 2.258";
+		rdfs:comment "Oh yes we can, penny";
+		heckle:time "0:47:28"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.261 a heckle:Heckle;
+		rdfs:label "Heckle 2.261";
+		rdfs:comment "Mounds of mashed potato";
+		heckle:time "0:47:53"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.262 a heckle:Heckle;
+		rdfs:label "Heckle 2.262";
+		rdfs:comment "go home.....";
+		heckle:time "0:48:14"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.263 a heckle:Heckle;
+		rdfs:label "Heckle 2.263";
+		rdfs:comment "Close encounters of the third kind, rather";
+		heckle:time "0:48:16"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.269 a heckle:Heckle;
+		rdfs:label "Heckle 2.269";
+		rdfs:comment "munchkins";
+		heckle:time "0:48:40"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.272 a heckle:Heckle;
+		rdfs:label "Heckle 2.272";
+		rdfs:comment "Fat in spaaaaaaaaaaaaaaaaace";
+		heckle:time "0:49:38"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.273 a heckle:Heckle;
+		rdfs:label "Heckle 2.273";
+		rdfs:comment "chubby rain";
+		heckle:time "0:49:40"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.274 a heckle:Heckle;
+		rdfs:label "Heckle 2.274";
+		rdfs:comment "martha was a wingie bitch";
+		heckle:time "0:49:48"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.276 a heckle:Heckle;
+		rdfs:label "Heckle 2.276";
+		rdfs:comment "Do we feel short changed that no one died?";
+		heckle:time "0:50:12"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.277 a heckle:Heckle;
+		rdfs:label "Heckle 2.277";
+		rdfs:comment "just you wait";
+		heckle:time "0:50:34"^^xsd:int;
+		heckle:author heckle:lightgreen
+:heckle2.278 a heckle:Heckle;
+		rdfs:label "Heckle 2.278";
+		rdfs:comment "I have a book called cats in space";
+		heckle:time "0:50:37"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.279 a heckle:Heckle;
+		rdfs:label "Heckle 2.279";
+		rdfs:comment "Gravity";
+		heckle:time "0:50:43"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.280 a heckle:Heckle;
+		rdfs:label "Heckle 2.280";
+		rdfs:comment "naughty step";
+		heckle:time "0:50:47"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.281 a heckle:Heckle;
+		rdfs:label "Heckle 2.281";
+		rdfs:comment "and other places";
+		heckle:time "0:50:49"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.283 a heckle:Heckle;
+		rdfs:label "Heckle 2.283";
+		rdfs:comment "flop";
+		heckle:time "0:50:55"^^xsd:int;
+		heckle:author heckle:slategrey
+:heckle2.284 a heckle:Heckle;
+		rdfs:label "Heckle 2.284";
+		rdfs:comment "All those prphans..";
+		heckle:time "0:51:06"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.287 a heckle:Heckle;
+		rdfs:label "Heckle 2.287";
+		rdfs:comment "cat painter";
+		heckle:time "0:51:37"^^xsd:int;
+		heckle:author heckle:red
+:heckle2.290 a heckle:Heckle;
+		rdfs:label "Heckle 2.290";
+		rdfs:comment "Poor bastard - ruuuuuun";
+		heckle:time "0:51:58"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.294 a heckle:Heckle;
+		rdfs:label "Heckle 2.294";
+		rdfs:comment "deep maaaaan";
+		heckle:time "0:52:33"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.295 a heckle:Heckle;
+		rdfs:label "Heckle 2.295";
+		rdfs:comment "deep maaaaan";
+		heckle:time "0:52:39"^^xsd:int;
+		heckle:author heckle:darkblue
+:heckle2.298 a heckle:Heckle;
+		rdfs:label "Heckle 2.298";
+		rdfs:comment "Ha ha - he's off!";
+		heckle:time "0:53:55"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.301 a heckle:Heckle;
+		rdfs:label "Heckle 2.301";
+		rdfs:comment "Ads by google? This is the BBC, no?";
+		heckle:time "0:54:24"^^xsd:int;
+		heckle:author heckle:darkorange
+:heckle2.302 a heckle:Heckle;
+		rdfs:label "Heckle 2.302";
+		rdfs:comment "and other places";
+		heckle:time "0:54:28"^^xsd:int;
+		heckle:author heckle:magenta
+:heckle2.303 a heckle:Heckle;
+		rdfs:label "Heckle 2.303";
+		rdfs:comment "Ha ha - he's off!";
+		heckle:time "0:55:15"^^xsd:int;
+		heckle:author heckle:yellow
+:heckle2.304 a heckle:Heckle;
+		rdfs:label "Heckle 2.304";
+		rdfs:comment "buy cases here:::::";
+		heckle:time "0:55:40"^^xsd:int;
+		heckle:author heckle:slategrey
