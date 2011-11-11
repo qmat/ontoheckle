@@ -1,0 +1,2726 @@
+@prefix stories: <http://purl.org/ontology/stories/> .
+#FIXME: what is final url? host at purl.org?
+#@prefix portrayal:	<http://contextus.net/storyportrayal#>.
+#FIXME: make this ontology. This is used for story assertions that relate cast to characters, realworld-location-in-era-x to story:place
+@prefix motivation:	<http://contextus.net/agentmotivation#>.
+#FIXME.New: make this ontology, extends FOAF. Combine with provenance.
+#FIXME.Old: make this ontology. This is used for story assertions that allow basic plot logic to be expressed. Essentially this is more precise expression of what 'factor' and 'agent' means combined with cause-and-effect mechanics such as 'believes', 'facilitates', 'requires' etc.
+@prefix canda:		<http://contextus.net/causeandeffect#>.
+#FIXME. In reality, from the two above all we have are agent:believes and thing:facilitates. Two ontologies for two predicates?!
+@prefix event: 	    <http://purl.org/NET/c4dm/event.owl#>.
+@prefix timeline:   <http://purl.org/NET/c4dm/timeline.owl#>.
+@prefix programmes:	<http://purl.org/ontology/po/>.
+@prefix olo:     	<http://purl.org/ontology/olo/core#> .
+@prefix dcterms: 	<http://purl.org/dc/terms/> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/>.
+@prefix geonames:   <http://www.geonames.org/ontology#>.
+@prefix itemOntologyPlaceholder: <http://contextus.net/itemOntologyPlaceholder/>.
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#>.
+@prefix whoc:       <http://contextus.net/who/character/>.
+@prefix whol:       <http://contextus.net/who/location/>.
+@prefix whoi:       <http://contextus.net/who/item/>.
+@prefix whop:		<http://contextus.net/who/portrayal/>.
+@prefix : 	        <http://contextus.net/who/s4e1/>.
+
+### PEOPLE
+
+whoc:doctor a foaf:Agent;
+    foaf:name "The Doctor".
+
+whoc:donna_noble a foaf:Person;
+    foaf:name "Donna Noble".
+
+:security_guard1 a foaf:Person;
+    foaf:name "Security Guard 1". 
+
+:security_guard2 a foaf:Person;
+    foaf:name "Security Guard 2". 
+
+:foster_guard1 a foaf:Person;
+    foaf:name "Security Guard 1". 
+
+:foster_guard2 a foaf:Person;
+    foaf:name "Security Guard 2". 
+
+:foster a foaf:Agent;
+    foaf:name "Miss Foster".
+
+:penny_carter a foaf:Person;
+    foaf:name "Penny Carter".
+
+:projectionist a foaf:Person;
+    foaf:name "Projectionist". 
+
+:craig a foaf:Person;
+    foaf:name "Craig".
+
+:claire a foaf:Person;
+    foaf:name "Claire".
+    
+:stacey_campbell a foaf:Person;
+    foaf:name "Stacey Campbell".
+
+:roger_davey a foaf:Person;
+    foaf:name "Roger Davey".
+
+:adipose1 a foaf:Agent;
+    foaf:name "Adipose". 
+
+whoc:sylvia_noble a foaf:Person;
+    foaf:name "Sylvia Noble".
+    
+whoc:wilf_noble a foaf:Person;
+    foaf:name "Wilf Noble".
+
+whoc:rose_tyler a foaf:Person;
+    foaf:name "Rose Tyler".
+
+whoc:martha_jones a foaf:Person;
+    foaf:name "Martha Jones".
+
+:suzette a foaf:Person;
+    foaf:name "Suzette".
+
+:plump_man a foaf:Person;
+    foaf:name "A Man (Plump)". 
+
+:plump_woman a foaf:Person;
+    foaf:name "A Woman (Plump)". 
+
+# GROUPS
+
+:journalists a foaf:Group;
+	foaf:name "The journalists covering Adipose Industries".
+
+:adiposeindustries_staff a foaf:Group;
+	foaf:name "The staff working at Adipose Industries".
+:salespeople a foaf:Group;
+	foaf:name "The sales people working at Adipose Industries".
+:collection_squad a foaf:Group;
+	foaf:name "Adipose Industrie's covert collection squad".
+:adipose a foaf:Group;
+	foaf:name "The Adipose".
+:wednesday_girls a foaf:Group;
+	foaf:name "Sylvia's friends, the 'Wednesday Girls'".
+:bystanders a foaf:Group;
+	foaf:name "The bystanders around the Wine Bar".
+:adiposian_first_family a foaf:Group;
+	foaf:name "The Adiposian First Family".
+:health_and_safety a foaf:Group;
+    foaf:name "Health and Safety".
+:adiposeindustries_customers a foaf:Group;
+	foaf:name "Customers of Adipose Industries".
+
+# GROUP MEMBERSHIPS
+
+:adiposeindustries_staff foaf:member :miss_foster.
+:adiposeindustries_staff foaf:member :projectionist.
+:adiposeindustries_staff foaf:member :foster_guard1.
+:adiposeindustries_staff foaf:member :foster_guard2.
+:adiposeindustries_staff foaf:member :security_guard1.
+:adiposeindustries_staff foaf:member :security_guard2.
+:adiposeindustries_staff foaf:member :collection_squad.
+:salespeople foaf:member :craig.
+:salespeople foaf:member :claire.
+:adiposeindustries_staff foaf:member :salespeople.
+:adiposeindustries_staff foaf:member :health_and_safety.
+
+#FIXME 	these are stateful, so should really be reasoned in and revoked out (ie. stacey dies)
+#		but, is there value in then having event:agent adipose_customers, if that group only exists if you're including assertions 
+:adiposeindustries_customers foaf:member :roger_davey.
+:adiposeindustries_customers foaf:member :suzette.
+:adiposeindustries_customers foaf:member :plump_man.
+:adiposeindustries_customers foaf:member :plump_woman.
+
+#FIXME we had concept of a group individual instance and quanities, ie. adipose customer has pills and a pendant; there are 1,000,000 customers -> assertions
+
+### LOCATIONS
+
+whol:tardis a geonames:Feature;
+	rdfs:label "The Tardis".
+whol:noble_house a geonames:Feature;
+	rdfs:label "The Noble's family house".
+:adipose_industries a geonames:Feature;
+	rdfs:label "Adipose Industries HQ".
+:adipose_industries_foyer a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's foyer".
+:adipose_industries_basement a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's basement".
+:adipose_industries_cinema a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's cinema".
+:adipose_industries_projection_booth a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's cinema's projection booth".
+:adipose_industries_sales_cubicles a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's sales cubicles".
+:rogers_house a geonames:Feature;
+	rdfs:label "Roger's house".
+:staceys_house a geonames:Feature;
+	rdfs:label "Stacey's house".
+:staceys_bathroom a geonames:Feature;
+	rdfs:label "Stacey's Bathroom".
+:fosters_office a geonames:Feature;
+	rdfs:label "Miss Foster's office".
+:suburbia a geonames:Feature;
+	rdfs:label "A housing estate, somewhere".
+:hilltop a geonames:Feature;
+	rdfs:label "The hilltop Wilf uses for astronomy".
+:adipose_industries_storeroom a geonames:Feature;
+	rdfs:label "A storeroom in Adipose Industries HQ".
+:adipose_industries_ladies_toilets a geonames:Feature;
+	rdfs:label "The ladies toilets in Adipose Industries".
+:adipose_industries_ladies_toilets_cubicles a geonames:Feature;
+	rdfs:label "The cubicles of the ladies toilets".
+:adipose_industries_cradle a geonames:Feature;
+	rdfs:label "Adipose Industries HQ's window cleaner's cradle".
+:church a geonames:Feature;
+	rdfs:label "A church".
+:adipose_industries_rooftop a geonames:Feature;
+	rdfs:label "Adipose Industries's rooftop".
+:wine_bar a geonames:Feature;
+	rdfs:label "A wine bar.";
+	rdfs:comment "Smart, but not posh".
+:wine_bar_surroundings a geonames:Feature;
+	rdfs:label "The wine bar's surroundings".
+:adipose_industries_surroundings a geonames:Feature;
+	rdfs:label "The surrounding streets of Adipose Industries HQ".
+
+:wine_bar geonames:neighbours :wine_bar_surroundings.
+:adipose_industries geonames:neighbours :adipose_industries_surroundings.
+:adipose_industries_foyer geonames:parentFeature :adipose_industries.
+:adipose_industries_basement geonames:parentFeature :adipose_industries.
+:adipose_industries_cinema geonames:parentFeature :adipose_industries.
+:adipose_industries_projection_booth geonames:parentFeature :adipose_industries_cinema.
+:adipose_industries_storeroom geonames:parentFeature :adipose_industries_basement.
+:adipose_industries_sales_cubicles geonames:parentFeature :adipose_industries.
+:adipose_industries_ladies_toilets geonames:parentFeature :adipose_industries.
+:adipose_industries_ladies_toilets_cubicles geonames:parentFeature :adipose_industries_ladies_toilets.
+:adipose_industries_rooftop geonames:parentFeature :adipose_industries.
+:adipose_industries_cradle geonames:parentFeature :adipose_indsutries.
+:fosters_office geonames:parentFeature :adipose_industries.
+:staceys_bathroom geonames:parentFeature :staceys_house.
+
+:staceys_house geonames:parentFeature :suburbia.
+:rogers_house geonames:parentFeature :suburbia.
+
+:noble_house geonames:nearby :hilltop.
+
+### ITEMS
+
+:AdiposePendant a rdfs:Class;
+    rdfs:label "Adipose Pendant";
+    rdfs:subClassOf itemOntologyPlaceholder:item.
+#FIXME and same for pill?
+
+whoi:tardis a itemOntologyPlaceholder:item;
+	rdfs:label "The Tardis".
+whoi:psychic_paper a itemOntologyPlaceholder:item;
+	rdfs:label "The Doctor's psychic paper.";
+	rdfs:comment "Rarely fails".
+whoi:sonic_screwdriver a itemOntologyPlaceholder:item;
+	rdfs:label "The Doctor's sonic screwdriver".
+:id_pass a itemOntologyPlaceholder:item;
+	rdfs:label "An ID pass Donna has found".
+:adipose_product a itemOntologyPlaceholder:item;
+	rdfs:label "The product Adipose Industries is pushing".
+:pendant1 a :AdiposePendant;
+	rdfs:label "A Pendant". # Should label / make these belong to their owner
+:pendant2 a :AdiposePendant;
+	rdfs:label "A Pendant".
+:pendant3 a :AdiposePendant;
+	rdfs:label "A Pendant".
+:window_cleaners_cradle a itemOntologyPlaceholder:item; # And tie these both location and items together? Tardis too.
+	rdfs:label "Adipose Industries HQ's window cleaner's cradle".
+:fosters_comm_device a itemOntologyPlaceholder:item;
+	rdfs:label "Miss Foster's communication device".
+:doctors_gizmo a itemOntologyPlaceholder:item;
+	rdfs:label "The Doctor's gizmo";
+	rdfs:comment "Like an improvised palm-pilot, with a red flashing light".
+:sylvias_car a itemOntologyPlaceholder:item;
+	rdfs:label "Sylvia's car";
+	rdfs:comment "Often borrowed by Donna".
+:sylvias_car_keys a itemOntologyPlaceholder:item;
+	rdfs:label "The keys to Sylvia's car".
+:gun1 a itemOntologyPlaceholder:item;
+	rdfs:label "Miss Foster's guard's gun".
+:gun2 a itemOntologyPlaceholder:item;
+	rdfs:label "Miss Foster's guard's gun".
+:fosters_capsule a itemOntologyPlaceholder:item;
+	rdfs:label "Miss Foster's capsule".
+:fosters_sonic_pen a itemOntologyPlaceholder:item;
+	rdfs:label "Miss Foster's sonic pen".
+:inducer a itemOntologyPlaceholder:item;
+	rdfs:label "The 'Inducer'".
+:adipose_nursery_ship a itemOntologyPlaceholder:item;
+	rdfs:label "The nursery ship sent by the Adiposian First Family".
+:bin a itemOntologyPlaceholder:item;
+	rdfs:label "A bin".
+
+# FIXME: where does pill come from
+# FIXME: this need to be a kind of class declaration 
+:adiposeindustries_customer a foaf:Person.
+#    om:has :pill.
+
+### HIGH-LEVEL EVENTS
+#	Think DVD-Chapters
+#	Agent, Factor, Location inferred from sub_events
+
+:adipose_industries_exposition a event:Event;
+	rdfs:label "The Doctor and Donna both investigate Adipose Industries";
+	event:sub_event :building_entry;
+	event:sub_event :presentation;
+	event:sub_event :cubicles;
+	event:sub_event :doctor_and_roger.
+	
+:parthenogenesis_single a event:Event;
+	rdfs:label "Donna visits Stacey, an Adipose Industries Customer. Something dramatic happens to Stacey";
+	event:sub_event :stacey_and_donna;
+	event:sub_event :partho_activated;
+	event:sub_event :stacey_partho;
+	event:sub_event :donna_investigates.
+
+:parthenogenesis_investigations a event:Event;
+	rdfs:label "Stacey's parthenogenesis is investigated by all parties";
+	event:sub_event :doctor_and_roger;
+	event:sub_event :collection_squad_sent;
+	event:sub_event :doctor_investigates;
+	event:sub_event :collection_squad_collects;
+	event:sub_event :foster_investigates;
+	event:sub_event :donna_with_family;
+	event:sub_event :doctor_investigates_pendant;
+	event:sub_event :doctor_to_storeroom;
+	event:sub_event :donna_to_cubicles;
+	event:sub_event :donna_cubicles;
+	event:sub_event :foster_investigates_cubicles;
+	event:sub_event :noble_family_prepare_for_evening;
+	event:sub_event :doctor_storeroom;
+	event:sub_event :doctor_snooping;
+	event:sub_event :pennys_capture.
+	
+:team_doctor_and_donna a event:Event;
+	rdfs:label "On the trail of Miss Foster, the Doctor and Donna meet and escape capture";
+	event:sub_event :doctor_donna_meet;
+	event:sub_event :doctor_donna_escape;
+	event:sub_event :fosters_chase;
+	event:sub_event :doctor_rescues_donna;
+	event:sub_event :penny_released;
+	event:sub_event :foster_and_doctor_reveal_indentities;
+	event:sub_event :premature_labour_triggered;
+	event:sub_event :penny_recaptured;
+	event:sub_event :foster_acts;
+	event:sub_event :doctor_hacking;
+	event:sub_event :guards_stunned.
+
+:parthenogenesis_all a event:Event;
+	rdfs:label "Miss Foster brings forward her plans: full parthenogenesis, now";
+	event:sub_event :parthenogenesis;
+	event:sub_event :adipose_collection;
+	event:sub_event :foster_acts2;
+	event:sub_event :doctor_hacking2;
+	event:sub_event :donna_produces_capsule.
+	
+:adipose_arrive a event:Event;
+	rdfs:label "The Adiposians arrive, collect their young, and dispose of Miss Foster";
+	event:sub_event :nursery_arrives;
+	event:sub_event :adiposians_communicate;
+	event:sub_event :adipose_collection;
+	event:sub_event :fosters_collection.
+	
+:donna_is_new_assistant a event:Event;
+	rdfs:label "Action over, Donna leaves with Doctor as new assistant";
+	event:sub_event :wilf_night;
+	event:sub_event :nursery_leaves;
+	event:sub_event :doctor_reports_crime;
+	event:sub_event :penny_finally_escapes;
+	event:sub_event :assistant_discussion;
+	event:sub_event :departure.
+
+
+### PLOT-LEVEL EVENTS
+#	Think programme precis written out, and then make each sentence an event.
+
+# Scenes 2-12
+:building_entry a event:Event;
+	rdfs:label "Doctor and Donna independently enter the building";
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+    event:place	whol:tardis;
+    event:place whol:noble_house;
+    event:place :adipose_industries_foyer;
+    event:factor whoi:sonic_screwdriver;
+    event:factor whoi:psychic_paper.
+
+# Scene 13
+:presentation a event:Event;
+	rdfs:label "Journalists watch presentation at Adipose Industries";
+    event:agent :journalists;
+    event:agent :foster;
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+	event:place :adipose_industries_cinema;
+    event:factor whoi:psychic_paper;
+    event:factor :adipose_product.
+
+# Scene 14
+:cubicles a event:Event;
+	rdfs:label "Doctor and Donna indepedently access Adipose Industries customer information";
+    event:agent :craig;
+    event:agent :claire;
+    event:agent :salespeople;
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+	event:place :adipose_industries_sales_cubicles;
+    event:factor whoi:psychic_paper.
+
+# Scenes 15, 17, 21, 22, 29 
+:stacey_and_donna a event:Event;
+	rdfs:label "Donna visits an Adipose Industries customer called Stacy and something unexpected happens";
+    event:agent :stacey_campbell;
+    event:agent whoc:donna_noble;
+    event:agent :adipose1;
+	event:place :staceys_house;
+    event:factor :pendant1.
+
+#ÊScene 30
+:partho_activated a event:Event;
+	rdfs:label "Miss Foster activates full parthenogenesis";
+    event:agent :miss_foster;
+	event:place :adipose_industries;
+    event:factor :fosters_comm_device;
+    event:factor :fosters_capsule.
+
+# Scene 31
+:stacey_partho a event:Event;
+	rdfs:label "Stacey undergoes full parthenogenesis";
+    event:agent :stacey_campbell;
+    event:agent :adipose;
+	event:place :staceys_bathroom.
+
+# Scene 32, 36, 39, 41
+:donna_investigates a event:Event;
+	rdfs:label "Donna investigates Stacey's absense";
+    event:agent whoc:donna_noble;
+    event:agent :adipose;
+	event:place :staceys_house.
+
+# Scene 16, 18, 19, 20, 24
+:doctor_and_roger a event:Event;
+	rdfs:label "Doctor visits an Adipose Industries customer called Roger";
+    event:agent :roger_davey;
+    event:agent whoc:doctor;
+	event:place :rogers_house;
+    event:factor whoi:psychic_paper;
+    event:factor whoi:sonic_screwdriver;
+    event:factor :doctors_gizmo.
+
+# Scene 23, 26
+:collection_squad_sent a event:Event;
+	rdfs:label "Miss Foster sees unscheduled parthenogenesis alert and sends out the collection squad";
+    event:agent :foster;
+    event:factor :fosters_comm_device;
+	event:place :fosters_office.
+
+# Scene 24,28,34,37,40
+:doctor_investigates a event:Event;
+	rdfs:label "Doctor sees alarm and runs around the streets trying to track down the source of the alarm";
+    event:agent whoc:doctor;
+    event:agent :collection_squad;
+	event:place :suburbia;
+    event:factor :doctors_gizmo.
+
+# Scene 27, 33, 35, 38, 39, 40
+:collection_squad_collects a event:Event;
+	rdfs:label "Collection squad leave Adipose Industries, successfully find and capture the Adipose escaping onto the streets";
+    event:agent :collection_squad;
+    event:agent :adipose;
+	event:place :adipose_industries;
+	event:place :suburbia.
+	
+# Scene 42, 43
+:foster_investigates a event:Event;
+	rdfs:label "Miss Foster reviews CCTV footage and identifies the infiltrator to her guards";
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+    event:agent :penny_carter;
+	event:place :fosters_office.
+
+# Scene 44, 45, 46
+:donna_with_family a event:Event;
+	rdfs:label "Donna arrives back at home, mum nagging, and opens her heart to her grandfather";
+    event:agent whoc:donna_noble;
+    event:agent whoc:sylvia_noble;
+    event:agent whoc:wilf_noble;
+	event:place :noble_house;
+	event:place :hilltop.
+
+# Scene 47
+:doctor_investigates_pendant a event:Event;
+	rdfs:label "The Doctor uses the equipment of the Tardis to investigate the workings of the capsule";
+    event:agent whoc:doctor;
+	event:place whol:tardis;
+    event:factor :capsule.
+
+# Scene 49, 50, 52, 54
+:doctor_to_storeroom a event:Event;
+	rdfs:label "The Doctor transports the Tardis near Adipose Industries, enters, and hides himself away"; 
+    event:agent whoc:doctor;
+	event:place :adipose_industries_surroundings;
+	event:place :adipose_industries_basement;
+    event:factor whoi:sonic_screwdriver.
+
+# Scene 48, 50, 51, 53, 55
+:donna_to_cubicles a event:Event;
+	rdfs:label "Donna borrows her Mum's car, drives to Adipose, enters, and hides herself away";
+    event:agent whoc:donna_noble;
+    event:place :noble_house;
+	event:place :adipose_industries_surroundings;
+	event:place :adipose_industries_foyer;
+	event:place :adipose_industries_ladies_toilets;
+	event:factor :sylvias_car.
+
+# Scene 58
+:donna_cubicles a event:Event;
+	rdfs:label "Donna hiddes in the toilet cubicles for the day";
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_ladies_toilets_cubicles.
+
+# Scene 56, 60, 62
+:foster_investigates_cubicles a event:Event;
+	rdfs:label "Miss Foster investigates the cubicles with her guards, now armed. Finds not Donna, but Penny";
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:agent :penny_carter;
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_ladies_toilets;
+    event:factor :gun1. #rather factor genericguns? guards-have-guns assertion?
+
+# Scene 58, 59, 60
+:noble_family_prepare_for_evening a event:Event;
+	rdfs:label "Sylvia phones Donna: wants car to see friends, one of whom is on Adipose pills";
+    event:agent whoc:sylvia_noble;
+    event:agent whoc:wilf_noble;
+    event:agent whoc:donna_noble;
+	event:place :noble_house;
+	event:place :adipose_industries_ladies_toilets_cubicles.
+	#factor phone?
+
+:doctor_storeroom a event:Event;
+	rdfs:label "The Doctor hides in the storeroom for the day";
+	event:agent whoc:doctor;
+	event:place :adipose_industries_storeroom.
+
+# Scene 57, 61, 63
+:doctor_snooping a event:Event;
+	rdfs:label "The Doctor explores Adipose Industries, and uses the window cleaner's cradle to view Miss Foster's office.";
+    event:agent whoc:doctor;
+    event:place :adipose_industries_storeroom;
+    event:place :adipose_industries_rooftop;
+    event:place :adipose_industries_cradle;
+    event:factor whoi:sonic_screwdriver.
+
+# Scene 64, 65, 66, 67, 75, 80, 82
+:pennys_capture a event:Event;
+	rdfs:label "Penny, captured, is interrogated by Miss Foster. Miss Foster reveals her plans and introduces an Adipose. Penny is left there";
+    event:agent :penny_carter;
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:agent :adipose;
+	event:place :fosters_office.
+
+# Scene 67
+:doctor_donna_meet a event:Event;
+	rdfs:label "The Doctor watches Penny's interrogation, hidden outside. Donna watches also, hidden inside. They notice each other, and then are noticed by Miss Foster, who orders the guards onto them.";
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+    event:agent :penny_carter;
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+	event:place :fosters_office.
+	
+
+# Scene 68, 69, 71, 72, 74
+:doctor_donna_escape a event:Event;
+	rdfs:label "The Doctor and Donna flee, join up, and chased by the guards escape to the rooftop. Sonic'ing the access door shut, they try to escape using the window cleaner's cradle.";
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:factor whoi:sonic_screwdriver;
+    event:place :adipose_industries;
+    event:place :adipose_industries_rooftop;
+    event:place :adipose_industries_cradle;
+	event:factor whoi:sonic_screwdriver.
+
+# Scene 70, 71, 73, 74, 76, 81
+:fosters_chase a event:Event;
+	rdfs:label "The guards shoot the sonic'd shut office door and pursue Donna and the Doctor. At the access door to the rooftop, it is Miss Foster's sonic pen that open's the sonic'd shut door and makes the cradle freefall.";
+    event:agent whoc:donna_noble;
+    event:agent whoc:doctor;
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+	event:place :adipose_industries;
+	event:place :adipose_industries_rooftop;
+    event:place :adipose_industries_cradle;
+    event:factor :fosters_sonic_pen.
+
+# Scene 76, 77, 78, 79, 80, 82
+:doctor_rescues_donna a event:Event;
+	rdfs:label "Miss Foster tries to cut the now stuck cradle's cables. Donna hangs perilously. The Doctor manages to sonic her pen from her, and uses it to release the window she deadlocked. They escape.";
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_cradle;
+	event:place :adipose_industries_rooftop;
+	event:place :fosters_office;
+    event:factor whoi:sonic_screwdriver;
+    event:factor :fosters_sonic_pen.
+
+# Scene 82
+:penny_released a event:Event;
+	rdfs:label "The Doctor releases Penny's bound hands";
+	event:agent whoc:doctor;
+	event:agent :penny_carter;
+	event:place :fosters_office;
+	event:factor whoi:sonic_screwdriver.
+
+# Scene 83
+:foster_and_doctor_reveal_indentities a event:Event;
+	rdfs:label "The Doctor and Miss Foster exchange identities and warnings. Miss Foster orders the Guards to shoot. Doctor and Donna Escape";
+	event:agent whoc:doctor;
+	event:agent whoc:donna_noble;
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:place :adipose_industries_sales_cubicles;
+    event:factor whoi:sonic_screwdriver;
+    event:factor :fosters_sonic_pen;
+    event:factor :gun1;
+    event:factor :gun2.
+    
+# Scene 83
+:premature_labour_triggered a event:Event;
+	rdfs:label "Miss Foster advances her plans: Premature Labour";
+	event:agent whoc:doctor;
+    event:agent :foster;
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+    event:place :adipose_industries_sales_cubicles;
+    event:factor :fosters_comm_device.
+
+# Scene 84
+:penny_recaptured a event:Event;
+	rdfs:label "Miss Foster finds Penny leaving with evidence. Penny is tied up, as before.";
+	event:agent :penny_carter;
+	event:agent :miss_foster;
+	event:agent :foster_guard1;
+	event:agent :foster_guard2;
+	event:place :fosters_office.
+
+# Scene 86, 90, 98
+:foster_acts a event:Event;
+	rdfs:label "Miss Foster reveals a giant computer wall, activates the Inducer, and waits for the Adipose"; 
+    event:agent :penny_carter;
+    event:agent :foster;
+	event:place :fosters_office;
+    event:factor :inducer.
+    
+# Scene 85, 87, 89, 100, 103
+:doctor_hacking a event:Event;
+	rdfs:label "The Doctor uses Miss Foster's pen to access a giant computer wall. He controls the building's security system and attempts to halt the Inducer";
+    event:agent whoc:donna;
+    event:agent whoc:doctor;
+	event:place :adipose_industries_storeroom;
+    event:factor whoi:sonic_screwdriver;
+    event:factor :inducer;
+    event:factor :pendant1.
+    
+# Scene 86, 88
+:guards_stunned a event:Event;
+	rdfs:label "The guards are neutralised by an electrified door";
+    event:agent :foster_guard1;
+    event:agent :foster_guard2;
+	event:place :adipose_industries_basement;
+    event:factor :inducer.
+
+# Scene 91-97, 101, 102, 106, 107, 109, 110
+:parthenogenesis a event:Event;
+	rdfs:label "parthenogenesis starts across the million Adipose customers";
+    event:agent :wednesday_girls;
+    event:agent whoc:sylvia_noble;
+    event:agent :roger_davey;
+	event:agent :suzette;
+	event:agent :plump_man;
+	event:agent :plump_woman;
+	event:agent :adiposeindustries_customers; # FIXME: Should this be in the world of assertions?
+	event:agent :adipose;
+	event:place :wine_bar;
+	event:place :wine_bar_surroundings;
+	event:place :rogers_house;
+    event:factor :inducer.
+
+# Scene 99, 117
+:adipose_collection a event:Event;
+	rdfs:label "The Adipose march towards Adipose Industries and rejoice at the sign of a space ship";
+    event:agent :bystanders;
+    event:agent :adipose;
+    event:place :adipose_industries_surroundings;
+    event:factor :adipose_nursery_ship.
+
+# Scene 104, 111
+:foster_acts2 a event:Event;
+	rdfs:label "Miss Foster attempts to neutralise the Doctor's hacking of the Inducer";
+    event:agent :penny_carter;
+    event:agent :foster;
+    event:place :fosters_office;
+    event:factor :inducer.
+    
+# Scene 105, 108
+:doctor_hacking2 a event:Event;
+	rdfs:label "The Doctor hacks at the Inducer, but cannot overcome Miss Foster's double strength move";
+    event:agent whoc:donna;
+    event:agent whoc:doctor;
+    event:place :adipose_industries_storeroom;
+    event:factor :inducer.
+
+:donna_produces_capsule a event:Event;
+	rdfs:label "The Doctor uses the extra Pendant Donna still has from Stacey to finally stop the Inducer";
+    event:agent whoc:donna;
+    event:agent whoc:doctor;
+    event:place :adipose_industries_storeroom;
+    event:factor :inducer;
+    event:factor :pendant2.
+    
+# Scene 113, 114, 115, 116
+:nursery_arrives a event:Event;
+	rdfs:label "The Adipose nursery space ship arrives over London and halts above Adipose Industries";
+    event:agent :suzette;
+    event:agent whoc:sylvia_noble;
+    event:agent :wednesday_girls;
+    event:agent :bystanders;
+    event:agent whoc:wilf_noble;
+    event:place :adipose_industries_surroundings;
+    event:factor :adipose_nursery_ship.
+    
+# Scene 115, 128
+:wilf_night a event:Event;
+	rdfs:label "Wilf is unaware of the UFO. With telescope pointing the other way, he sees the Tardis, the Doctor and Donna";
+    event:agent whoc:wilf_noble;
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+    event:place :hilltop;
+    event:factor whoi:tardis.
+    
+# Scene 118, 120
+:adiposians_communicate a event:Event;
+	rdfs:label "The Adipose First Family attempt to communicate with Miss Foster. The Doctor reads the message";
+    event:agent :adiposian_first_family;
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+    event:place :adipose_industries_storeroom;
+    event:factor :inducer.
+
+# Scene 119, 122
+:adipose_collection a event:Event;
+	rdfs:label "The Adipose enter levitation beams and rise towards the nursery ship";
+    event:agent :adipose;
+    event:place :adipose_industries_surroundings;
+    event:factor :adipose_nursery_ship.
+    
+# Scene 121, 122
+:fosters_collection a event:Event;
+	rdfs:label "Miss Foster triumphantly watches the Adipose being collected. Defying the Doctor, she enters the beam herself, only for it to release her to her death.";
+    event:agent :foster;
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_rooftop;
+    event:factor :adipose_nursery_ship.
+
+# Scene 123
+:nursery_leaves a event:Event;
+	rdfs:label "The Adipose nursery ship leaves Earth";
+    event:agent :adipose;
+    event:factor :adipose_nursery_ship.
+
+# Scene 124
+:doctor_reports_crime a event:Event;
+	rdfs:label "The Doctor reports the Adiposian crime to the Shadow Proclamation";
+    event:agent whoc:doctor;
+	event:place :adipose_industries_surroundings;
+    event:factor whoi:sonic_screwdriver;
+    event:factor :doctors_gizmo.
+
+# Scene 124
+:penny_finally_escapes a event:Event;
+	rdfs:label "Penny finally escapes, now mad after witnessing it all. She is still tied to chair.";
+	event:agent :penny_carter;
+	event:agent whoc:doctor;
+	event:agent whoc:donna_noble;
+	event:place :adipose_industries_surroundings.
+
+# Scene 125
+:assistant_discussion a event:Event;
+	rdfs:label "Donna and The Doctor discuss her being his assistant. Donna has changed her mind since last time, and is prepared";
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_surroundings;
+    event:factor whoi:tardis;
+    event:factor :sylvias_car.
+
+# Scene 127, 128
+:departure a event:Event;
+	rdfs:label "The Doctor and Donna leave Adipose Industries in the Tardis. He asks her where she wants to go...";
+    event:agent whoc:doctor;
+    event:agent whoc:donna_noble;
+	event:place :adipose_industries_surroundings;
+	event:place :hilltop;
+    event:factor whoi:tardis.
+
+### INTERPRETATIONS FROM SCRIPT
+
+#	Think a full marked-up transmogrification of programme's script into our story world.
+#	Each interpretation is a scene, and breaks down the "this event has agent, factor, location" with machine-reasonable precision.
+#	Note that there may be many script scenes for each 'plot level event', or vice-versa, and that long scenes may require further breaking down to model the plot development (ie. assertions and the script excert they correspond to).
+
+:scriptScene01 a stories:Interpretation;
+	rdfs:label "Script - Scene 1";
+	rdfs:comment "OMITTED";
+	rdfs:resource <path/to/encodedscript/#scene1>;
+	stories:source :script.
+
+# make same URI for both resource and object, then content negotiation can determine whether its RDF or the web page you get back
+
+:donna_in_noble_house { whoc:donna_noble geonames:locatedIn whol:noble_house. }
+
+:scriptScene02 a stories:Interpretation;
+	rdfs:label "Script - Scene 2";
+	rdfs:comment "DONNA steps out of her front door. Smart, head held high; she's on a mission.";
+	rdfs:resource <path/to/encodedscript/#scene2>;
+	stories:interprets :building_entry;
+	stories:retracts :donna_in_noble_house;
+	stories:source :script.
+
+:doctor_in_tardis { whoc:doctor geonames:locatedIn whol:tardis. }
+
+:scriptScene03 a stories:Interpretation;
+	rdfs:label "Script - Scene 3";
+	rdfs:comment "THE DOCTOR steps out of the TARDIS. Sets off. On a mission.";
+	rdfs:resource <path/to/encodedscript/#sceneX>;
+	stories:interprets :building_entry;
+	stories:retracts :doctor_in_tardis;
+	stories:source :script.
+
+:scriptScene04 a stories:Interpretation;
+	rdfs:label "Script - Scene 4";
+	rdfs:comment "DONNA walking along, left to right, through COMMUTERS.";
+	stories:interprets :building_entry;
+	stories:source :script.
+
+:scriptScene05 a stories:Interpretation;
+	rdfs:label "Script - Scene 5";
+	rdfs:comment "THE DOCTOR walks along, right to left, through COMMUTERS.";
+	stories:interprets :building_entry;
+	stories:source :script.
+
+:donna_in_adipose_industries_surroundings { whoc:donna_noble geonames:locatedIn :adipose_industries_surroundings. }
+
+:scriptScene06 a stories:Interpretation;
+	rdfs:label "Script - Scene 6";
+	rdfs:comment "DONNA stops in the street, looks up... A TOWER BLOCK looming above. Cool, sleek, stylish, the London HQ of Adipose Industries. Deep breath, Donna heads towards it.";
+	stories:interprets :building_entry;
+	stories:asserts :donna_in_adipose_industries_surroundings;
+	stories:source :script.
+
+:doctor_in_adipose_industries_surroundings { whoc:doctor geonames:locatedIn :adipose_industries_surroundings. }
+	
+:scriptScene07 a stories:Interpretation;
+	rdfs:label "Script - Scene 7";
+	rdfs:comment "THE DOCTOR stops in the street, looks up... THE TOWER BLOCK looming above, Adipose Industries. But this is the opposite side to Donna's, the back. Deep breath, the Doctor heads towards it.";
+	stories:interprets :building_entry;
+	stories:asserts :doctor_in_adipose_industries_surroundings;
+	stories:source :script.
+
+:scriptScene08 a stories:Interpretation;
+	rdfs:label "Script - Scene 8";
+	rdfs:comment "DONNA walks through the revolving doors.";
+	stories:interprets :building_entry;
+	stories:source :script.
+
+:doctor_in_adipose_industries_basement { whoc:doctor geonames:locatedIn :adipose_industries_basement. }
+
+:scriptScene09 a stories:Interpretation;
+	rdfs:label "Script - Scene 9";
+	rdfs:comment "THE DOCTOR's down a flight of steps, sonicking a basement door - PRAC EXPLOSION on the lock, and he slips inside.";
+	stories:interprets :building_entry;
+	stories:retracts :doctor_in_adipose_industries_surroundings;
+	stories:asserts :doctor_in_basement;
+	stories:asserts :sonic_screwdriver_facilitates_doctor_in_adipose_industries_basement;
+	stories:source :script.
+
+:donna_noble_in_adipose_industries_foyer { whoc:donna_noble geonames:locatedIn :adipose_industries_foyer. }
+:donna_noble_is_health_and_safety { :health_and_safety foaf:member whoc:donna_noble. }
+:guard_believes_donna_noble_is_health_and_safety { :security_guard1 motivation:believes :donna_is_health_and_safety. }
+:id_pass_facilitates_guard_believes_donna_noble_is_health_and_safety { :id_pass canda:facilitates :guard_believes_donna_noble_is_health_and_safety. }
+:donna_noble_is_adipose_staff { whoc:donna_noble foaf:member :adipose_staff. }
+:guard_believes_donna_noble_is_adipose_staff { :guard motivation:believes :donna_noble_is_adipose_staff. }
+:guard_believes_donna_noble_is_adipose_staff_facilitates_donna_noble_in_adipose_industries_foyer { :guard_believes_donna_noble_is_adipose_staff canda:facilitates :donna_noble_in_adipose_industries_foyer. }
+
+# set of one group of guard group, so is a.n. other guard.
+
+:scriptScene10 a stories:Interpretation;
+	rdfs:label "Script - Scene 10";
+	rdfs:comment "Posh foyer. DONNA shows her ID pass to the SECURITY GUARD. DONNA: 'Donna Noble, Health and Safety.'";
+	stories:interprets :building_entry;
+	stories:retracts :donna_in_adipose_industries_surroundings;
+	stories:asserts :donna_noble_in_adipose_industries_foyer;
+	stories:asserts :guard_believes_donna_noble_is_health_and_safety;
+	stories:asserts :id_pass_facilitates_guard_believes_donna_noble_is_health_and_safety;
+	stories:asserts :guard_believes_donna_noble_is_adipose_staff_facilitates_donna_noble_in_adipose_industries_foyer;
+	stories:source :script.
+
+:doctor_in_adipose_industries_basement { whoc:doctor geonames:locatedIn :adipose_industries_basement. }
+:doctor_is_health_and_safety { :health_and_safety foaf:member whoc:doctor. }
+:guard_believes_doctor_is_health_and_safety { :security_guard1 motivation:believes :doctor_is_health_and_safety. }
+:psychic_paper_facilitates_guard_believes_doctor_is_health_and_safety { whoi:psychic_paper canda:facilitates :guard_believes_doctor_is_health_and_safety. }
+:doctor_is_adipose_staff { whoc:doctor foaf:member :adipose_staff. }
+:guard_believes_doctor_is_adipose_staff { :guard motivation:believes :doctor_is_adipose_staff. } 
+:guard_believes_doctor_is_adipose_staff_facilitates_doctor_in_adipose_industries_foyer { :guard_believes_doctor_is_adipose_staff canda:facilitates :doctor_in_adipose_industries_basement.}
+
+# set of one group of guard group, so is a.n. other guard.
+
+:scriptScene11 a stories:Interpretation;
+	rdfs:label "Script - Scene 11";
+	rdfs:comment "'Backstage' corridor, all concrete and pipes. THE DOCTOR passes a SECURITY GUARD, shows the psychic paper. THE DOCTOR: 'John Smith, Health and Safety.'";
+	stories:interprets :building_entry;
+	stories:asserts :guard_believes_doctor_is_health_and_safety;
+    stories:asserts :psychic_paper_facilitates_guard_believes_doctor_is_health_and_safety;
+    stories:asserts :guard_believes_doctor_is_adipose_staff_facilitates_doctor_in_adipose_industries_foyer;
+    stories:source :script.
+    
+:scriptScene12 a stories:Interpretation;
+	rdfs:label "Script - Scene 12";
+	rdfs:comment "Two lift doors, next to each other. DONNA gets into the left-hand lift, heading up, doors close. At the same time - The doors on the right-hand lift open - it's come up from the basement - and THE DOCTOR steps out, heads off, curious.";
+	stories:source :script.
+
+:scriptScene13part1 a stories:Interpretation;
+	rdfs:label "Script - Scene 13; Part 1 of 5";
+    rdfs:comment "Part of the Tower Block HQ, with Adipose Industries logos on the walls. Slogan: The Fat Just Walks Away. The logo is on screen, as MISS FOSTER steps forward, at the front. She's 40s, handsome, strong. She addresses the audience, 40 PEOPLE or so, scattered about, taking notes - they're JOURNALISTS; this is a Press Launch.";
+	stories:interprets :presentation;
+	#journalists watch miss foster presentation
+	stories:source :script.
+
+:scriptScene13part2 a stories:Interpretation;
+	rdfs:label "Script - Scene 13; Part 2 of 5";
+	rdfs:comment "MISS FOSTER: 'Adipose Industries. The twenty-first century way to lose weight. No exercise, no diet, no pain. Just lifelong freedom, from fat, the Holy Grail of the modern age. And here it is! Holds it up, an ordinary red & white capsule. MISS FOSTER (CONT'D) You just take one capsule. One capsule, once a day, for three weeks. And the fat, as they say...' ON SCREEN, GRAPHIC, the logo does a little spin, the jingle sings: The Fat Just Walks Awaaaaay!";
+	stories:interprets :presentation;
+	#journalists believe pill reduces fat
+	stories:source :script.
+
+:scriptScene13part3 a stories:Interpretation;
+	rdfs:label "Script - Scene 13; Part 3 of 5";
+	rdfs:comment "CUT TO DONNA, in amongst the audience, as a WOMAN near to her pipes up - PENNY CARTER, late 20's, sharp. PENNY Excuse me, Miss Foster, if I could..? I'm Penny Carter, Science Correspondent for the Observer MISS FOSTER Oh yes. You've written quite a bit about us already. PENNY And I'm not about to stop. But there's a thousand diet pills on the market, and a thousand conmen stealing people's money. How do we know the fat isn't going straight into your bank account? MISS FOSTER Penny. If cynicism burnt up calories, we'd all be thin as rakes. But if you want the science, then I can oblige...";
+	stories:interprets :presentation;
+	#donna watches miss foster presentation
+	#penny and miss foster are antagonists
+	stories:source :script. 
+
+:scriptScene13part4 a stories:Interpretation;
+	rdfs:label "Script - Scene 13; Part 4 of 5";
+	rdfs:comment "She nods up to the PROJECTION BOOTH. The projected beam of light flickers, changes. The next reel starts up, GRAPHICS showing a pill, and a layout of the Human body, with arrows going from the pill, to the body, then flowing round the bloodstream. VOICEOVER The Adipose Capsule is composed of a synthesised mobilising lipase, bound to a large protein molecule. The mobilising lipase breaks up the triglycerides stored in the adipose cells, which then enter the bloodstream... [etc.] But during this, on Donna, watching, suspicious. And then PAN UP to see behind her, THE DOCTOR, in the PROJECTION BOOTH WINDOW. (Not seeing Donna, just watching the screen.) CUT TO INT. PROJECTION BOOTH, THE DOCTOR at the window, a FILM PROJECTOR whirring away, manned by a BLOKE. The Doctor shows him the psychic paper, keeping his eye on Miss Foster. THE DOCTOR: 'Health and Safety. Film department.'";
+	stories:interprets :presentation;
+	#doctor watches miss foster presentation
+	#doctor fools projectionist
+	stories:source :script.    
+
+:scriptScene13part5 a stories:Interpretation;
+	rdfs:label "Script - Scene 13; Part 5 of 5";
+    rdfs:comment "CUT TO CINEMA, film over, logo back on screen, as MISS FOSTER steps forward again. CUT BETWEEN THE DOCTOR & DONNA watching, separately. MISS FOSTER: '100% legal, 100% effective.' PENNY: 'But can I ask, how many people have taken the pills, to date?' MISS FOSTER: 'We've already got one million customers within the Greater London area alone. But from next week, we start rolling out, nationwide. The future starts here. And Britain will be thin!'";
+	stories:interprets :presentation;
+	#there are 1,000,000 adipose customers, each with their pills
+	stories:source :script.  
+
+:scriptScene14 a stories:Interpretation;
+	rdfs:label "Script - Scene 14";
+    rdfs:comment "The sales floor. Divided into those American-style cubicles, as functional as possible, like Keanu Reeves's office in The Matrix. Just a desk, a computer, a phone. TRACKING along, passing one SALESPERSON after another, all on headsets, all cold-calling the spiel. 'Good morning, I represent Adipose Industries...' 'Good morning, I represent Adipose Industries...' 'Good morning, I represent...' etc. TRACKING TO FIND DONNA, walking in - on edge, cautious, armed with a clipboard - she grabs a spare chair, pulls it over to a CUBICLE, where CRAIG, 20, is at work, on headset. DONNA Donna Noble, Health and Safety, don't mind me. CRAIG That's a three week course of pills for the special price of 45 pounds... CUT TO the opposite side of the room, THE DOCTOR entering - cautious, on edge - he grabs a spare chair, slides it across to CLAIRE'S cubicle. She's 20, on headset. THE DOCTOR John Smith, Health and Safety, don't mind me. CLAIRE ...we can deliver within three working days, registered post... CUT TO Donna & Craig. He's on his headset, with the spiel; he's got a script, and a sample Adipose Industries box at his side - a small white cardboard box, full of 21 pills in packets, information leaflets, etc. CRAIG ...the box comes with 21 days' worth of pills, a full information pack, and our special free gift, an Adipose Industries pendant... But Donna's taking the pendant out of the box. Simple gold chain with a gold representation of an Adipose capsule. CUT TO the Doctor & Claire. CLAIRE ...it's made of 18 carat gold, and it's yours for free... No, we don't give away pens. Sorry. No, I can't make an exception, no. He's already taken the pendant, holds it up, examines it. CU on the gold Adipose capsule. CUT TO Donna & Craig. He's now taking off his headset, to look at her properly, as she puts the pendant in her pocket. DONNA I'll just keep this for testing. And I just need a list of your customers, can you print it off? CRAIG S'pose so. DONNA Where's the printer..? CRAIG Just over there, by the door. WIDE SHOT, as she pops her head up over the partition. The only face visible among the rows of cubicles. DONNA Which door, that door? CRAIG OOV That's the one. DONNA Lovely. She pops back down, gone - and in that second - THE DOCTOR pops his head up, far across the room. THE DOCTOR And that's the printer, over there? CLAIRE OOV By the door, yeah. THE DOCTOR Brilliant! And he pops back down - as Donna pops back up, looking towards the printer. DONNA Does it need a code? Last place I worked, the printer needed a code. CRAIG OOV No, I can do that from here. And she pops back down - as the Doctor pops back up, looking round. THE DOCTOR Has it got paper? CLAIRE OOV Yeah, Jimbo keeps it stocked. But the Doctor gives an 'oops!' and ducks down, seeing - MISS FOSTER striding in. With 2 SECURITY GUARDS, her permanent escort. She goes to the centre, claps her hands. MISS FOSTER Everyone! Excuse me! If I could have your attention! Heads pop up all around the cubicles, some standing, some eyes over the partitions. Donna stands up... As the Doctor slowly stands up... Miss Foster takes a single step forward, just in time to completely mask the Doctor from Donna's POV, and vice versa. MISS FOSTER (CONT'D) On average, you're each selling forty Adipose packs per day. It's not enough! I want one hundred sales, per person, per day, and if not, you'll be replaced. Cos if anyone's good at trimming the fat, it's me. Now back to it! All heads duck down, Donna sinking back down as - Miss Foster clears Donna's previous POV, revealing the Doctor, just ducking back down into the cubicle. To Claire: THE DOCTOR Anyway! If you could just print that off, thanks. CUT TO Donna & Craig. DONNA Print off the list, and I'll get out of your way. CU CURSOR clicking on PRINT. CUT TO PRINTER, churning out PAPERS. Yellow sheets. DONNA (CONT'D) Lovely, thanks, see you. WIDE SHOT, as she stands, hurries over to the printer - The Doctor pops up for a micro-second, about to go - THE DOCTOR Thanks then - before he can look in Donna's direction, he's pulled back down again! By Claire, holding out a piece of paper. THE DOCTOR (CONT'D) What's that? CLAIRE My telephone number. THE DOCTOR ...what for? CLAIRE (foxy) Health and Safety. You be health. I'll be safety. CUT TO Donna, at the printer. She grabs all the papers, heads for the door - And as she swings it open, foreground, and disappears through the door - in background, the Doctor stands - THE DOCTOR ...that contravenes paragraph 5 subsection C, sorry, thanks, bye - And he hurries away, going across to the printer. No papers, nothing. Eh?! He lifts the photocopier lid, checks all round, no sign of them. Damn. CUT TO CLAIRE, as the Doctor reappears. Big smile. THE DOCTOR (CONT'D) Me again!";
+	stories:interprets :cubicles;
+	#donna is helped because she is believed to be adipose staff
+	#doctor is helped because he is believed to be health and safety
+	#donna has pendant
+	#doctor knows adipose customers
+	#donna knows adipose customers
+	stories:source :script.
+	
+:scriptScene15 a stories:Interpretation;
+	rdfs:label "Script - Scene 15";
+    rdfs:comment "STACY CAMPBELL, 20s, bit plump - harassed, running late - opens her front door (it's an end-of-terrace house). DONNA's standing there, with clipboard & yellow papers, just flashes her ID card so it can't be seen properly. DONNA Stacy Campbell? STACY Who wants to know? DONNA My name's Donna, I represent Adipose Industries, and you're on the list of our valued customers - I wonder, could I ask you a few questions? STACY Sorry, I'm going out, I've booked a taxi, it's on its way. DONNA Tell you what, answer the questions and I'll get the taxi with you, then I can pay for it on expenses, how does that sound? STACY Um. Brilliant, yeah. Okay! I'm still getting ready though, I'm in a bit of a rush - DONNA You just carry on, don't mind me! And Donna heads inside - ";
+	stories:interprets :stacey_and_donna;
+	#
+	stories:source :script. 
+
+:scriptScene16 a stories:Interpretation;
+	rdfs:label "Script - Scene 16";
+    rdfs:comment "ROGER DAVEY, 40, a thin & happy man, opens his front door (nice semi, with a small drive). THE DOCTOR's there, with yellow papers & psychic paper: THE DOCTOR Mr Roger Davey! I'm calling on behalf of Adipose Industries, I just need to ask you a few questions - ROGER Oh, brilliant, come in, those pills, they've been like magic! If you want me to do adverts, anything, testimonials, I'm your man - And the Doctor heads inside -";
+	stories:interprets :doctor_and_roger;
+	#
+	stories:source :script. 
+
+:scriptScene17 a stories:Interpretation;
+	rdfs:label "Script - Scene 17";
+    rdfs:comment "Nice house, warm, comfy. STACY's on her feet, grabbing clothes, money, all that about-to-go-out stuff. NB, her hair's pinned up. DONNA sitting there with clipboard. STACY - it's been fantastic, I started the pills on Thursday, five days later, I've lost eleven pounds! DONNA And no side effects or anything? STACY No, I feel fantastic, it's a new lease of life - what d'you think about the earings, do they work? DONNA Lovely, yeah. Going on a date? STACY I'm doing the opposite, I'm gonna dump him! I can do better than him now! What d'you think, hair up or down? No, down, I want him to see me looking gorgeous - (hurrying upstairs) - won't be long, if the taxi beeps, give me a shout - She's gone. On Donna, wondering if she's wasting her time.";
+	stories:interprets :stacey_and_donna;
+	#
+	stories:source :script. 
+
+:scriptScene18 a stories:Interpretation;
+	rdfs:label "Script - Scene 18";
+    rdfs:comment "ROGER sitting, THE DOCTOR prowling round the room. ROGER I've been on the pills for two weeks now, I've lost 14 kilos! THE DOCTOR That's the same amount every day? ROGER One kilo, exactly. You wake up, and it's disappeared overnight. Well, technically speaking, it's gone by ten past one in the morning. THE DOCTOR ...what makes you say that? ROGER That's when I get woken up. Might as well weigh myself at the same time! But it's driving me mad - ten minutes past one, every night, bang on the dot, without fail... the burglar alarm goes off.";
+	stories:interprets :doctor_and_roger;
+	#
+	stories:source :script.
+
+:scriptScene19 a stories:Interpretation;
+	rdfs:label "Script - Scene 19";
+    rdfs:comment "THE DOCTOR & ROGER looking up at Roger's burglar-alarm box, high on the wall above the front door. ROGER I've had experts in, I've had it replaced, I've even phoned Watchdog, you name it. But no! Ten past one in the morning, off it goes. THE DOCTOR But with no burglars? ROGER Nothing! I've given up looking! THE DOCTOR Tell me, Roger... have you got a cat flap?"; 
+	stories:interprets :doctor_and_roger;
+	#
+	stories:source :script. 
+	
+:scriptScene20 a stories:Interpretation;
+	rdfs:label "Script - Scene 20";
+    rdfs:comment "THE DOCTOR on the floor, prodding the back door's cat flap with the sonic. The flap swings to and fro, harmless. ROGER kneeling beside him, fascinated. ROGER It was here when I bought the house. Never bothered with it, really, I'm not a cat person. THE DOCTOR No, I've met cat people, you're nothing like them. ROGER Is that what it is, though? Cats, getting inside the house? THE DOCTOR Well, that's the thing about cat flaps. They don't just let things in. They let things out as well. ROGER Like what..? THE DOCTOR The fat just walks away.";
+	stories:interprets :doctor_and_roger;
+	#
+	#joke line: really, I'm not a cat person. THE DOCTOR No, I've met cat people, you're nothing like them
+	#key line: the fat just walks away
+	stories:source :script. 
+
+:scriptScene21 a stories:Interpretation;
+	rdfs:label "Script - Scene 21";
+    rdfs:comment "Nice bathroom, bit lived-in. STACY's now with hair down, putting a new lipstick on, in the mirror. Calls down: STACY Won't be long! SCENE CONTINUES, INTERCUT WITH LIVING ROOM -";
+	stories:interprets :stacey_and_donna;
+	#
+	stories:source :script. 
+
+:scriptScene22 a stories:Interpretation;
+	rdfs:label "Script - Scene 22";
+    rdfs:comment "DONNA That's all right! She sits, fiddling with the GOLD PENDANT. Just out of boredom. She holds it up, in the light. Nothing special. Then she just holds it normally, looking round the room. CU Donna's hands as, without thinking, she starts to unscrew the two halves of the gold capsule... CUT TO THE BATHROOM. Stacy gasps. Not pain, but a sudden feeling in her stomach. She clutches it. CUT TO LIVING ROOM, Donna stops fiddling with the capsule. CUT TO BATHROOM, the sensation's gone, Stacy recovers, holds her stomach. What the hell was that..? CUT TO LIVING ROOM, Donna starts to fiddle again, unscrewing the capsule... CUT TO BATHROOM, Stacy feels something again, holds her stomach. What's happening..? CUT TO LIVING ROOM, Donna still screwing & unscrewing the two halves, without even looking at what she's doing. CUT TO BATHROOM, Stacy lifts up her top. Smooths the skin of her stomach. Then horrified, as... FX: the skin on her stomach moves. Like something is writhing underneath. Pushing the skin out... She's not in pain, just scared, as she looks in the mirror. FX: her stomach keeps moving, just one central area, like a little fat mole is buried underneath, trying to get out.";
+	stories:interprets :partho_activated;
+	#capsule causes partho
+	stories:source :script. 
+
+:scriptScene23 a stories:Interpretation;
+	rdfs:label "Script - Scene 23";
+    rdfs:comment "Smart, shiny, windows looking out on to the city. But an alarm blares! MISS FOSTER spins round in her chair - On her COMPUTER, a map of London, one red light flashing. Miss Foster uses her WRISTWATCH as a COMMS DEVICE - MISS FOSTER We have unscheduled parthenogenesis!";
+	stories:interprets :collection_squad_sent;
+	#
+	stories:source :script. 
+
+:scriptScene24 a stories:Interpretation;
+	rdfs:label "Script - Scene 24";
+    rdfs:comment "THE DOCTOR just saying goodbye, ROGER in the doorway. THE DOCTOR Thanks for your help, tell you what, maybe you could lay off the pills for a week or so - Alarm sounds! The Doctor gets out a little gizmo from his pocket, like an improvised palm-pilot, with a red flashing light. THE DOCTOR (CONT'D) Gotta go, sorry! And he belts off - !";
+	stories:interprets :doctor_and_roger;
+	#
+	stories:source :script. 
+
+:scriptScene25 a stories:Interpretation;
+	rdfs:label "Script - Scene 25";
+    rdfs:comment "MISS FOSTER on her WRISTWATCH-COMMS - MISS FOSTER Send out the Collection Squad! Bring them home.";
+	stories:interprets :collection_squad_sent;
+	#
+	stories:source :script. 
+
+:scriptScene26 a stories:Interpretation;
+	rdfs:label "Script - Scene 26";
+    rdfs:comment "OMMITTED";
+	stories:source :script. 
+
+:scriptScene27 a stories:Interpretation;
+	rdfs:label "Script - Scene 27";
+    rdfs:comment "A big, black POLICE PRISON VAN, with barred windows, scorches out of the underground car park -";
+	stories:interprets :collection_squad_sent;
+	#
+	stories:source :script. 
+
+:scriptScene28 a stories:Interpretation;
+	rdfs:label "Script - Scene 28";
+    rdfs:comment "THE DOCTOR, running, running, running -";
+	stories:interprets :doctor_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene29 a stories:Interpretation;
+	rdfs:label "Script - Scene 29";
+    rdfs:comment "CU STACY boggling, looking down, as... FX: STACY'S skin stretches out - and nothing is actually breaking through, no broken skin, no blood - instead, the stretching skin is whitening and smoothly dividing off into a separate entity, like amoebas separating... FX: and the lump plops free! With Stacy standing by the sink, it just drops down into the bowl, and her stomach just twangs back to normal. And the lump is... an ADIPOSE, standing in the sink-bowl. About the size of a bag of sugar. And almost the same shape. A white lump of fat, Pilsbury Dough Boy in texture, with rudimentary arms and legs, black-dot eyes, a mewling mouth, with one little fang. It's strangely sort of cute. Like a soft toy. It seems to be waving, little stumpy arms, at Stacy. Stacy is just boggling. LIVING ROOM, Donna goes to the hallway door, calls up: DONNA You all right up there? BATHROOM, Stacy stunned, too embarrassed to call for help. STACY ...yeah. FX: the ADIPOSE is mewling at her, a bit like 'mummy!'";
+	stories:interprets :stacey_partho;
+	#
+	stories:source :script. 
+
+:scriptScene30 a stories:Interpretation;
+	rdfs:label "Script - Scene 30";
+    rdfs:comment "MISS FOSTER, on her WRISTWATCH COMMS - MISS FOSTER The Adipose has been witnessed. Activating full parthenogenesis. And in her other hand, she's got a GOLD CAPSULE - she takes hold of it, twists it -";
+	stories:interprets :stacey_partho;
+	#
+	stories:source :script. 
+
+:scriptScene31 a stories:Interpretation;
+	rdfs:label "Script - Scene 31";
+    rdfs:comment "STACY alarmed, feeling something... looks round, and down... Underneath her trousers, one of her buttocks is now starting to move, a shape squirming under the fabric... CUT TO DONNA, by the living room door, calling up. DONNA I like what you've done with this hall. STACY twisting round to see in the mirror, as... FX: an ADIPOSE struggles up over the waistband of the back of her trousers! Mewling! Free! CUT TO Donna, getting a bit concerned now - DONNA (CONT'D) Have you lived here long? Stacy? You all right? FX: BATHROOM, 2 ADIPOSE now in the sink, waving. Whispered: STACY What are you? What are you? But then - oh God - more movement - under her t-shirt, more shapes, lots, shifting, her stomach, at her shoulder, on her back, on her thigh, writhing under her clothes. CUT TO STAIRS, DONNA, now heading up. DONNA Wouldn't mind a little visit myself. Everything okay in there? CUT TO BATHROOM, Stacy desperate, now trying the press the bumps in her clothing back in to her skin... Donna now outside the door, little knock. DONNA (CONT'D) Only me. D'you mind if I pop to the loo? Stacy? STACY (quiet) ...help me. DONNA I'm sorry? What is it, what's wrong - ? Donna rattles the door, it's locked - Inside, Stacy's still struggling with the writhing bumps - Donna starts to thump the door. Bangs it. Shoves it. DONNA (CONT'D) Stacy! Stacy!! Then Stacy shudders, lets go of the bumps, screams - FX: in a second, she's gone - her whole body divides into separate pieces - twenty separate ADIPOSE, plop!, tumbling to the floor, in amongst her falling, empty clothes - FX: on the FLOOR, in amongst the fallen clothes, a NUMBER OF ADIPOSE waddle about, heading for the walls, with one still emerging from the clothes. Donna hears something, stops shoving, listens... A tiny giggling, a scurrying noise, from the bathroom. Donna shoves again, shoves hard - CU on the bolt, flying off, the door flies open - ! Donna in the doorway, stares. Her POV: Stacy's clothes on the floor. Then looking up... FX: the bathroom window is open. And just one ADIPOSE remains, on the windowsill. It gives Donna a little wave, like 'bye bye!', then hops out of the window, whee!, gone! Donna runs to the window -";
+	stories:interprets :stacey_partho;
+	#
+	stories:source :script. 
+
+:scriptScene32 a stories:Interpretation;
+	rdfs:label "Script - Scene 32";
+    rdfs:comment "HIGH ANGLE, DONNA'S POV from the upstairs bathroom window. Down below, in the darkness, one bin, then another (old fashioned tin-lid-bins) fall over, like tiny animals are scurrying past, with the giggly mewling noise";
+	stories:interprets :donna_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene33 a stories:Interpretation;
+	rdfs:label "Script - Scene 33";
+    rdfs:comment "The BLACK PRISON VAN scorches along -";
+	stories:interprets :collection_squad_collects;
+	#
+	stories:source :script.
+
+:scriptScene34 a stories:Interpretation;
+	rdfs:label "Script - Scene 34";
+    rdfs:comment "THE DOCTOR runs - stops, checks the signal on his gizmo, bleep bleep, changes direction, runs back -";
+	stories:interprets :doctor_investigates;
+	#
+	stories:source :script.
+
+:scriptScene35 a stories:Interpretation;
+	rdfs:label "Script - Scene 35";
+    rdfs:comment "The PRISON VAN has stopped, two SECURITY GUARDS (Miss Foster's private guard) leap out. With BUTTERFLY NETS.";
+	stories:interprets :collection_squad_collects;
+	#
+	stories:source :script.
+
+:scriptScene36 a stories:Interpretation;
+	rdfs:label "Script - Scene 36";
+    rdfs:comment "DONNA runs out of the house - panic - no sign of the little shapes, but she runs in the direction they were heading -";
+	stories:interprets :donna_investigates;
+	#
+	stories:source :script.
+
+:scriptScene37 a stories:Interpretation;
+	rdfs:label "Script - Scene 37";
+    rdfs:comment "THE DOCTOR, running, running, running -";
+	stories:interprets :doctor_investigates;
+	#
+	stories:source :script.
+
+:scriptScene38 a stories:Interpretation;
+	rdfs:label "Script - Scene 38";
+    rdfs:comment "Slam! The lid on a STEEL BOX is slammed shut - the mewling noise now coming from inside. The GUARDS pick up the box - Slam! Doors on the van shut! CU wheels, scorching off - And the van roars away - ";
+	stories:interprets :collection_squad_collects;
+	#
+	stories:source :script.
+
+:scriptScene39 a stories:Interpretation;
+	rdfs:label "Script - Scene 39";
+    rdfs:comment "DONNA just reaching the end of the street, as the PRISON VAN roars past her. She doesn't pay it any attention, but stops, breathless, looking round. No sign of anything.";
+	stories:interprets :donna_investigates;
+	#
+	stories:source :script.
+
+:scriptScene40 a stories:Interpretation;
+	rdfs:label "Script - Scene 40";
+    rdfs:comment "THE DOCTOR runs to a halt, as the PRISON VAN scorches past - bleeps from the gizmo! But the van's fast, gone, damn!";
+	stories:interprets :doctor_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene41 a stories:Interpretation;
+	rdfs:label "Script - Scene 41";
+    rdfs:comment "DONNA lost, shaken, wandering back down the middle of the street towards Stacy's house. BLACK CAB just pulling up. TAXI DRIVER Stacy Campbell? DONNA No. She's gone. DONNA She's just... gone. TAXI DRIVER Great. Thanks for nothing. The taxi drives away. As it does so... HIGH SHOT, from above the houses, revealing the layout: Donna in the middle of Stacy's street; parallel with her, next street along, THE DOCTOR, in the middle of the road. Both just stand there. Look round. Then give up. Donna running off one way, scared, the Doctor walking off the other way, both disappearing, into the night...";
+	stories:interprets :donna_investigates;
+	stories:interprets :doctor_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene42 a stories:Interpretation;
+	rdfs:label "Script - Scene 42";
+    rdfs:comment "B&W HIGH ANGLE CCTV footage of the cubicles, fast-forward, PEOPLE jump-cutting... Including THE DOCTOR & DONNA, plus CRAIG, CLAIRE & OTHER WORKERS, covering the events of sc.14.";
+	stories:interprets :foster_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene43 a stories:Interpretation;
+	rdfs:label "Script - Scene 43";
+    rdfs:comment "Sc.42 playing on a PLASMA TV. MISS FOSTER behind her desk, studying the screen, 2 SECURITY GUARDS either side of her. MISS FOSTER It seems we have a case of industrial espionage. One touch, and the capsule bio-tunes itself to its owner, but someone must have introduced a second, raw capsule. Therefore, one of these people is a thief... (suddenly) There! (presses remote, to pause) Oh yes. There she is. Now, what shall we do with her..?";
+	stories:interprets :foster_investigates;
+	#
+	stories:source :script. 
+
+:scriptScene44 a stories:Interpretation;
+	rdfs:label "Script - Scene 44";
+    rdfs:comment "DONNA comes in, still shaken. Closes the door, leans against it, gathers herself, exhausted. Then real life slams back in! Mum, SYLVIA, down the hall - SYLVIA And what time's this? DONNA How old am I?! SYLVIA Not old enough to use a phone!";
+	stories:interprets :donna_with_family;
+	#
+	stories:source :script. 
+
+:scriptScene45 a stories:Interpretation;
+	rdfs:label "Script - Scene 45";
+    rdfs:comment "SLOW TRACK IN ON DONNA, just sitting there, as SYLVIA busies herself all around her, passing to and fro. SYLVIA ...I thought you were only moving back for a couple of weeks, but look at you! You're never gonna find a flat, not while you're on the dole! I mean, it's hardly the 1980's, no one's unemployed these days. Except you! How long did that job with Health and Safety last, two days? Then you walk out! 'I have other plans.' Well I've not seen 'em! And it's no good sitting there dreaming, no one's gonna come along with a magic wand and make your life all better - DONNA Where's Grandad? SYLVIA Where d'you think he is? Up the hill! Always, up the hill!";
+	stories:interprets :donna_with_family;
+	#
+	stories:source :script. 
+
+:scriptScene46 a stories:Interpretation;
+	rdfs:label "Script - Scene 46";
+    rdfs:comment "DONNA trudging up a lonely hillside. There's her Grandad, WILF, sitting on a little camping chair, with a telescope - nothing too expensive, the amateur astronomer. All nice and quiet; she loves her Grandad. WILF Aye aye. Here comes trouble. DONNA Permission to board ship, sir. WILF Granted! Was she nagging you? DONNA Big time. Brought you a thermos. Seen anything? WILF I've got Venus, with an apparent magnitude of minus 3.5. At least, that's what it says in my book. Come and see! There you go... She puts her eye to the telescope. FX: Donna's POV through TELESCOPE. Venus just a dot. WILF (CONT'D) The only planet in the solar system named after a woman. DONNA Good for her. Donna leaves the telescope, looks up into the night sky. DONNA (CONT'D) How far away is that..? WILF About 26 million miles. But we'll get there! One day. Hundred years time, we'll be striding out amongst the stars, jiggling about with all them aliens, just you wait. DONNA You really believe in all that stuff, don't you? WILF They're all over the place these days! If I wait the place these here long enough... DONNA Don't suppose you've seen a little blue box? WILF Is that slang for something? And she sits on the grass, next to him. DONNA No, I mean it. If you ever see a little blue box, flying up there in the sky... You shout for me, Gramps. Oh, you just shout. WILF (smiles, kind) I don't understand half the things you say, these days. DONNA Nor me. WILF Fair do's. You've had a funny old time of it, lately. WILF (CONT'D) Poor old whatsisname, Lance, bless him. That barmy old Christmas. (beat) I wish you'd tell us what really happened. DONNA I know. It's just... The things I've seen. Sometimes I think I'm going mad. Even tonight, I was... Doesn't matter. WILF Well, you're not yourself, I'll give you that. You just seem to be drifting, sweetheart. DONNA I'm not drifting. I'm waiting. WILF What for? DONNA The right man. WILF Oh, same old story. A man! DONNA No, I don't mean like that. But he's real, I've seen him, I've met him. Just once. And then... I let him fly away. WILF Well then. Go and find him. DONNA I've tried. He's... nowhere. WILF Oy! Since when did you give up? I remember you, six years old, your mother said, no holiday this year, so off you toddled, all on your own, and got on the bus! To Strathclyde! We had police out and everything! (both laughing) Where's she gone, then? Eh? Where's that girl? Donna lies back. HIGH SHOT, pulling out on the two of them; Donna and her Grandad, looking up at the night sky. DONNA You're right. Cos he's still out there somewhere. I'll find him. Even if I have to wait a hundred years... I'll find him.";
+	stories:interprets :donna_with_family;
+	#
+	stories:source :script. 
+
+:scriptScene47 a stories:Interpretation;
+	rdfs:label "Script - Scene 47";
+    rdfs:comment "CU on THE DOCTOR at the console, using equipment to study his GOLD CAPSULE - he's separated the two halves; each has tiny wires trailing out. THE DOCTOR Fascinating. Seems to be a bioflip-digital-stitch specifically for... Looks up, looks round, aware that he's talking to himself. WIDEST SHOT POSSIBLE of the TARDIS. The ancient, slow creak of the vast, empty space. The Doctor, alone.";
+	stories:interprets :doctor_investigates_pendant;
+	#
+	stories:source :script. 
+	
+:scriptScene48 a stories:Interpretation;
+	rdfs:label "Script - Scene 49";
+    rdfs:comment "DONNA leaves the house, galvanised, determined to succeed today - she's got car keys, heading for the CAR. SYLVIA runs to the doorway, in her nightie. SYLVIA It's my turn for having the car! What do you need it for? DONNA A quick getaway! JUMP CUT TO CU CAR KEY, turning in the ignition."; 
+	stories:interprets :donna_to_cubicles;
+	#
+	stories:source :script. 
+
+:scriptScene49 a stories:Interpretation;
+	rdfs:label "Script - Scene 49";
+    rdfs:comment "CU THE DOCTOR slamming levers on the TARDIS console. WIDER, the Time Rotor starts to rise and fall, in flight...";
+	stories:interprets :doctor_to_storeroom;
+	#
+	stories:source :script. 
+
+:scriptScene50 a stories:Interpretation;
+	rdfs:label "Script - Scene 50";
+    rdfs:comment "DONNA just slamming the door shut on the parked car, striding away, and as she clears - FX: further down the street, the TARDIS appears.";
+	stories:interprets :donna_to_cubicles;
+	stories:interprets :doctor_to_storeroom;
+	#
+	stories:source :script. 
+
+:scriptScene51 a stories:Interpretation;
+	rdfs:label "Script - Scene 51";
+    rdfs:comment "DONNA walks through the revolving doors -";
+	stories:interprets :donna_to_cubicles;
+	#
+	stories:source :script. 
+	
+:scriptScene52 a stories:Interpretation;
+	rdfs:label "Script - Scene 52";
+    rdfs:comment "THE DOCTOR sonics the lock, PRAC EXPLOSION, in he goes";
+	stories:interprets :doctor_to_storeroom;
+	#
+	stories:source :script. 	
+	
+:scriptScene53 a stories:Interpretation;
+	rdfs:label "Script - Scene 53";
+    rdfs:comment "DONNA strides through, fast, not stopping -";
+	stories:interprets :donna_to_cubicles;
+	#
+	stories:source :script. 	
+:scriptScene54 a stories:Interpretation;
+	rdfs:label "Script - Scene 54";
+    rdfs:comment "THE DOCTOR strides along the corridor - He's heading for a door, opens it. A tiny little STOREROOM, mops & buckets, etc. No light. He gets inside, his hiding place, and he sonics the lock. A big clunk! Locked.";
+	stories:interprets :doctor_to_storeroom;
+	#
+	stories:source :script. 
+
+:scriptScene55 a stories:Interpretation;
+	rdfs:label "Script - Scene 55";
+    rdfs:comment "Clean, smart, large room. DONNA hurries in. There's at least 5 cubicles in a row. She goes to the furthest one. Inside, she bolts the door. Then lowers the lid on the toilet, to use it as a chair. Sits. Looks at her watch.";
+	stories:interprets :donna_to_cubicles;
+	#
+	stories:source :script. 
+
+:scriptScene56 a stories:Interpretation;
+	rdfs:label "Script - Scene 56";
+    rdfs:comment "MISS FOSTER & 2 SECURITY GUARDS striding through. Sotto: MISS FOSTER Keep an eye out. She'll come back. And then... she's mine. As they clear, PAN UP to the CLOCK on the wall: 09.30. MIX TO: CLOCK reading 18.10.";
+	stories:interprets :foster_investigates;
+	stories:interprets :donna_cubicles;
+	stories:interprets :doctor_storeroom;
+	#
+	stories:source :script. 
+
+:scriptScene56A a stories:Interpretation;
+	rdfs:label "Script - Scene 56A";
+    rdfs:comment "WIDE SHOT, lights flickering out, STAFF standing, putting on coats, CRAIG heading off, CLAIRE calling to a MATE: CLAIRE See you tomorrow!";
+	stories:interprets :donna_cubicles;
+	stories:interprets :doctor_storeroom;
+	#
+	stories:source :script. 
+
+:scriptScene57 a stories:Interpretation;
+	rdfs:label "Script - Scene 57";
+    rdfs:comment "INSIDE THE STOREROOM, THE DOCTOR sonics the lock, clunk. He steps out, stretching, a bit aching... The corridor's much darker, now. He heads off. Runs!";
+	stories:interprets :doctor_storeroom;
+	stories:interprets :doctor_snooping;
+	#
+	stories:source :script. 
+
+:scriptScene58 a stories:Interpretation;
+	rdfs:label "Script - Scene 58";
+    rdfs:comment "DONNA still in the cubicle. She stands, aching, ooh. Then unlocks the bolt, steps out, the toilet empty - Then her mobile rings! She panics - - hurries back into the stall, locks the door, getting out her mobile, whispering - DONNA Not now!";
+	stories:interprets :donna_cubicles;
+	stories:interprets :noble_family_prepare_for_evening;
+	#
+	stories:source :script. 
+
+:scriptScene59 a stories:Interpretation;
+	rdfs:label "Script - Scene 59";
+    rdfs:comment "SYLVIA on the phone, WILF in his coat in b/g, armed with TELESCOPE & THERMOS, about to head off. SYLVIA I need the car, where are you?!";
+	stories:interprets :noble_family_prepare_for_evening;
+	#
+	stories:source :script. 
+
+:scriptScene60 a stories:Interpretation;
+	rdfs:label "Script - Scene 60";
+    rdfs:comment "DONNA sitting on the loo, whispering on her mobile. DONNA I can't. I'm busy. SYLVIA What are you whispering for? DONNA ...I'm in church. SYLVIA What are you doing in church? DONNA Praying. SYLVIA Hah! Too late forthat, madam! WILF What's she in church for? SYLVIA Hush, you! Go to the hill! (to Donna) But I need the car, I'm going out with Suzette, she's invited all the Wednesday Girls, apparently she's been on those Adipose pills, she says she looks marvellous - But Donna CUT TO OUTSIDE THE CUBICLES, as the door slams! open - suddenly hangs up - she's heard footsteps - MISS FOSTER & 2 SECURITY GUARDS stride in, like stormtroopers, the guards now armed with GUNS. Miss Foster stands centre, utterly confident. MISS FOSTER We know you're in here. So why don't you make this nice and easy, and show yourself? Donna in the cubicle, lifts her feet up, terrified. MISS FOSTER (CONT'D) I'm waiting. (silence) I warn you. I'm not a patient woman. Now, out you come. Silence, Donna so scared, trapped. MISS FOSTER (CONT'D) Right, we'll do it the hard way. Get her! The guards move - kick the door in on the first cubicle, wham!, one guard kicking, the other ready with his gun - Empty. Donna terrified. They kick in the second cubicle - wham! - empty - Donna clutching her knees, helpless - They kick in the third cubicle - wham! - And there's PENNY CARTER! Hiding! MISS FOSTER (CONT'D) There you are. On Donna. Eh?! As the guards haul Penny out, she's furious - PENNY I've been through the records, Foster! All your results have been faked, there's something about those pills you're not telling us - MISS FOSTER Oh, I think I'll be conducting this interview, Penny. And they're hauling Penny out of the door, gone. Beat. Then Donna opens her cubicle door a fraction, peers out.";
+	stories:interprets :noble_family_prepare_for_evening;
+	stories:interprets :pennys_capture;
+	#
+	stories:source :script. 
+
+:scriptScene61 a stories:Interpretation;
+	rdfs:label "Script - Scene 61";
+    rdfs:comment "THE DOCTOR opens the Access Door, steps out on to the roof. The lights of the city all around. But he runs, fast, over to the edge - Where there's a WINDOW CLEANER'S CRADLE. Lovely! Just what he needs. He starts to sonic the controls.";
+	stories:interprets :doctor_snooping;
+	#
+	stories:source :script. 
+
+:scriptScene62 a stories:Interpretation;
+	rdfs:label "Script - Scene 62";
+    rdfs:comment "The room now dark. MISS FOSTER striding ahead, PENNY being dragged along by the 2 SECURITY GUARDS - PENNY - you've got no right to do this! Let me go!! Behind them, through the door they first came through, DONNA peeks through a tiny gap. In pursuit!";
+	stories:interprets :pennys_capture;
+	#
+	stories:source :script. 
+
+:scriptScene63 a stories:Interpretation;
+	rdfs:label "Script - Scene 63";
+    rdfs:comment "WIDE SHOT, the WINDOW CLEANER'S CRADLE descending. CUT TO CLOSER, THE DOCTOR in the cradle.";
+	stories:interprets :doctor_snooping;
+	#
+	stories:source :script. 
+
+:scriptScene64 a stories:Interpretation;
+	rdfs:label "Script - Scene 64";
+    rdfs:comment "FX: office empty. At the windows, the CRADLE is descending, THE DOCTOR sliding down into shot, then sonicking the cradle to stop, so he can see into the office - But he ducks down out of sight - oops! - as MISS FOSTER, the 2 SECURITY GUARDS frogmarch a struggling PENNY in - MISS FOSTER Sit there! PENNY I'm phoning my editor - MISS FOSTER I said sit!";
+	stories:interprets :pennys_capture;
+	stories:interprets :doctor_snooping;
+	#
+	stories:source :script. 
+
+:scriptScene65 a stories:Interpretation;
+	rdfs:label "Script - Scene 65";
+    rdfs:comment "THE DOCTOR now crouching down, below the window level. He gets out his stethoscope, to listen at the cradle wall.";
+	stories:interprets :doctor_snooping;
+	#
+	stories:source :script. 
+
+:scriptScene66 a stories:Interpretation;
+	rdfs:label "Script - Scene 66";
+    rdfs:comment "Secretaries' area, dark. DONNA creeps towards MISS FOSTER'S OFFICE - it's got glass interior walls, but with blinds drawn, though there's still a glass panel in the door. Donna crouches below the glass in the door. Listens.";
+	stories:interprets :pennys_capture;
+	stories:interprets :doctor_donna_meet;
+	#
+	stories:source :script. 
+
+:scriptScene67 a stories:Interpretation;
+	rdfs:label "Script - Scene 67";
+    rdfs:comment "MISS FOSTER now behind her desk, facing PENNY. The GUARDS have just tied Penny's wrists to the chair with flex, and now they stand back, on duty, behind Miss Foster. INTERCUT with DONNA listening, crouched low, outside the office door; THE DOCTOR crouched low, outside the window. PENNY You can't tie me up! What sort of country d'you think this is? MISS FOSTER A beautifully fat country. Believe me, I've travelled a long way to find obesity on this scale. PENNY (calmer, strong) Come on then. Those pills. Miss Foster. What are they? MISS FOSTER You might as well have a scoop. Since you'll never see it printed. (holds up a capsule) This... is the spark of life. PENNY What's that supposed to mean? MISS FOSTER Officially, the capsule attracts all the fat cells, and then flushes them away. Well, it certainly attracts them, that part's true. But it binds the fat together, and galvanises it, to form a body. PENNY What d'you mean, a body? MISS FOSTER I'm surprised you didn't ask about my name. I chose it well. Foster, as in foster mother. And these... are my children. She opens the desk drawer, reaches in, plucks out... FX: she puts an ADIPOSE on the desk. It waves. ON THE DOCTOR & DONNA ONLY now, frustrated, unable to see. PENNY ...you're kidding me. What the hell is that?! MISS FOSTER Adipose. It's called, an Adipose. Made out of living fat. OFFICE DIALOGUE THEN CONT. ADR, OOV (and ADR dialogue will remove the Adipose), all this UNDER the action below: From 'living fat', Donna has to see... so she inches up to look through the glass panel... At the same time, the Doctor has to see... so, putting his stethoscope away, he inches up to look through the window... (NB, Miss Foster, the desk, Penny & guards are at the front of the office, the Doctor & Donna a few feet further towards the back, so there's a clear space between the Doctor & Donna, who are directly opposite each other.) The Doctor lifts his head up... looking left, to the desk. Donna lifts her head up... looking right, to the desk. Then the Doctor looks straight ahead, seeing - Donna looks straight ahead, seeing - The Doctor!!!! Donna!!!??! Big long moment, both just boggling, open-mouthed. Then, all shot through the glass, in silence, big gestures: The Doctor: Donna??? Donna: Doctor!!!! The Doctor: but...what? Wha... WHAT??!? Donna: Oh! My! God! The Doctor: but... how??? Donna points at herself! It's me! The Doctor: well I can see that! Donna: oh this is brilliant! The Doctor: but... what the hell are you doing there??? Donna's just so thrilled, she waves! Big smile! The Doctor: but, but, but, why, what, where, when? Donna points at him - you!! I was looking for you! The Doctor: me? What for? Donna does a little mime: I, came here, trouble, read about it, internet, I thought, trouble = you! And this place is weird! Pills! So I hid. Back there. Crept along. Heard this lot. Looked. You! Cos they... And on 'they', she gestures and looks towards Miss Foster. Who is staring at her. As are the guards. Penny, too. Donna freezes. Oops. Miss Foster then looks at the Doctor. Calm: MISS FOSTER (CONT'D) Are we interrupting you? Donna stands, still framed in the glass. Looks at Miss Foster, speechless. Then at the Doctor. The Doctor: run!!! And Donna runs! MISS FOSTER (CONT'D) Get her! The security guards head for the door - The Doctor holds the sonic, whirrs it dead ahead - Clunk! The door's locked, the guards struggle with it - Miss Foster turns to face the Doctor - MISS FOSTER (CONT'D) And him! The Doctor sonics up, to the cradle-controls, fast - FX: seen from inside the office, through the window, the cradle zooms up, fast, taking the Doctor with it -";
+	stories:interprets :pennys_capture;
+	stories:interprets :doctor_donna_meet;
+	#
+	stories:source :script. 
+
+:scriptScene68 a stories:Interpretation;
+	rdfs:label "Script - Scene 68";
+    rdfs:comment "DONNA bursts into the stairwell, runs up -";
+	stories:interprets :doctor_donna_escape;
+	#
+	stories:source :script. 
+
+:scriptScene69 a stories:Interpretation;
+	rdfs:label "Script - Scene 69";
+    rdfs:comment "THE DOCTOR back at the top, clambering out of the cradle - runs across the roof, to the Access Door -";
+	stories:interprets :doctor_donna_escape;
+	#
+	stories:source :script. 
+
+:scriptScene70 a stories:Interpretation;
+	rdfs:label "Script - Scene 70";
+    rdfs:comment "2 SECURITY GUARDS FIRE - PRAC GUNS - PRAC FX: the locked door is shot into splinters! Guards run through, and MISS FOSTER - PENNY's left tied to the chair, yelling - PENNY What about me??!";
+	stories:interprets :fosters_chase;
+	stories:interprets :pennys_capture;
+	#
+	stories:source :script. 
+
+:scriptScene71 a stories:Interpretation;
+	rdfs:label "Script - Scene 71";
+    rdfs:comment "THE DOCTOR running down - And they meet on a landing! She hugs him! DONNA Oh my God, I don't believe it!! You've even got the same suit, don't you ever change? THE DOCTOR Thanks Donna, not right now - There's a bang! from a few floors below - he looks down - His POV: the SECURITY GUARDS heading up And he grabs her hand, big smile! THE DOCTOR (CONT'D) Just like old times! And they run up the stairs together - CUT TO A FEW FLOORS BELOW - The 2 SECURITY GUARDS storming up - MISS FOSTER following -";
+	stories:interprets :doctor_donna_escape;
+	stories:interprets :fosters_chase;
+	#
+	stories:source :script. 
+
+:scriptScene72 a stories:Interpretation;
+	rdfs:label "Script - Scene 72";
+    rdfs:comment "THE DOCTOR & DONNA race out of the Access Door - the Doctor sonics it shut - then run across the rooftop, to the CRADLE, where the Doctor frantically sonics the winch, taking loose wires out of his pocket and fixing them to the controls - And right from the word go, Donna's talking, top speed - DONNA - cos I thought, how do I find the Doctor? And then I thought, just look for trouble, and he'll turn up! So I looked everywhere, you name it, UFO sightings, crop circles, sea monsters, all those weird things in Cardiff, I investigated them all - like that stuff about the bees disappearing, I thought, I bet he's connected! Cos the thing is, you opened my eyes, Doctor, I believe it now, all those amazing things out there, I believe them all, well, except for that replica of the Titanic flying over Buckingham Palace on Christmas Day, I mean, that's gotta be a hoax, hasn't it - ? THE DOCTOR What d'you mean, the bees are disappearing? DONNA I dunno, that's what it says on the internet, but on the same site, there were all these conspiracy theories about Adipose Industries, so I thought, let's take a look - The Access Door starts banging, Guards on the other side. THE DOCTOR In you get! DONNA What, into that thing? THE DOCTOR Yes, into that thing. DONNA But if we go down in that, they'll just call it back up again! THE DOCTOR No, cos I've locked the controls with a sonic cage, I'm the only one who can control it - not unless she's got a sonic device of her own. Which is very unlikely!";
+	stories:interprets :doctor_donna_escape;
+	#
+	stories:source :script. 
+
+:scriptScene73 a stories:Interpretation;
+	rdfs:label "Script - Scene 73";
+    rdfs:comment "It's a hefty door, one of the GUARDS slamming with his shoulder, as MISS FOSTER strides up the stairs - And she's just taking her PEN out of her breast pocket - MISS FOSTER Out of the way - And the pen whirrs with a familiar whirring sound, lights up with a familiar blue at the end - ";
+	stories:interprets :fosters_chase;
+	#
+	stories:source :script. 
+
+:scriptScene74 a stories:Interpretation;
+	rdfs:label "Script - Scene 74";
+    rdfs:comment "BLAM! - THE ACCESS DOOR flies open - MISS FOSTER strides out, the 2 GUARDS following, but - The roof's empty. The cradle's gone, the lowering-mechanism clearly at work. CUT TO WIDE SHOT, SIDE OF BUILDING, the CRADLE descending with THE DOCTOR & DONNA on board. CUT TO ROOFTOP, Miss Foster smiling - MISS FOSTER Oh, I don't think so - She aims her SONIC PEN - PRAC EXPLOSION on the ROOFTOP WINCH CONTROLS - FX: THE DOCTOR & DONNA & CRADLE plummeting down, TOWER BLOCK FLOORS RACING past them - Donna screaming - ! CU ROOFTOP WINCHES spinning like crazy! PRAC SPARKS! FX: CU THE DOCTOR, with FLOORS RACING PAST behind him, holding out the sonic, whirring furiously - FX: CU PRAC EXPLOSION on the right hand CRADLE WINCH (with FLOORS RACING PAST B/G) - WIDER on the CRADLE, halfway down the building, jerking to a sudden halt - the Doctor & Donna jolted, recovering - CUT TO THE DOCTOR, sonicking the nearest window - THE DOCTOR - hold on - we can get in through the window - CUT TO THE ROOFTOP, Miss Foster looking over the edge, on her wristwatch comms - MISS FOSTER Deadlock the building! CUT TO THE CRADLE, a clunk! of locks, the Doctor sonicking - THE DOCTOR Can't get it open! DONNA Well then, smash it! And she's got a spanner from a workman's toolkit inside the cradle, slams the window - CUT TO INSIDE THE BUILDING, the Doctor & Donna hammering at the glass - but it's security glass, doesn't give - CUT TO ROOFTOP, Miss Foster now calmly walking over to the left-hand-side (her right-hand-side) ROOFTOP WINCH. Holds the PEN against the cable - PRAC FX: the METAL CABLE burning, sparks flying out, like an oxyacetylene torch - the cable fraying - CUT TO the CRADLE, both looking up, horrified - DONNA (CONT'D) She's cutting the cable!!!! CUT TO ROOFTOP, CU CABLE - PRAC FX, it SNAPS!! FX, STUNT!, WIDE SHOT - the CRADLE tips, the LEFT HAND SIDE falling, the broken cable whipping downwards, the RIGHT HAND SIDE still connected, staying where it is, so the whole shebang falls down from the left - ie, the horizontal platform tipping to vertical - THE DOCTOR & DONNA tumbling towards the left, Donna already on the left (ie, camera left) - CU the falling Doctor flailing out, to reach for - FX: DONNA tumbling over the edge, screaming - ! THE DOCTOR slams into the left-hand wall of the cradle - the cradle now vertical, and swinging a little - but it remains connected on the right-hand-side, so the left-hand- wall has become the floor - The Doctor whipping his head over the side, to see - THE DOCTOR Donna - ?! FX: DONNA hanging on, about 10 feet below, the GROUND far below her - she's clinging to the hanging left-hand-side cable. (There's, say, a spar of metal, formerly part of the winch, fixed to the cable, and Donna's actually holding on to that; she could never hold on to cable alone.) DONNA Doctor - ! THE DOCTOR Hold on! DONNA I am!! He grabs the cable, tries to heave it up - FX: DONNA dangling - but not moving up - It's impossible - but the Doctor looks up, realising what Miss Foster will do next - CUT TO ROOFTOP, Miss Foster now walking casually over to the opposite ROOFTOP WINCH - PEN glowing, whirring - FX: TOP SHOT of the Doctor (with DONNA hanging far below him) as he leans out of the cradle, LOOKING UP, and pointing his sonic screwdriver up, whirring - CUT TO ROOFTOP - FX: SMALL EXPLOSION on the PEN - CU, Miss Foster drops it - FX: SONIC PEN falling down, down, floors racing past b/g - CUT TO the Doctor, leaning out, hand out - CU his hand, he catches the pen! And starts to sonic-pen the window nearest to him - THE DOCTOR That's better! FX: DONNA dangling - DONNA I'm gonna fall!! Doctaaaa - !";
+	stories:interprets :fosters_chase;
+	#
+	stories:source :script. 
+
+:scriptScene75 a stories:Interpretation;
+	rdfs:label "Script - Scene 75";
+    rdfs:comment "PENNY, still tied to her chair. Looking out of the window. DONNA's legs are hanging, kicking, outside the glass. Strangely calm, given the circumstances: PENNY ...what the hell is going on?";
+	stories:interprets :pennys_capture;
+	#
+	stories:source :script. 
+
+:scriptScene76 a stories:Interpretation;
+	rdfs:label "Script - Scene 76";
+    rdfs:comment "FX: DONNA dangling - and now raging - DONNA This is your fault! I should've stayed at home!! CUT TO THE DOCTOR, window now open, about to crawl through - THE DOCTOR Won't be a minute! CUT TO ROOFTOP, MISS FOSTER looking down, annoyed. MISS FOSTER He's slippery, that one. Time we found out who he is... And she strides towards the Access Door, GUARDS following";
+	stories:interprets :doctor_rescues_donna;
+	#
+	stories:source :script. 
+
+:scriptScene77 a stories:Interpretation;
+	rdfs:label "Script - Scene 77";
+    rdfs:comment "THE DOCTOR running down, down, down -";
+	stories:interprets :doctor_rescues_donna;
+	#
+	stories:source :script. 
+
+:scriptScene78 a stories:Interpretation;
+	rdfs:label "Script - Scene 78";
+    rdfs:comment "CU DONNA, struggling, holding on tight. CU HER HANDS, clenched tight on the spar/cable.";
+	stories:interprets :doctor_rescues_donna;
+	#
+	stories:source :script. 
+
+:scriptScene79 a stories:Interpretation;
+	rdfs:label "Script - Scene 79";
+    rdfs:comment "THE DOCTOR runs down to a landing - bursts through a door";
+	stories:interprets :doctor_rescues_donna;
+	#
+	stories:source :script. 
+
+:scriptScene80 a stories:Interpretation;
+	rdfs:label "Script - Scene 80";
+    rdfs:comment "PENNY still tied to the chair as THE DOCTOR runs in - races to the window, DONNA's legs still kicking outside - He sonic-pens the window, frantic - PENNY Is anyone gonna tell me what's going on in this place? - THE DOCTOR What are you, journalist? PENNY Yes. THE DOCTOR Well, just make it up. And the window swings open! The Doctor reaching out to the LEGS - THE DOCTOR (CONT'D) I've got you - stop kicking - !";
+	stories:interprets :doctor_rescues_donna;
+	stories:interprets :pennys_capture;
+	#
+	stories:source :script. 
+
+:scriptScene81 a stories:Interpretation;
+	rdfs:label "Script - Scene 81";
+    rdfs:comment "SECURITY GUARDS running down, MISS FOSTER following - ";
+	stories:interprets :fosters_chase;
+	#
+	stories:source :script. 
+
+:scriptScene82 a stories:Interpretation;
+	rdfs:label "Script - Scene 82";
+    rdfs:comment "DONNA just hopping down to the floor, breathless - being helped down by THE DOCTOR. PENNY still tied up. DONNA I was right. It's always like this with you, isn't it? THE DOCTOR Oh yes!	And off we go - ! And he runs out - Donna following - PENNY Oy! The Doctor pops his head back round the door - THE DOCTOR Sorry - - and holds out the sonic pen, whirrs - Penny's hands pull free, the flex loosened. THE DOCTOR (CONT'D) Now do yourself a favour, get out! And he's gone - ";
+	stories:interprets :doctor_rescues_donna;
+	stories:interprets :penny_released;
+	#
+	stories:source :script. 
+
+:scriptScene83 a stories:Interpretation;
+	rdfs:label "Script - Scene 83";
+    rdfs:comment "THE DOCTOR & DONNA burst through, from one end - Stop dead. As MISS FOSTER strides through from the other end of the room, both SECURITY GUARDS hoisting up guns. A standoff; good distance between the two parties. MISS FOSTER Well, then. At last. THE DOCTOR Evening. DONNA Hello. THE DOCTOR Nice to meet you. I'm the Doctor. DONNA And I'm Donna. MISS FOSTER Partners in crime. MISS FOSTER (CONT'D) And evidently offworlders, judging by your sonic technology. THE DOCTOR Oh! I've still got - (holds up) Your sonic pen. Nice! Sleek, it's kind of... DONNA Definitely sleek. I like it. sleek. THE DOCTOR And if you were to sign your real name, that would be..? MISS FOSTER Matron Cofelia, of the Five-Straighten Classabindi Nursery Fleet, Intergalactic Class. THE DOCTOR A wet nurse. Using Humans as surrogates. MISS FOSTER I've been employed by the Adiposian First Family, to foster a new generation, after their breeding planet was lost. THE DOCTOR What d'you mean, lost, how d'you lose a planet? MISS FOSTER The politics are none of my concern. I'm just here to take care of the children, on behalf of the parents. DONNA What, like an outer space Supernanny? MISS FOSTER If you like. DONNA So those little things, they're made out of fat, yeah? But that woman last night, Stacy Campbell, there was nothing left of her. MISS FOSTER In a crisis, the Adipose can convert bone and hair and internal organs. Though it does make them a little bit sick, the poor things. DONNA What about poor Stacy?! THE DOCTOR Seeding a Level Five planet is against galactic law. MISS FOSTER Are you threatening me? THE DOCTOR I'm trying to help you, Matron. This is your one chance. Because if you don't call this off... then I'll have to stop you. MISS FOSTER I hardly think you can stop bullets. Both Guards raise guns, the click of safety catches. THE DOCTOR Oh, but hold on, one more thing! Before dying! D'you know what happens if you hold two identical sonic devices against each other? MISS FOSTER No. THE DOCTOR Nor me. Let's find out! And with a huge grin, he holds SONIC PEN against SONIC SCREWDRIVER, whirrs! CAMERA SHAKE, whole room VIBRATING! Miss Foster & Guards clutch their ears, in pain - Guards dropping guns - Donna holding her ears, screeching, ow! PRAC FX: GLASS WINDOW SHATTERS! The Doctor holding on, juddering, actually loving this! Miss Foster falls to her knees, in agony - Donna gives the Doctor a shove - DONNA Come on! Noise stops dead, as the Doctor & Donna leg it out - Miss Foster recovering, furious. On WRISTWATCH-COMMS: MISS FOSTER Tell the Adiposians, cover has been broken, I'm advancing the birthplan. We're going into premature labour. And she strides out, Guards following -";
+	stories:interprets :foster_and_doctor_reveal_indentities;
+	#
+	stories:source :script. 
+
+:scriptScene84 a stories:Interpretation;
+	rdfs:label "Script - Scene 84";
+    rdfs:comment "PENNY's doing her job, ransacking through files, arms piled high with papers and folders - PENNY Adipose... cellular bosification... - runs for the door, with what she's found - stops dead. MISS FOSTER & GUARDS striding in. MISS FOSTER Tie her up! PENNY Oh you're kidding me -";
+	stories:interprets :penny_recaptured;
+	#
+	stories:source :script. 
+
+:scriptScene85 a stories:Interpretation;
+	rdfs:label "Script - Scene 85";
+    rdfs:comment "THE DOCTOR & DONNA run along - the Doctor running to his STOREROOM from sc.54, yanks open the door, starts throwing out mops, buckets, etc. Donna stands back, bemused. DONNA Well, that's one solution. Hide in a cupboard. I like it. THE DOCTOR I've been hacking into this thing all day, cos the Matron's got a computer core running through the centre of the building, triple- deadlocked, but now I've got this - (the sonic pen) - I can get into it - And he's heaving at the ENTIRE BACK WALL of the storeroom - Which creaks and pulls away, like A HIDDEN DOOR - Behind it, floor to ceiling: a COMPUTER WALL. Very distinct design, all golden curves and lights.";
+	stories:interprets :doctor_hacking;
+	#
+	stories:source :script. 
+
+:scriptScene86 a stories:Interpretation;
+	rdfs:label "Script - Scene 86";
+    rdfs:comment "PENNY tied up again, as MISS FOSTER stands back, the two SECURITY GUARDS sliding back the wall behind her chair - revealing an IDENTICAL COMPUTER WALL to the storeroom's. As Miss Foster goes to it, starts pressing buttons - PENNY What does that thing do? MISS FOSTER It's the Inducer. We'd planned to seed millions, but if that man's an alien and he's alerted the Shadow Proclamation, then the first one million Humans will have to do - (to the Guards) Find him, and the woman. Don't waste time, just kill them. The Guards run out -";
+	stories:interprets :penny_recaptured;
+	stories:interprets :premature_labour_triggered;
+	#
+	stories:source :script. 
+
+:scriptScene87 a stories:Interpretation;
+	rdfs:label "Script - Scene 87";
+    rdfs:comment "THE DOCTOR on the floor, rewiring the COMPUTER WALL, DONNA beside him. He gives her a handful of wires, and keeps using those wires throughout this & sc.89, as they talk - THE DOCTOR She's wired up this whole building. And we need a bit of privacy -";
+	stories:interprets :doctor_hacking;
+	#
+	stories:source :script. 
+
+:scriptScene88 a stories:Interpretation;
+	rdfs:label "Script - Scene 88";
+    rdfs:comment "The 2 SECURITY GUARDS charging along, with guns - they slam through a set of Fire Doors - FX: ARCS OF ELECTRICITY all around the doorframe, zapping the GUARDS - they fall to the ground, unconscious -";
+	stories:interprets :guards_stunned;
+	#
+	stories:source :script. 
+
+:scriptScene89 a stories:Interpretation;
+	rdfs:label "Script - Scene ";
+    rdfs:comment "THE DOCTOR fiddling with two wires - FX: tiny ARC OF ELECTRICITY, same as sc.88. THE DOCTOR Just enough to stun them! But why's she wired up a tower block,  what's it all for..? Then he keeps working, intent. And in the pause, DONNA's looking at him. Properly, now. Then, quiet & smiling (though he keeps working, she keeps handing him wires): Pause. DONNA You look older. THE DOCTOR Thanks. DONNA Still on your own? THE DOCTOR Yeah. Well, no, I had this friend, Martha, she was called, Martha Jones, she was brilliant. And I destroyed half her life. But she's fine, she's good. She's gone. DONNA What about Rose? THE DOCTOR ...still lost. (pause, then gentler) I thought you were gonna travel the world. DONNA Easier said than done. It's like, I had that one day with you, and I was gonna change, I was gonna do so much. Then I woke up the next morning, and it's the same old life. Like you were never there. And I tried, I did try, I went to Egypt, I was gonna go barefoot and everything. But then it's all bus trips and guide books and don't- drink-the-water, two weeks later you're back home, it's nothing like being with you. I must've been mad, turning down that offer. THE DOCTOR What offer? DONNA To come with you. THE DOCTOR ...you're coming with me..? DONNA Ohh, yes please! THE DOCTOR ...right. COMPUTER WALL starts bleeping, more lights ILLUMINATING! DONNA What's it doing now? THE DOCTOR She's started the programme!";
+	stories:interprets :doctor_hacking;
+	#
+	stories:source :script. 
+
+:scriptScene90 a stories:Interpretation;
+	rdfs:label "Script - Scene 90";
+    rdfs:comment "MISS FOSTER slams a final lever, crosses to the window, to look out at the night. PENNY still tied to the chair. MISS FOSTER Mark the date, Miss Carter. Happy birthday. One million birthdays.";
+	stories:interprets :penny_recaptured;
+	stories:interprets :premature_labour_triggered;
+	#
+	stories:source :script. 
+
+:scriptScene91 a stories:Interpretation;
+	rdfs:label "Script - Scene 91";
+    rdfs:comment "Smart, but not posh, like a Yates's Lodge. SYLVIA's out with the GIRLS - 5 women, her age, all dressed up for a night out, on the white wine. Brassy SUZETTE holding court - SUZETTE - I swear, that Adipose treatment, it's fabulous, just look at my chin! And it's very good for back fat, I'm down two sizes! SYLVIA It's like a miracle! And all of that from one little pill? SUZETTE And I've been eating like normal - She stops. Holds her stomach. Feels something. SYLVIA You all right, love..? SUZETTE Yeah, I'm just... Funny sort of feeling, like it's... THROW FOCUS, far behind her, at a separate table, a PLUMP MAN on date with a LADY. But he stands. Feels his stomach. Something wrong. The woman saying, 'What is it..? CUT BACK TO SUZETTTE, just standing and turning to go - SUZETTE (CONT'D) Just... pop to the loo... SYLVIA Oh my God, Suzette! SUZETTE What..? She turns, trying to see - because under her clothes, on her back, something is starting to move...";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene92 a stories:Interpretation;
+	rdfs:label "Script - Scene 92";
+    rdfs:comment "LIVING ROOM, ROGER just standing, feeling a bit odd. Puzzled. Looks down at his shirt... A BUMP on his side is moving, squirming...";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene93 a stories:Interpretation;
+	rdfs:label "Script - Scene 93";
+    rdfs:comment "SUZETTE trying to look at her back - SYLVIA going to her, the OTHER WOMEN staring, and other CUSTOMERS - SUZETTE What is it, what is it, get it out, get it off me - ! Sylvia pulls the collar of Suzette's blouse down -FX: a LITTLE ADIPOSE waving! Sylvia screams!! Then turns - cos there's another scream - It's the LADY, cos the PLUMP MAN has got SHAPES, squirming underneath his clothes..! He's staring, horrified! WHIP PAN over to - A YOUNG WOMAN (also a bit plump) at the bar, feeling her stomach, ohh no..."; 
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene94 a stories:Interpretation;
+	rdfs:label "Script - Scene 94";
+    rdfs:comment "ROGER now lying on the floor, scared, as he rolls up his shirt... FX: revealing an ADIPOSE, which jumps off his stomach and runs away!"; 
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script.
+	
+:scriptScene95 a stories:Interpretation;
+	rdfs:label "Script - Scene 95";
+    rdfs:comment "FX: THE ADIPOSE dives through the cat-flap, gone!";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene96 a stories:Interpretation;
+	rdfs:label "Script - Scene 96";
+    rdfs:comment "FX: LOW ANGLE as SUZETTE'S ADIPOSE scuttles across the floor - PEOPLE standing back, terrified - SUZETTE panicking in b/g, with the GIRLS, but SYLVIA's walking to the door, open-mouthed, following the Adipose...";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene97 a stories:Interpretation;
+	rdfs:label "Script - Scene 97";
+    rdfs:comment "SYLVIA walks into the doorway, stunned... It's a busy street, with pubs & restaurants and takeaways. But as Sylvia looks around, WHIP PAN her POV - A FAT MAN, kneeling on the floor, wrestling with his clothes, scared, his GIRLFRIEND panicking. Whip pan - CUT TO A BLACK CAB, screeching to a halt - CUT TO A CAR, slewing across the road, braking - CUT TO THE DRIVER of another car, stopped in the middle of the street, getting out of his car to just boggle - CUT TO a WOMAN, screaming, pointing, at - FX: THIRTY ADIPOSE marching down the middle of the road! Sylvia just staring, in horror.";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene98 a stories:Interpretation;
+	rdfs:label "Script - Scene 98";
+    rdfs:comment "PROFILE MISS FOSTER, at the window. MISS FOSTER Come to me, children. Come to me.";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene99 a stories:Interpretation;
+	rdfs:label "Script - Scene ";
+    rdfs:comment "FX: WIDE SHOT. THE MARCH OF THE ADIPOSE. Hundreds of little shapes marching in unison down the road. BYSTANDERS staring, pointing, screaming, keeping well back.";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene100 a stories:Interpretation;
+	rdfs:label "Script - Scene 100";
+    rdfs:comment "THE DOCTOR, frantic with the wires - DONNA helping - fast - THE DOCTOR - so far, they're just losing weight, but the Matron's gone up to Emergency Parthenogensis - DONNA And that's when they convert - THE DOCTOR - skeletons, organs, everything - a million people are gonna die!";
+	stories:interprets :parthenogenesis;
+	stories:interprets :doctor_hacking2;
+	#
+	stories:source :script. 
+
+:scriptScene101 a stories:Interpretation;
+	rdfs:label "Script - Scene 101";
+    rdfs:comment "SYLVIA running back in - Because SUZETTE is now on the floor, the GIRLS panicking- LOTS OF BUMPS are now writhing under Suzette's clothes - The PLUMP MAN's still standing, but horrified, his clothes all still moving and flexing with bumps - The YOUNG WOMAN at the bar's the same, scared, trying to press down the moving bumps in her clothes -";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene102 a stories:Interpretation;
+	rdfs:label "Script - Scene 102";
+    rdfs:comment "ROGER on the floor, rolling on to his side, trying to see - LOTS OF BUMPS moving under the back of his shirt -";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene103 a stories:Interpretation;
+	rdfs:label "Script - Scene 103";
+    rdfs:comment "THE DOCTOR still fighting - DONNA at his side - THE DOCTOR - gotta cancel the signal - - and he takes out his GOLD CAPSULE & PENDANT, wrapping a wire around it, connecting it to the computer- THE DOCTOR (CONT'D) This contains the primary signal, if I can switch it off, the fat goes back to being just fat -";
+	stories:interprets :doctor_hacking2;
+	#
+	stories:source :script. 
+
+:scriptScene104 a stories:Interpretation;
+	rdfs:label "Script - Scene 104";
+    rdfs:comment "MISS FOSTER at the COMPUTER WALL - slams a lever - ! MISS FOSTER Nice try. Double strength!";
+	stories:interprets :foster_acts2;
+	#
+	stories:source :script. 
+
+:scriptScene105 a stories:Interpretation;
+	rdfs:label "Script - Scene 105";
+    rdfs:comment "ALARMS BLEEP - bad news, THE DOCTOR still with the GOLD CAPSULE and wiring - THE DOCTOR No, she's doubled it, I need - On his feet - runs a few yards down the corridor, desperate - THE DOCTOR (CONT'D) - haven't got time - !! - stops, runs back, grabs wiring - so fast, now - THE DOCTOR (CONT'D) - it's too far - can't override it - they're all gonna die - !";
+	stories:interprets :doctor_hacking2;
+	#
+	stories:source :script. 
+
+:scriptScene106 a stories:Interpretation;
+	rdfs:label "Script - Scene 106";
+    rdfs:comment "SUZETTE, on the floor, panicking, as her clothes heave - ";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene107 a stories:Interpretation;
+	rdfs:label "Script - Scene 107";
+    rdfs:comment "CU on ROGER, wailing, helpless, so scared, as his back writhes, under his shirt. About to separate, any second...";
+	stories:interprets :parthenogenesis;
+	#
+	stories:source :script. 
+
+:scriptScene108 a stories:Interpretation;
+	rdfs:label "Script - Scene 108";
+    rdfs:comment "CU DONNA, now fixed, quiet, as THE DOCTOR works, frantic - DONNA Is there anything I can do? THE DOCTOR - sorry, this is way beyond you, Donna - gotta double the base pulse - I can't - !! DONNA Doctor, tell me, what do you need? THE DOCTOR I need a second capsule, to boost the override, but I've only got the one - I can't save them - ! He keeps working, as Donna calmly reaches into her pocket... And Donna holds up... HER GOLD CAPSULE & PENDANT. The Doctor looks at her. She looks at him. The moment suspended. Just magic. He smiles. She smiles. Then back to normal, as he grabs the SECOND CAPSULE off her, jams it into the wiring - And the whole COMPUTER BANK goes dead!";
+	stories:interprets :donna_produces_capsule;
+	#
+	stories:source :script. 
+
+:scriptScene109 a stories:Interpretation;
+	rdfs:label "Script - Scene 109";
+    rdfs:comment "SUZETTE on the floor, SYLVIA & GIRLS crowding round her - But Suzette's suddenly still. SUZETTE It's stopped. They've gone... She's patting her clothes, incredulous. No bumps. CUT TO PLUMP MAN in b/g, laughing, overjoyed! It's stopped! CUT TO YOUNG WOMAN. Joy!";
+	stories:interprets :parthenogenesis;
+	stories:interprets :donna_produces_capsule;
+	#
+	stories:source :script. 
+
+:scriptScene110 a stories:Interpretation;
+	rdfs:label "Script - Scene 110";
+    rdfs:comment "ROGER on the floor, but suddenly calm. Lifts his head up. Pats his clothes. All flat. Nothing. It's stopped! He starts to laugh, out of shock, but oh, the relief!";
+	stories:interprets :parthenogenesis;
+	stories:interprets :donna_produces_capsule;
+	#
+	stories:source :script. 
+
+:scriptScene111 a stories:Interpretation;
+	rdfs:label "Script - Scene 111";
+    rdfs:comment "MISS FOSTER slamming levers on the COMPUTER WALL, but it's dead, no lights. PENNY still tied to the chair. PENNY What's happened? MISS FOSTER I think the Doctor happened. But we've still given birth to ten thousand Adipose. And the Nursery is coming.";
+	stories:interprets :foster_acts2;
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene112 a stories:Interpretation;
+	rdfs:label "Script - Scene 112";
+    rdfs:comment "THE DOCTOR & DONNA, as the room starts to rumble. Shudder. Both looking up: DONNA What the hell is that..? THE DOCTOR They're babies. They need a Nursery.";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene113 a stories:Interpretation;
+	rdfs:label "Script - Scene 113";
+    rdfs:comment "SUZETTE sitting, exhausted, THE GIRLS all tending to her - SUZETTE ...it just went, it just stopped... The place starts to rumble. Shudder. Small CAMERA SHAKE. SYLVIA What on earth is it now - ?! And she runs back to the door - ";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene114 a stories:Interpretation;
+	rdfs:label "Script - Scene 114";
+    rdfs:comment "SYLVIA runs out. Stops dead. Looking up. Then SUZETTE, and the GIRLS, and the PLUMP MAN & LADY join her, all aghast - PEOPLE all around, looking up at the sky. The deep, low rumble shuddering away... HIGH WIDE SHOT of the STREET - still in chaos, with cars having braked all over the place - EVERYONE staring up... FX: A HUGE SPACESHIP gliding overhead! Close Encounters- style, a black disc with BRIGHT LIGHTS UNDERNEATH. On Sylvia, and the others, all open-mouthed... ";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene115 a stories:Interpretation;
+	rdfs:label "Script - Scene 115";
+    rdfs:comment "WILF is sitting there with his TELESCOPE, and a CUPPA. Earphones on - only a CD Walkman, playing Gene Pitney. Wilf's the happiest man in the world. FX: BEHIND HIM, the SPACESHIP gliding over LONDON, way off in the distance. His telescope's pointing the other way. He's got no idea.";
+	stories:interprets :wilf_night;
+	stories:interprets :nursery_arrives;
+	#
+	stories:source :script. 
+
+:scriptScene116 a stories:Interpretation;
+	rdfs:label "Script - Scene 116";
+    rdfs:comment "PROFILE, MISS FOSTER at the window, looking up. Smiling. PENNY What's that noise? What is it?? MISS FOSTER My lift home. And she strides out - PENNY You can't just leave me here! But she does!";
+	stories:interprets :penny_recaptured;
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene117 a stories:Interpretation;
+	rdfs:label "Script - Scene 117";
+    rdfs:comment "FX: LOW ANGLE, looking up at the SPACESHIP, gliding to a halt like a vast halo above the Tower Block. FX: LOW ANGLE, an ADIPOSE waving up at the SPACESHIP.";
+	stories:interprets :nursery_arrives;
+	#
+	stories:source :script. 
+
+:scriptScene118 a stories:Interpretation;
+	rdfs:label "Script - Scene 118";
+    rdfs:comment "The rumbling, shaking, stops. THE DOCTOR still packing wires back into the COMPUTER WALL, DONNA helping - DONNA When you say Nursery, you don't mean a creche in Notting Hill? THE DOCTOR Nursery Ship - ohh, wait a minute - One screen on the Wall has blinked into life. Strange alien script scrolling across - the Doctor fascinated. DONNA Hadn't we better go and stop them? THE DOCTOR Hold on, hold on... Instructions from the Adiposian First Family...";
+	stories:interprets :nursery_arrives;
+	stories:interprets :adiposians_communicate;
+	#
+	stories:source :script. 
+
+:scriptScene119 a stories:Interpretation;
+	rdfs:label "Script - Scene 119";
+    rdfs:comment "MISS FOSTER strides out. Stands there. Triumphant. Addresses the crowd, like Eva Peron. MISS FOSTER Children! Oh my children, behold! I am taking you home! FX: REVEAL that the streets outside the building are now full of HUNDREDS OF ADIPOSE - all going 'yaaay!', happy! MISS FOSTER (CONT'D) Far across the galaxy, your new mummies and daddies are waiting. And you will fly! And she gestures upwards, arms wide, head back, exultant. FX: WHAM! LOW ANGLE BUILDING, as STRONG, WIDE, BLUISH BEAMS OF LIGHT shaft down from the SPACESHIP. MISS FOSTER (CONT'D) Up you go, babies. Up you go! FX: A BUNCH OF ADIPOSE in a BEAM OF LIGHT, and one by one, they begin to rise up, gently, into the air, wheee! FX: WIDE SHOT, STREET, THE HUNDREDS OF ADIPOSE now in bluish BEAMS OF LIGHT, as they ALL begin to lift up, up... On MISS FOSTER, exultant: MISS FOSTER (CONT'D) That's it! Fly away home! ";
+	stories:interprets :adipose_collection;
+	#
+	stories:source :script. 
+
+:scriptScene120 a stories:Interpretation;
+	rdfs:label "Script - Scene 120";
+    rdfs:comment "THE DOCTOR still reading the screen - THE DOCTOR - she wired up the building, to convert it into a Levitation Post. Ohh, but we're not the ones in trouble now, she is - And he's running, Donna following -";
+	stories:interprets :adiposians_communicate;
+	#
+	stories:source :script. 
+
+:scriptScene121 a stories:Interpretation;
+	rdfs:label "Script - Scene 121";
+    rdfs:comment "Adipose all gone; MISS FOSTER steps forward, into the strong PRAC LIGHT from above. Deep breath, looking up... MISS FOSTER Take me. The children need me!";
+	stories:interprets :fosters_collection;
+	#
+	stories:source :script. 
+
+:scriptScene121A a stories:Interpretation;
+	rdfs:label "Script - Scene 121A";
+    rdfs:comment "PENNY, still tied up, now illuminated by the PRAC LIGHT from outside. But now she's open-mouthed, staring out of the window, can't believe what she's seeing...";
+	stories:interprets :adipose_collection;
+	stories:interprets :penny_recaptured;	
+	#
+	stories:source :script. 
+
+:scriptScene122 a stories:Interpretation;
+	rdfs:label "Script - Scene 122";
+    rdfs:comment "THE DOCTOR & DONNA burst out - And stop. Awestruck; the light of the BEAMS reflecting off them, gently; all rather beautiful, as they look out... FX: the sky full of ADIPOSE, the air glowing with BEAM- LIGHT, as 100s of the little dot-sized creatures rise up... The Doctor & Donna smiling. DONNA What you gonna do, then? Blow them up? THE DOCTOR They're just children. Can't help where they came from. DONNA Makes a change from last time. That Martha must've done you good. THE She did. Yeah, (beat, then She fancied me. DOCTOR she did. cheeky) DONNA Oh, Mad Martha, that one. Blind Martha. Charity Martha. FX: CLOSER on one rising ADIPOSE; it gives a little wave. Donna waves back. Then stops. DONNA (CONT'D) I'm waving at fat. THE DOCTOR Actually, as a diet plan, it sort of worked... There she is - ! FX: A DISTANCE AWAY - IE, away from the roof, over the street, MISS FOSTER is rising up, gently, in the same levitation beam. Around her, the LAST ADIPOSE rise up through shot, disappearing up, gone. The Doctor runs forward, urgent - Donna following - THE DOCTOR (CONT'D) Matron Cofelia, listen to me - ! MID-SHOT, Miss Foster stops, suspended in the air (IE, NON- FX, shot against night sky; she's haloed and backlit by PRAC LIGHT). Calling across the night: MISS FOSTER I don't think so, Doctor. And if I never see you again, it'll be - THE DOCTOR - oh why does no one ever listen?! I'm trying to help! Just... get across to the roof, can you shift the levitation beam? MISS FOSTER What, so you can arrest me? THE DOCTOR Just listen!! I saw the Adiposian instructions! They know it's a crime, breeding on Earth, so what's the one thing they want to get rid of? Their accomplice! MISS FOSTER I'm far more than that, I'm nanny, to all these children. THE DOCTOR Exactly! Mum and Dad have got the kids, they don't need the nanny any more! MID-SHOT, on Miss Foster... as the LIGHT SNAPS OFF! Darkness. She looks left and right, held in the air for a second like a cartoon coyote. Then - FX: WIDE SHOT as Miss Foster falls, plummets, screaming, out of the bottom of frame - Donna turns to the Doctor, flinches, with the OOV crunch! The Doctor puts his arm around her. So sorry. Then both look up, hearing the whine of engines...";
+	stories:interprets :fosters_collection;
+	#
+	stories:source :script. 
+
+:scriptScene123 a stories:Interpretation;
+	rdfs:label "Script - Scene 123";
+    rdfs:comment "FX: A WINDOW crammed full of ADIPOSE. Mewling. They look sad. A little wave from one of them, bye bye. FX: PULLING OUT, the WINDOW set in the SPACESHIP, and the Ship hurtles away, into space, away from Earth, gone..."; 	
+    stories:interprets :nursery_leaves;
+	#
+	stories:source :script. 
+
+:scriptScene124 a stories:Interpretation;
+	rdfs:label "Script - Scene 124";
+    rdfs:comment "THE DOCTOR & DONNA stroll out. Exhausted. Calm. Way off in the distance, there are signs of the disruption - POLICE BARRIERS, FLASHING LIGHTS. An AMBULANCE and PARAMEDICS closer to the building (hiding the remains of Miss Foster). The Doctor looks at the SONIC PEN, decides naah, chucks it away, gets out the SONIC SCREWDRIVER, jams it into his GIZMO, points the whole thing up - FX: a SMALL BLUE PULSE OF LIGHT flies up, into the sky... DONNA What's that? THE DOCTOR Sending a statement to the Shadow Proclamation. Reporting the Adiposian crime. Suppose the children will be taken into care. I hate being official, brrr. PENNY appears. Staggering. She is still tied to her chair, having to hold it behind her. Wild-eyed and furious: PENNY You two! You're just... mad! D'you hear me?? Mad! I'm gonna report you! For madness! She runs off towards the distant POLICE, like a lunatic. DONNA Some people just can't take it. THE DOCTOR Nope. DONNA And some people can! So, then. Tardis! Come on! She grabs his hand, yanks him out of shot - !";
+	stories:interprets :doctor_reports_crime;
+	stories:interprets :penny_finally_escapes;
+	#
+	stories:source :script. 
+	
+:scriptScene125 a stories:Interpretation;
+	rdfs:label "Script - Scene 125";
+    rdfs:comment "The street from sc.50, DONNA running in, realising that her car is near the TARDIS, though a fair distance between them. THE DOCTOR is the definition of dubious. DONNA That's my car! That's like destiny! And I've been ready for this, I packed ages ago, just in case - And she's opening the boot, hauling out a suitcase, another, a carpet bag, a valise, a trolley-thing, two plastic bags - She shoves them at the Doctor, piling them up in his arms - DONNA (CONT'D) - cos I thought, hot weather, cold weather, no weather, he goes anywhere, I've gotta be prepared - THE DOCTOR You've got a hatbox. DONNA Planet of the Hats, I'm ready! She swings the boot shut, slam - ! JUMP CUT TO DONNA dumping her armfuls of stuff by the Tardis, THE DOCTOR standing back, still weighed down with luggage; so she's in the Tardis doorway, with him facing her, the opposite of the end of 3.X. DONNA (CONT'D) - I don't need injections, do I? Y'know, like when you go to Cambodia, is there any of that? Cos my friend Veena went to Bahrain, and... you're not saying very much. THE DOCTOR No, but it's just... It's a funny old life, in the Tardis, it's not... DONNA (quiet, crestfallen) You don't want me. THE DOCTOR I'm not saying that. DONNA But you asked me. (silence) Would you rather be on your own? THE DOCTOR ...no. Actually, no. (dumps luggage) But the last time, with Martha, like I said, it got complicated. And it was all my fault. I mean... (sighs) I just want a mate. DONNA You just want TO MATE??! THE DOCTOR I just want A mate! DONNA You're not mating with me, sunshine! THE DOCTOR A mate, I want, a! Mate! DONNA Just as well! I'm not having any of that nonsense, you're a skinny streak of nothing. Alien nothing. THE DOCTOR There we are, then. DONNA Okay! I can come? THE DOCTOR Yeah. Course you can, yeah. (smiles) I'd love it. She runs towards him, overjoyed - DONNA Ohhhh, that's just - ! (no, diverts!) Car keys! THE DOCTOR What? DONNA I've got my mother's car keys! Back in a tick! And she's gone. The Doctor stands there for a second, looking at the luggage, wondering, what the hell..? But then crucially, he smiles. Starts picking up the bags.";
+	stories:interprets :assistant_discussion;
+	#
+	stories:source :script. 
+
+:scriptScene126 a stories:Interpretation;
+	rdfs:label "Script - Scene 126";
+    rdfs:comment "OMITTED";
+	stories:source :script. 
+
+:scriptScene127 a stories:Interpretation;
+	rdfs:label "Script - Scene 127";
+    rdfs:comment "DONNA pokes her head around the half-open door. DONNA Off we go then! THE DOCTOR by the console, plus luggage. As Donna walks up the ramp to join him: THE DOCTOR Here it is! The Tardis! Bigger on the inside than it is on the - DONNA - oh I know all that bit, frankly you could turn the heating up. THE DOCTOR So! You've got the whole wide universe. Where d'you want to go? DONNA I know exactly the place. THE DOCTOR Which is..? DONNA Two and a half miles, that way."; 
+   	stories:interprets :departure;
+	#
+	stories:source :script. 
+	
+:scriptScene128 a stories:Interpretation;
+	rdfs:label "Script - Scene 128";
+    rdfs:comment "WILF on his lonely mount.	He's pottering about with the TELESCOPE. Happy. A sip of tea. Gene Pitney still on the earphones. Then he looks through the eyepiece, focusing it... Stops. Eh?! Looks up, without the telescope. But..? Looks back through the eyepiece. And then he's all excited! FX: WILF'S POV. The night sky, with a LITTLE BLUE BOX	spinning across the sky. He calls off, as though she might come running - WILF	But... Donna! Donna! It's the flying blue box!! Looks back through the eyepiece, tightens the focus. Stunned. Whispers. WILF (CONT'D)  Whaaaat...? FX: HIS POV: CLOSER on the TARDIS. DONNA standing in the doorway. Waving at him! Behind her, THE DOCTOR, and he gives a little wave, too. WILF (CONT'D) But that's... Donna? That's him! And he abandons the telescope. Waves up at the sky! With a great big yahoo! FX (SHOT 128.1 cont.), the TARDIS spins away into space. HIGH SHOT: on WILF, on his little hillside, in the middle of the night, waving up at the sky and whooping with joy.";
+	stories:interprets :departure;
+	#
+	stories:source :script. 
+
+# FIXME: No way of ordering interpretations in sequence. ie scene1 < scene2 < scene 3. Would the :script do this somehow, or the :plotBeatsStory similar to consituent event?
+# This is could be esp. important as auto-injest would come from scripts, so stories as interpretations with no events could happen?
+# And somehow we need to group script scenes into the script -> done by source, but not ordered. -> perhaps source has location within media
+
+### INTERPRETATIONS FROM PROGRAMME
+
+#	xxx
+
+# Timeline should go somewhere else? And have a programme linked to it (how?)
+:programmeTimeline a timeline:timeline;
+    rdfs:label "The timeline of the S4E1 programme, ie audio-visual track".
+
+
+
+
+
+
+
+
+
+
+
+:programmeSegment1 a stories:Interpretation;
+    rdfs:label "Programme - Segment 1";
+    stories:interprets :scriptScene04;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval1.
+
+:programmeSegmentInterval1 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "0"^^xsd:int;
+    timeline:endsAtInt "38"^^xsd:int.
+
+:programmeSegment2 a stories:Interpretation;
+    rdfs:label "Programme - Segment 2";
+    stories:interprets :scriptScene05;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval2.
+
+:programmeSegmentInterval2 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "38"^^xsd:int;
+    timeline:endsAtInt "46"^^xsd:int.
+
+:programmeSegment3 a stories:Interpretation;
+    rdfs:label "Programme - Segment 3";
+    stories:interprets :scriptScene06;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval3.
+
+:programmeSegmentInterval3 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "46"^^xsd:int;
+    timeline:endsAtInt "50"^^xsd:int.
+
+:programmeSegment4 a stories:Interpretation;
+    rdfs:label "Programme - Segment 4";
+    stories:interprets :scriptScene07;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval4.
+
+:programmeSegmentInterval4 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "50"^^xsd:int;
+    timeline:endsAtInt "59"^^xsd:int.
+
+:programmeSegment5 a stories:Interpretation;
+    rdfs:label "Programme - Segment 5";
+    stories:interprets :scriptScene08;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval5.
+
+:programmeSegmentInterval5 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "59"^^xsd:int;
+    timeline:endsAtInt "67"^^xsd:int.
+
+:programmeSegment6 a stories:Interpretation;
+    rdfs:label "Programme - Segment 6";
+    stories:interprets :scriptScene09;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval6.
+
+:programmeSegmentInterval6 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "67"^^xsd:int;
+    timeline:endsAtInt "71"^^xsd:int.
+
+:programmeSegment7 a stories:Interpretation;
+    rdfs:label "Programme - Segment 7";
+    stories:interprets :scriptScene10;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval7.
+
+:programmeSegmentInterval7 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "71"^^xsd:int;
+    timeline:endsAtInt "79"^^xsd:int.
+
+:programmeSegment8 a stories:Interpretation;
+    rdfs:label "Programme - Segment 8";
+    stories:interprets :scriptScene11;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval8.
+
+:programmeSegmentInterval8 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "79"^^xsd:int;
+    timeline:endsAtInt "83"^^xsd:int.
+
+:programmeSegment9 a stories:Interpretation;
+    rdfs:label "Programme - Segment 9";
+    stories:interprets :scriptScene13part1;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval9.
+
+:programmeSegmentInterval9 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "83"^^xsd:int;
+    timeline:endsAtInt "95"^^xsd:int.
+
+:programmeSegment10 a stories:Interpretation;
+    rdfs:label "Programme - Segment 10";
+    stories:interprets :scriptScene13part2;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval10.
+
+:programmeSegmentInterval10 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "95"^^xsd:int;
+    timeline:endsAtInt "112"^^xsd:int.
+
+:programmeSegment11 a stories:Interpretation;
+    rdfs:label "Programme - Segment 11";
+    stories:interprets :scriptScene13part3;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval11.
+
+:programmeSegmentInterval11 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "112"^^xsd:int;
+    timeline:endsAtInt "137"^^xsd:int.
+
+:programmeSegment12 a stories:Interpretation;
+    rdfs:label "Programme - Segment 12";
+    stories:interprets :scriptScene13part4;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval12.
+
+:programmeSegmentInterval12 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "137"^^xsd:int;
+    timeline:endsAtInt "158"^^xsd:int.
+
+:programmeSegment13 a stories:Interpretation;
+    rdfs:label "Programme - Segment 13";
+    stories:interprets :scriptScene13part5;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval13.
+
+:programmeSegmentInterval13 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "158"^^xsd:int;
+    timeline:endsAtInt "186"^^xsd:int.
+
+:programmeSegment14 a stories:Interpretation;
+    rdfs:label "Programme - Segment 14";
+    stories:interprets :scriptScene14;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval14.
+
+:programmeSegmentInterval14 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "186"^^xsd:int;
+    timeline:endsAtInt "315"^^xsd:int.
+
+:programmeSegment15 a stories:Interpretation;
+    rdfs:label "Programme - Segment 15";
+    stories:interprets :scriptScene15;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval15.
+
+:programmeSegmentInterval15 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "315"^^xsd:int;
+    timeline:endsAtInt "325"^^xsd:int.
+
+:programmeSegment16 a stories:Interpretation;
+    rdfs:label "Programme - Segment 16";
+    stories:interprets :scriptScene16;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval16.
+
+:programmeSegmentInterval16 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "325"^^xsd:int;
+    timeline:endsAtInt "347"^^xsd:int.
+
+:programmeSegment17 a stories:Interpretation;
+    rdfs:label "Programme - Segment 17";
+    stories:interprets :scriptScene17;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval17.
+
+:programmeSegmentInterval17 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "347"^^xsd:int;
+    timeline:endsAtInt "351"^^xsd:int.
+
+:programmeSegment18 a stories:Interpretation;
+    rdfs:label "Programme - Segment 18";
+    stories:interprets :scriptScene18;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval18.
+
+:programmeSegmentInterval18 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "351"^^xsd:int;
+    timeline:endsAtInt "377"^^xsd:int.
+
+:programmeSegment19 a stories:Interpretation;
+    rdfs:label "Programme - Segment 19";
+    stories:interprets :scriptScene19;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval19.
+
+:programmeSegmentInterval19 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "377"^^xsd:int;
+    timeline:endsAtInt "401"^^xsd:int.
+
+:programmeSegment20 a stories:Interpretation;
+    rdfs:label "Programme - Segment 20";
+    stories:interprets :scriptScene20;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval20.
+
+:programmeSegmentInterval20 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "401"^^xsd:int;
+    timeline:endsAtInt "426"^^xsd:int.
+
+:programmeSegment21 a stories:Interpretation;
+    rdfs:label "Programme - Segment 21";
+    stories:interprets :scriptScene21;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval21.
+
+:programmeSegmentInterval21 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "426"^^xsd:int;
+    timeline:endsAtInt "430"^^xsd:int.
+
+:programmeSegment22 a stories:Interpretation;
+    rdfs:label "Programme - Segment 22";
+    stories:interprets :scriptScene22;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval22.
+
+:programmeSegmentInterval22 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "430"^^xsd:int;
+    timeline:endsAtInt "464"^^xsd:int.
+
+:programmeSegment23 a stories:Interpretation;
+    rdfs:label "Programme - Segment 23";
+    stories:interprets :scriptScene23;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval23.
+
+:programmeSegmentInterval23 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "464"^^xsd:int;
+    timeline:endsAtInt "470"^^xsd:int.
+
+:programmeSegment24 a stories:Interpretation;
+    rdfs:label "Programme - Segment 24";
+    stories:interprets :scriptScene24;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval24.
+
+:programmeSegmentInterval24 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "470"^^xsd:int;
+    timeline:endsAtInt "481"^^xsd:int.
+
+:programmeSegment25 a stories:Interpretation;
+    rdfs:label "Programme - Segment 25";
+    stories:interprets :scriptScene25;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval25.
+
+:programmeSegmentInterval25 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "481"^^xsd:int;
+    timeline:endsAtInt "486"^^xsd:int.
+
+:programmeSegment26 a stories:Interpretation;
+    rdfs:label "Programme - Segment 26";
+    stories:interprets :scriptScene27;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval26.
+
+:programmeSegmentInterval26 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "486"^^xsd:int;
+    timeline:endsAtInt "488"^^xsd:int.
+
+:programmeSegment27 a stories:Interpretation;
+    rdfs:label "Programme - Segment 27";
+    stories:interprets :scriptScene28;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval27.
+
+:programmeSegmentInterval27 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "488"^^xsd:int;
+    timeline:endsAtInt "492"^^xsd:int.
+
+:programmeSegment28 a stories:Interpretation;
+    rdfs:label "Programme - Segment 28";
+    stories:interprets :scriptScene29;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval28.
+
+:programmeSegmentInterval28 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "492"^^xsd:int;
+    timeline:endsAtInt "508"^^xsd:int.
+
+:programmeSegment29 a stories:Interpretation;
+    rdfs:label "Programme - Segment 29";
+    stories:interprets :scriptScene30;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval29.
+
+:programmeSegmentInterval29 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "508"^^xsd:int;
+    timeline:endsAtInt "526"^^xsd:int.
+
+:programmeSegment30 a stories:Interpretation;
+    rdfs:label "Programme - Segment 30";
+    stories:interprets :scriptScene31;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval30.
+
+:programmeSegmentInterval30 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "526"^^xsd:int;
+    timeline:endsAtInt "607"^^xsd:int.
+
+:programmeSegment31 a stories:Interpretation;
+    rdfs:label "Programme - Segment 31";
+    stories:interprets :scriptScene33;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval31.
+
+:programmeSegmentInterval31 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "607"^^xsd:int;
+    timeline:endsAtInt "612"^^xsd:int.
+
+:programmeSegment32 a stories:Interpretation;
+    rdfs:label "Programme - Segment 32";
+    stories:interprets :scriptScene34;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval32.
+
+:programmeSegmentInterval32 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "612"^^xsd:int;
+    timeline:endsAtInt "626"^^xsd:int.
+
+:programmeSegment33 a stories:Interpretation;
+    rdfs:label "Programme - Segment 33";
+    stories:interprets :scriptScene35;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval33.
+
+:programmeSegmentInterval33 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "626"^^xsd:int;
+    timeline:endsAtInt "635"^^xsd:int.
+
+:programmeSegment34 a stories:Interpretation;
+    rdfs:label "Programme - Segment 34";
+    stories:interprets :scriptScene36;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval34.
+
+:programmeSegmentInterval34 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "635"^^xsd:int;
+    timeline:endsAtInt "640"^^xsd:int.
+
+:programmeSegment35 a stories:Interpretation;
+    rdfs:label "Programme - Segment 35";
+    stories:interprets :scriptScene32;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval35.
+
+:programmeSegmentInterval35 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "640"^^xsd:int;
+    timeline:endsAtInt "646"^^xsd:int.
+
+:programmeSegment36 a stories:Interpretation;
+    rdfs:label "Programme - Segment 36";
+    stories:interprets :scriptScene37;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval36.
+
+:programmeSegmentInterval36 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "646"^^xsd:int;
+    timeline:endsAtInt "653"^^xsd:int.
+
+:programmeSegment37 a stories:Interpretation;
+    rdfs:label "Programme - Segment 37";
+    stories:interprets :scriptScene38;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval37.
+
+:programmeSegmentInterval37 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "653"^^xsd:int;
+    timeline:endsAtInt "668"^^xsd:int.
+
+:programmeSegment38 a stories:Interpretation;
+    rdfs:label "Programme - Segment 38";
+    stories:interprets :scriptScene39;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval38.
+
+:programmeSegmentInterval38 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "668"^^xsd:int;
+    timeline:endsAtInt "672"^^xsd:int.
+
+:programmeSegment39 a stories:Interpretation;
+    rdfs:label "Programme - Segment 39";
+    stories:interprets :scriptScene40;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval39.
+
+:programmeSegmentInterval39 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "672"^^xsd:int;
+    timeline:endsAtInt "684"^^xsd:int.
+
+:programmeSegment40 a stories:Interpretation;
+    rdfs:label "Programme - Segment 40";
+    stories:interprets :scriptScene41;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval40.
+
+:programmeSegmentInterval40 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "684"^^xsd:int;
+    timeline:endsAtInt "717"^^xsd:int.
+
+:programmeSegment41 a stories:Interpretation;
+    rdfs:label "Programme - Segment 41";
+    stories:interprets :scriptScene43;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval41.
+
+:programmeSegmentInterval41 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "717"^^xsd:int;
+    timeline:endsAtInt "729"^^xsd:int.
+
+:programmeSegment42 a stories:Interpretation;
+    rdfs:label "Programme - Segment 42";
+    stories:interprets :scriptScene42;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval42.
+
+:programmeSegmentInterval42 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "729"^^xsd:int;
+    timeline:endsAtInt "749"^^xsd:int.
+
+:programmeSegment43 a stories:Interpretation;
+    rdfs:label "Programme - Segment 43";
+    stories:interprets :scriptScene44;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval43.
+
+:programmeSegmentInterval43 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "749"^^xsd:int;
+    timeline:endsAtInt "768"^^xsd:int.
+
+:programmeSegment44 a stories:Interpretation;
+    rdfs:label "Programme - Segment 44";
+    stories:interprets :scriptScene45;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval44.
+
+:programmeSegmentInterval44 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "768"^^xsd:int;
+    timeline:endsAtInt "806"^^xsd:int.
+
+:programmeSegment45 a stories:Interpretation;
+    rdfs:label "Programme - Segment 45";
+    stories:interprets :scriptScene46;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval45.
+
+:programmeSegmentInterval45 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "806"^^xsd:int;
+    timeline:endsAtInt "1015"^^xsd:int.
+
+:programmeSegment46 a stories:Interpretation;
+    rdfs:label "Programme - Segment 46";
+    stories:interprets :scriptScene47;
+    stories:source <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    programmes:time :programmeSegmentInterval46.
+
+:programmeSegmentInterval46 a timeline:Interval;
+    timeline:timeline :programmeTimeline;
+    timeline:beginsAtInt "1015"^^xsd:int;
+    timeline:endsAtInt "9999"^^xsd:int.
+
+
+
+
+
+### STORIES
+
+# 'HIGH LEVEL' STORY
+
+:highLevelStory a stories:Story;
+	rdfs:label "Doctor Who Series 4 Episode 1: Partners In Crime";
+	rdfs:comment "High Level Events";
+	stories:events :highLevelStoryEvents;
+	stories:contextualises :programmeProduction.
+
+:highLevelStoryEvents a stories:EventList;
+	stories:slot [
+		olo:index 1;
+		stories:item :adipose_industries_exposition
+		];
+	stories:slot [
+		olo:index 2;
+		stories:item :parthenogenesis_single
+		];
+	stories:slot [
+		olo:index 3;
+		stories:item :parthenogenesis_investigations
+		];
+	stories:slot [
+		olo:index 4;
+		stories:item :team_doctor_and_donna
+		];
+	stories:slot [
+		olo:index 5;
+		stories:item :parthenogenesis_all
+		];
+	stories:slot [
+		olo:index 6;
+		stories:item :adipose_arrive
+		];
+	stories:slot [
+		olo:index 7;
+		stories:item :donna_is_new_assistant
+		].
+
+
+# 'PLOT BEAT' LEVEL STORY
+
+:plotBeatsStory a stories:Story;
+	rdfs:label "Doctor Who Series 4 Episode 1: Partners In Crime";
+	rdfs:comment "Plot Beat Events and Interpretations";
+	stories:events :plotBeatsStoryEvents;
+	stories:contextualises :programmeProduction;
+	stories:contextualises :scriptScene01;
+	stories:contextualises :scriptScene02;
+	stories:contextualises :scriptScene03;
+	stories:contextualises :scriptScene04;
+	stories:contextualises :scriptScene05;
+	stories:contextualises :scriptScene05;
+	stories:contextualises :scriptScene07;
+	stories:contextualises :scriptScene08;
+	stories:contextualises :scriptScene09;
+	stories:contextualises :scriptScene10;
+	stories:contextualises :scriptScene11;
+	stories:contextualises :scriptScene12;
+	stories:contextualises :scriptScene13part1;
+	stories:contextualises :scriptScene13part2;
+	stories:contextualises :scriptScene13part3;
+	stories:contextualises :scriptScene13part4;
+	stories:contextualises :scriptScene13part5;
+	stories:contextualises :scriptScene14;
+	stories:contextualises :scriptScene15;
+	stories:contextualises :scriptScene15;
+	stories:contextualises :scriptScene17;
+	stories:contextualises :scriptScene18;
+	stories:contextualises :scriptScene19;
+	stories:contextualises :scriptScene20;
+	stories:contextualises :scriptScene21;
+	stories:contextualises :scriptScene22;
+	stories:contextualises :scriptScene23;
+	stories:contextualises :scriptScene24;
+	stories:contextualises :scriptScene25;
+	stories:contextualises :scriptScene25;
+	stories:contextualises :scriptScene27;
+	stories:contextualises :scriptScene28;
+	stories:contextualises :scriptScene29;
+	stories:contextualises :scriptScene30;
+	stories:contextualises :scriptScene31;
+	stories:contextualises :scriptScene32;
+	stories:contextualises :scriptScene33;
+	stories:contextualises :scriptScene34;
+	stories:contextualises :scriptScene35;
+	stories:contextualises :scriptScene35;
+	stories:contextualises :scriptScene37;
+	stories:contextualises :scriptScene38;
+	stories:contextualises :scriptScene39;
+	stories:contextualises :scriptScene40;
+	stories:contextualises :scriptScene41;
+	stories:contextualises :scriptScene42;
+	stories:contextualises :scriptScene43;
+	stories:contextualises :scriptScene44;
+	stories:contextualises :scriptScene45;
+	stories:contextualises :scriptScene45;
+	stories:contextualises :scriptScene47;
+	stories:contextualises :scriptScene48;
+	stories:contextualises :scriptScene49;
+	stories:contextualises :scriptScene50;
+	stories:contextualises :scriptScene51;
+	stories:contextualises :scriptScene52;
+	stories:contextualises :scriptScene53;
+	stories:contextualises :scriptScene54;
+	stories:contextualises :scriptScene55;
+	stories:contextualises :scriptScene55;
+	stories:contextualises :scriptScene57;
+	stories:contextualises :scriptScene58;
+	stories:contextualises :scriptScene59;
+	stories:contextualises :scriptScene60;
+	stories:contextualises :scriptScene61;
+	stories:contextualises :scriptScene62;
+	stories:contextualises :scriptScene63;
+	stories:contextualises :scriptScene64;
+	stories:contextualises :scriptScene65;
+	stories:contextualises :scriptScene65;
+	stories:contextualises :scriptScene67;
+	stories:contextualises :scriptScene68;
+	stories:contextualises :scriptScene69;
+	stories:contextualises :scriptScene70;
+	stories:contextualises :scriptScene71;
+	stories:contextualises :scriptScene72;
+	stories:contextualises :scriptScene73;
+	stories:contextualises :scriptScene74;
+	stories:contextualises :scriptScene75;
+	stories:contextualises :scriptScene75;
+	stories:contextualises :scriptScene77;
+	stories:contextualises :scriptScene78;
+	stories:contextualises :scriptScene79;
+	stories:contextualises :scriptScene80;
+	stories:contextualises :scriptScene81;
+	stories:contextualises :scriptScene82;
+	stories:contextualises :scriptScene83;
+	stories:contextualises :scriptScene84;
+	stories:contextualises :scriptScene85;
+	stories:contextualises :scriptScene85;
+	stories:contextualises :scriptScene87;
+	stories:contextualises :scriptScene88;
+	stories:contextualises :scriptScene89;
+	stories:contextualises :scriptScene90;
+	stories:contextualises :scriptScene91;
+	stories:contextualises :scriptScene92;
+	stories:contextualises :scriptScene93;
+	stories:contextualises :scriptScene94;
+	stories:contextualises :scriptScene95;
+	stories:contextualises :scriptScene95;
+	stories:contextualises :scriptScene97;
+	stories:contextualises :scriptScene98;
+	stories:contextualises :scriptScene99;
+	stories:contextualises :scriptScene100;
+	stories:contextualises :scriptScene101;
+	stories:contextualises :scriptScene102;
+	stories:contextualises :scriptScene103;
+	stories:contextualises :scriptScene104;
+	stories:contextualises :scriptScene105;
+	stories:contextualises :scriptScene105;
+	stories:contextualises :scriptScene107;
+	stories:contextualises :scriptScene108;
+	stories:contextualises :scriptScene109;
+	stories:contextualises :scriptScene110;
+	stories:contextualises :scriptScene111;
+	stories:contextualises :scriptScene112;
+	stories:contextualises :scriptScene113;
+	stories:contextualises :scriptScene114;
+	stories:contextualises :scriptScene115;
+	stories:contextualises :scriptScene115;
+	stories:contextualises :scriptScene117;
+	stories:contextualises :scriptScene118;
+	stories:contextualises :scriptScene119;
+	stories:contextualises :scriptScene120;
+	stories:contextualises :scriptScene121;
+	stories:contextualises :scriptScene122;
+	stories:contextualises :scriptScene123;
+	stories:contextualises :scriptScene124;
+	stories:contextualises :scriptScene125;
+	stories:contextualises :scriptScene125;
+	stories:contextualises :scriptScene127;
+	stories:contextualises :scriptScene128.
+
+:plotBeatsStoryEvents a stories:EventList;
+	stories:slot [
+		olo:index 1;
+		stories:item :building_entry
+		];
+	stories:slot [
+		olo:index 2;
+		stories:item :presentation
+		];
+	stories:slot [
+		olo:index 3;
+		stories:item :cubicles
+		];
+	stories:slot [
+		olo:index 4;
+		stories:item :stacey_and_donna
+		];
+	stories:slot [
+		olo:index 5;
+		stories:item :partho_activated
+		];
+	stories:slot [
+		olo:index 6;
+		stories:item :stacey_partho
+		];
+	stories:slot [
+		olo:index 7;
+		stories:item :donna_investigates
+		];
+	stories:slot [
+		olo:index 8;
+		stories:item :doctor_and_roger
+		];
+	stories:slot [
+		olo:index 9;
+		stories:item :collection_squad_sent
+		];
+	stories:slot [
+		olo:index 10;
+		stories:item :doctor_investigates
+		];
+	stories:slot [
+		olo:index 11;
+		stories:item :collection_squad_collects
+		];
+	stories:slot [
+		olo:index 12;
+		stories:item :foster_investigates
+		];
+	stories:slot [
+		olo:index 13;
+		stories:item :donna_with_family
+		];
+	stories:slot [
+		olo:index 14;
+		stories:item :doctor_investigates_pendant
+		];
+	stories:slot [
+		olo:index 15;
+		stories:item :doctor_to_storeroom
+		];
+	stories:slot [
+		olo:index 16;
+		stories:item :donna_to_cubicles
+		];
+	stories:slot [
+		olo:index 17;
+		stories:item :donna_cubicles
+		];
+	stories:slot [
+		olo:index 18;
+		stories:item :foster_investigates_cubicles
+		];
+	stories:slot [
+		olo:index 19;
+		stories:item :noble_family_prepare_for_evening
+		];
+	stories:slot [
+		olo:index 20;
+		stories:item :doctor_storeroom
+		];		
+	stories:slot [
+		olo:index 21;
+		stories:item :doctor_snooping
+		];		
+	stories:slot [
+		olo:index 22;
+		stories:item :pennys_capture
+		];		
+	stories:slot [
+		olo:index 23;
+		stories:item :doctor_donna_meet
+		];
+	stories:slot [
+		olo:index 24;
+		stories:item :doctor_donna_escape
+		];
+	stories:slot [
+		olo:index 25;
+		stories:item :fosters_chase
+		];
+	stories:slot [
+		olo:index 26;
+		stories:item :doctor_rescues_donna
+		];
+	stories:slot [
+		olo:index 27;
+		stories:item :penny_released
+		];
+	stories:slot [
+		olo:index 28;
+		stories:item :foster_and_doctor_reveal_indentities
+		];
+	stories:slot [
+		olo:index 29;
+		stories:item :premature_labour_triggered
+		];
+	stories:slot [
+		olo:index 30;
+		stories:item :penny_recaptured
+		];
+	stories:slot [
+		olo:index 31;
+		stories:item :foster_acts
+		];
+	stories:slot [
+		olo:index 32;
+		stories:item :doctor_hacking
+		];
+	stories:slot [
+		olo:index 33;
+		stories:item :guards_stunned
+		];
+	stories:slot [
+		olo:index 34;
+		stories:item :parthenogenesis
+		];
+	stories:slot [
+		olo:index 35;
+		stories:item :adipose_collection
+		];
+	stories:slot [
+		olo:index 36;
+		stories:item :foster_acts2
+		];
+	stories:slot [
+		olo:index 37;
+		stories:item :doctor_hacking2
+		];
+	stories:slot [
+		olo:index 38;
+		stories:item :nursery_arrives
+		];
+	stories:slot [
+		olo:index 39;
+		stories:item :wilf_night
+		];
+	stories:slot [
+		olo:index 40;
+		stories:item :adiposians_communicate
+		];
+	stories:slot [
+		olo:index 41;
+		stories:item :adipose_collection
+		];
+	stories:slot [
+		olo:index 42;
+		stories:item :fosters_collection
+		];
+	stories:slot [
+		olo:index 43;
+		stories:item :nursery_leaves
+		];
+	stories:slot [
+		olo:index 44;
+		stories:item :doctor_reports_crime
+		];
+	stories:slot [
+		olo:index 45;
+		stories:item :penny_finally_escapes
+		];
+	stories:slot [
+		olo:index 46;
+		stories:item :assistant_discussion
+		];
+	stories:slot [
+		olo:index 47;
+		stories:item :departure
+		].
+
+# MEDIA REPRESENTATIONS
+
+<http://www.bbc.co.uk/programmes/b009w049#programme> a programmes:Episode;
+    stories:tells :highLevelStory;
+    stories:tells :plotBeatsStory.
+
+:cast {
+#	whoc:doctor portrayal:actor whop:david_tennant.
+#	whoc:donna_noble portrayal:actor whop:catherine_tate.
+	# [etc.....]
+	}
+#FIXME: For BBC stuff, the programmes ontology can handle this
+
+:crew {
+	# writer
+	# [etc.....]
+	}
+
+:programmeProduction a stories:Interpretation;
+	rdfs:label "Production info for the TV programme: writer, cast, etc.";
+	stories:interprets <http://www.bbc.co.uk/programmes/b009w049#programme>;
+	stories:asserts :cast;
+	stories:asserts :crew;
+	stories:source <http://www.imdb.com/title/tt1159991/>.
+
+:script a foaf:Document;
+    foaf:primaryTopic <http://www.bbc.co.uk/programmes/b009w049#programme>;
+    foaf:page <http://www.thewriterstale.com/scr.html>;
+	rdfs:resource <http://www.thewriterstale.com/pdfs/Doctor%20Who%204%20Ep.1%20-%20Shooting%20Script%20-%20Yellow%20-%2016.10.07.pdf>;
+	stories:tells :plotBeatsStory.
+#FIXME: group script scenes into script
