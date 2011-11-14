@@ -10,63 +10,71 @@ function eventSecs()
 function handleEventAtSec(time)
 {
 	console.log("Handling event at time: " + time)
-	
-	var workingTime = 0;
-	var i = 0;
-	while (workingTime <= time)
+	var workingTime;
+	var i;
+
+	if (objectsWithInstantsArray.length > 0)
 	{
-		workingTime = objectsWithInstantsArray[i].atTime;
-		
-		if (time == workingTime)
+		workingTime = 0;
+		i = 0;
+		while (workingTime <= time)
 		{
-			console.log("At this instant: " + objectsWithInstantsArray[i].url);
+			workingTime = objectsWithInstantsArray[i].atTime;
 			
-			// Start downloading the object from the triplestore
-			subjectQuery(objectsWithInstantsArray[i].url);
+			if (time == workingTime)
+			{
+				console.log("At this instant: " + objectsWithInstantsArray[i].url);
+				
+				// Start downloading the object from the triplestore
+				subjectQuery(objectsWithInstantsArray[i].url);
+				
+				// Tell the display...
+				p.triggerObjectWithInstant(objectsWithInstantsArray[i].url);
+			}
 			
-			// Tell the display...
-			p.triggerObjectWithInstant(objectsWithInstantsArray[i].url);
+			i++;
 		}
-		
-		i++;
 	}
 	
-	workingTime = 0;
-	i = 0;
-	while (workingTime <= time)
-	{
-		workingTime = objectsWithIntervalsArray[i].beginTime;
-
-		if (time == workingTime)
+	if (objectsWithIntervalsArray.length > 0)
+	{	
+		workingTime = 0;
+		i = 0;
+		while (workingTime <= time)
 		{
-			console.log("Begins: " + objectsWithIntervalsArray[i].url);
-			
-			// Start downloading the object from the triplestore
-			subjectQuery(objectsWithIntervalsArray[i].url);
-			
-			// Tell the display...
-			p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, true);
-			
-		}
-		
-		i++;
-	}
+			workingTime = objectsWithIntervalsArray[i].beginTime;
 	
-	workingTime = 0;
-	i = 0;
-	while (workingTime <= time)
-	{
-		workingTime = objectsWithIntervalsArray[i].endTime;
-
-		if (time == workingTime)
-		{
-			console.log("Ends: " + objectsWithIntervalsArray[i].url);
+			if (time == workingTime)
+			{
+				console.log("Begins: " + objectsWithIntervalsArray[i].url);
+				
+				// Start downloading the object from the triplestore
+				subjectQuery(objectsWithIntervalsArray[i].url);
+				
+				// Tell the display...
+				p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, true);
+				
+			}
 			
-			// Tell the display...
-			p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, false);
+			i++;
 		}
 		
-		i++;
+		workingTime = 0;
+		i = 0;
+		while (workingTime <= time)
+		{
+			workingTime = objectsWithIntervalsArray[i].endTime;
+	
+			if (time == workingTime)
+			{
+				console.log("Ends: " + objectsWithIntervalsArray[i].url);
+				
+				// Tell the display...
+				p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, false);
+			}
+			
+			i++;
+		}
 	}
 }
 

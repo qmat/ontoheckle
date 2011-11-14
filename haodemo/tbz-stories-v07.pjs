@@ -119,7 +119,7 @@ function sketch(p)
 		}
 	}
 	
-	// PUBLIC METHOD
+	// PUBLIC METHOD - To be called by video playback when at an instant time
 	
 	p.triggerObjectWithInstant = function(key)
 	{
@@ -132,6 +132,8 @@ function sketch(p)
 		
 		// animate off, slowly, somehow. use activeArrayForInstants to keep the recent thread, push rest to border, put drift function in update if node is an instant?
 	}
+
+	// PUBLIC METHOD - To be called by video playback when at an interval time
 	
 	p.triggerObjectWithInterval = function(key, isBegin)
 	{
@@ -152,13 +154,30 @@ function sketch(p)
 			if (index >= 0)
 			{
 				activeArrayForIntervals.splice(index,1);
-				nodeDict[key].moveTo(100, 500);
+				moveToHoldingArea(key);
 			}
 			else
 			{
 				console.log("Error: Key not found");
 			}
 		}
+	}
+
+	//	SKETCH METHOD - This animates a node to somewhere in the 'holding area'
+	moveToHoldingArea = function(key)
+	{
+		// Holding area could be anywhere, right now its a strip at the bottom of the sketch
+		var holdWidth = p.width;
+		var holdHeight = 100;
+		var holdXOrigin = 0;
+		var holdYOrigin = p.height - holdHeight;
+		
+		var node = nodeDict[key];
+		
+		holdWidth -= Math.max(node.width, 0);
+		holdHeight -= Math.max(node.height, 0);
+		
+		node.moveTo(holdXOrigin + Math.random()*holdWidth, holdYOrigin + Math.random()*holdHeight)
 	}
 
 	//  SKETCH METHOD - This is triggered when object is brought in from triplestore.
