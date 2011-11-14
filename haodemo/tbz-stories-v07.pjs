@@ -53,6 +53,7 @@ function sketch(p)
 	var focusYPos = 10;
 	var offscreenYPos = 600;
 	
+	var maxNodes = 50;
 	
 	
 	//// SKETCH VARS
@@ -63,220 +64,143 @@ function sketch(p)
 	// Font in three weights
 	var fontBold, fontRegular, fontLight;
 	
-	// History queue of the currently focussed node
-	var nodeFocus = new Array();
-	
-	// Selection list for navigation of event list and current properties
-	var nodeFocusPropertySelection = new SelectedIndexArray();
-	
-	// Dictionary of the currently active nodes
-	var storyArray = new SelectedIndexArray();
-	var nodeDict = new Object();
-	var oldNodeDict = new Object();
-	
-	
-	
-	//// SELECTED NODE CONTROL 
-	// 	 Can be called from host
-	
-	// PUBLIC METHOD - Start things off with a story
-	
-	p.setCurrentStory = function(key)
-	{
-		this.currentStoryKey = key;
-			
-		if (key in window.downloadedObjects)
-		{
-			storyArray.reset();
-			
-			// eventList doesn't have a zero index, as the OLOntology starts at 1
-			// we need to copy the elements in this array, rather than pass the object, because we're about to add the story as its zero value
-			var eventList = window.downloadedObjects[key]["http://purl.org/ontology/stories/events"].filter(function() {return true});
-			eventList.unshift(key);
-						
-			storyArray.nodeKeys = eventList;
-			
-			focusXPos = leftXPos;
-			
-			for (var i = 0; i < eventList.length; i++)
-			{
-				storyArray.array[i] = new CharNode(focusXPos, focusYPos, (i==0)?"S":String(i));
-			}
-			
-			p.setFocussedNode(focusXPos, focusYPos, storyArray.nodeKeys[0])
-			
-			setStoryNodesSpacing();
-		}
-		else
-		{
-			subjectQuery(key);
-		}
-	}
-	
-	// PUBLIC METHOD - Set the currently focussed node, and set in chain the display of subnodes.
+	// Collections for the currently active nodes
+	var activeArrayForInstants = new Array();
+	var activeArrayForIntervals = new Array();
 
-	p.setFocussedNode = function(x,y, key)
+	// Collections for the on-screen nodes
+	var nodeDict = new Object(); // Stores all node objects with url as key
+	var nodeArray = new Array(); // Node keys in last used order
+	addNodeToOnScreenCollections = function(key)
 	{
-		nodeFocus[0] = key;
-	
-		holdDict = nodeDict;
-		oldNodeDict = new Object();
-		nodeDict = new Object();		
-		
-		// Move nodes to the oldNodeDict, keeping the focussed node if we have it. GGRRRRRRR delete keyword silently fails.
-		for (var forKey in holdDict)
-		{
-			if (forKey == key) 
-			{
-				nodeDict[forKey] = holdDict[forKey];
-			}
-			else
-			{
-				oldNodeDict[forKey] = holdDict[forKey];
-			}
-		}
-		
+		// Adding...
 		if (key in nodeDict)
 		{
-			// Move it to new on-screen position
-			nodeDict[key].moveTo(x,y);
-		}
-		else
-		{
-			// Create it
-			nodeDict[key] = new Node(x,offscreenYPos,key);
-			nodeDict[key].moveTo(x,y);
-		}
-		
-		for (var i in oldNodeDict)
-		{
-			oldNodeDict[i].moveTo(oldNodeDict[i].xPos, offscreenYPos);
-		}
-		
-		// If we don't have object downloaded already, query the triplestore for all its statements.
-		// subjectQuery assembles and sends off the query 
-		// it callbacks objectReturn which on receipt of RDF assembles and massages into the kind of object we want.
-		if (!(key in window.downloadedObjects))
-		{
-			subjectQuery(key);
-		}
-		else
-		{
-			// big rejig is to separate getting nodes vs laying them out. then no visual glitch as can pull subnodes out of existing nodeDict, as well as making code more elegant.
-			createSubNodes(x,y);
-		}
-	}
-	
-	// SKETCH METHOD - Parse the focussed node for properties, and display them as sub-nodes
-	
-	createSubNodes = function(x,y)
-	{
-		createSubNode = function(objectKey)
-		{
-			// Add the object's key to the navigation selection
-			nodeFocusPropertySelection.push(objectKey);
-					
-			// If we don't have it yet, ask the triplestore
-			if (!(objectKey in window.downloadedObjects))
+			// move key to 'most recently used' position in array
+			var index = nodeDict.indexOf(key);
+			if (index = -1) 
 			{
-				subjectQuery(objectKey);
+				console.log("Error: url in nodeDict but not nodeArray");
 			}
+			else 
+			{
+				nodeArray.splice(index, 1);
+			}
+			nodeArray.unshift(key)
+		}
+		else
+		{
+			nodeDict[key] = new Node(leftXPos, offscreenYPos, key);
+			nodeArray.unshift(key);
+		}
+		
+		// Auto-Purge...
+		while (nodeArray.length > maxNodes)
+		{
+			var url = nodeArray[maxNodes];
 			
-		 	// If its already on-screen, move it. If not, create the node.
-			if (objectKey in nodeDict)
-			{
-				nodeDict[objectKey].moveTo(x,runningYPos);
-				runningYPos += nodeDict[objectKey].height;
-			}
-			else
-			{
-				node = new Node(x,offscreenYPos,objectKey);
-				node.moveTo(x, runningYPos);
-				nodeDict[objectKey] = node;
-				runningYPos += node.height;
-			}
-		}
-		
-		// Reset our list of the focussed node's properties used for navigation
-		nodeFocusPropertySelection.reset();
-		
-		var runningYPos = y + nodeDict[nodeFocus[0]].height;
-		// Loop through properties of focussed node
-		for (var predicateKey in downloadedObjects[nodeFocus[0]])
-		{
-			// Ignore RDF-type, its aggregated into node
-			if (predicateKey == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {}
-			// Ignore text array, its for display in the node
-			else if (predicateKey == "text") {}
-			// TODO. Ignoring Interpretations for now, also we want to filter them against the current story
-			//else if (predicateKey == "http://purl.org/ontology/stories/contextualises") {}
-			else
-			{
-				// We should have an array of all this predicate's subjects
-				var subjectArray = downloadedObjects[nodeFocus[0]][predicateKey];
-				subjectArray.forEach( function(element) { createSubNode(element) });
-			}
+			nodeArray.splice(maxNodes,1)
+			delete nodeDict[url]
 		}
 	}
-
-	// SKETCH METHOD - Update spacing of story nodes. 
-	
-	//As nodes are loaded in asyncronously, this gets called a lot to rejig things
-	setStoryNodesSpacing = function()
+	removeNodeFromOnScreenCollections = function(key)
 	{
-			var runningXPos = leftXPos;
-
-			for (var i = 0; i < storyArray.array.length; i++)
-			{
-				storyArray.array[i].moveTo(runningXPos, focusYPos);
-				
-				if (i == storyArray.selectedIndex())
-				{
-					focusXPos = runningXPos;
-					if (storyArray.nodeKeys[i] in nodeDict) runningXPos += nodeDict[storyArray.nodeKeys[i]].width;
-				}
-				else
-					runningXPos += storyArray.array[i].width;
-			}
+		var index = nodeArray.indexOf(key);
+		
+		if (index >= 0)
+		{
+			console.log("Removing node: " + key)
+			nodeArray.splice(index,1)
+			delete nodeDict[key]
+		}
+		else
+		{
+			console.log("Error: Attempted to remove " + key + " from OnScreenCollections, but key not found");
+		}
 	}
 	
+	// PUBLIC METHOD - To be called by video playback when at an instant time
+	
+	p.triggerObjectWithInstant = function(key)
+	{
+		// add (and auto-create if necessary) node to on-screen lists
+		addNodeToOnScreenCollections(key);
+		activeArrayForInstants.unshift(key);
+		
+		// start animation
+		nodeDict[key].moveTo(100,100);
+		
+		// animate off, slowly, somehow. use activeArrayForInstants to keep the recent thread, push rest to border, put drift function in update if node is an instant?
+	}
+
+	// PUBLIC METHOD - To be called by video playback when at an interval time
+	
+	p.triggerObjectWithInterval = function(key, isBegin)
+	{
+		if(isBegin)
+		{
+			// add (and auto-create if necessary) node to on-screen lists
+			addNodeToOnScreenCollections(key);
+			activeArrayForIntervals.unshift(key);
+			
+			// start animation
+			nodeDict[key].moveTo(100,300);
+		}
+		else
+		{
+			// remove node from active list and move to holding area
+			var index = activeArrayForIntervals.indexOf(key);
+		
+			if (index >= 0)
+			{
+				activeArrayForIntervals.splice(index,1);
+				moveToHoldingArea(key);
+			}
+			else
+			{
+				console.log("Error: Key not found");
+			}
+		}
+	}
+
+	//	SKETCH METHOD - This animates a node to somewhere in the 'holding area'
+	moveToHoldingArea = function(key)
+	{
+		// Holding area could be anywhere, right now its a strip at the bottom of the sketch
+		var holdWidth = p.width;
+		var holdHeight = 100;
+		var holdXOrigin = 0;
+		var holdYOrigin = p.height - holdHeight;
+		
+		var node = nodeDict[key];
+		
+		holdWidth -= Math.max(node.width, 0);
+		holdHeight -= Math.max(node.height, 0);
+		
+		node.moveTo(holdXOrigin + Math.random()*holdWidth, holdYOrigin + Math.random()*holdHeight)
+	}
+
 	//  SKETCH METHOD - This is triggered when object is brought in from triplestore.
 	
 	// The node should already have been created, so this is the prompt to rejig display now the contents are known
 	objectDownloadedCallback = function(key)
 	{
-		// Is the downloaded object a story?
-		if (downloadedObjects[key]["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"] == "http://purl.org/ontology/stories/Story")
-		{
-			p.setCurrentStory(key);
-		}
-		// Is the downloaded object the focussed node?
-		else if (key == nodeFocus[0])
-		{
-			nodeDict[key].initFromDownloadedObjectsData();
-			// Have another go at creating property nodes now we know what they are
-			setStoryNodesSpacing();
-			nodeDict[key].moveTo(focusXPos, focusYPos);
-			createSubNodes(focusXPos, focusYPos);
-		}
 		// Is the downloaded object a current node?
-		else if (key in nodeDict)
+		if (key in nodeDict)
 		{
 			nodeDict[key].initFromDownloadedObjectsData();
-			// We need to update the spacing, now the node has a proper height
-			// conveniently, this function will do it for us (subNodes of foccused node, not this node)
-			setStoryNodesSpacing();
-			createSubNodes(focusXPos, focusYPos);
+		}
+		else
+		{
+			console.log("Error: key not in nodeDict on objectDownloadedCallback");
 		}
 	}
 
-
-	
 	//// PROCESSING SETUP METHOD
 	
 	p.setup = function()
 	{
-	    p.size(1366, 768);
+	    p.size(1280, 720);
 	  
 	  // FIXME: 
 	  // Oct'11 - Using native fonts and no performance impact now looks doable. Work out how to load font into the canvas element, so pjs can then pick it up.
@@ -298,24 +222,11 @@ function sketch(p)
 	{
 	  p.background(0,0,0,0);
 		
-		storyArray.array.forEach( function (element) 
-		{
-			element.update();
-			element.draw();	
-		});
-		
 	  for (var key in nodeDict)
 	  {
 	  	nodeDict[key].update();
-	  	nodeDict[key].draw(key == nodeFocusPropertySelection.selectedObject());
+	  	nodeDict[key].draw();
 	  }
-
-	  for (var key in oldNodeDict)
-	  {
-	  	oldNodeDict[key].update();
-	  	oldNodeDict[key].draw();
-	  }
-
 	}
 	
 
@@ -327,57 +238,43 @@ function sketch(p)
 	{
 		// LEFT = We want to back to the previous story event if we haven't pulled up properties to back out of first
 		//if (p.keyCode == p.LEFT) p.LEFT worked in processing.js 0.9.6 but not 0.9.7
-		if (p.keyCode == 37 && nodeFocus.length == 1) 
+		if (p.keyCode == 37) 
 		{
-			storyArray.selectionDown();
-			setStoryNodesSpacing();
-			p.setFocussedNode(focusXPos, focusYPos, storyArray.nodeKeys[storyArray.selectedIndex()]);
-			setStoryNodesSpacing();
+
 		}
 		
 		// RIGHT = We want to go to the next story event if we haven't pulled up properties to back out of first
 		//if (p.keyCode == p.RIGHT)
-		if (p.keyCode == 39 && nodeFocus.length == 1)
+		if (p.keyCode == 39)
 		{
-			storyArray.selectionUp();
-			setStoryNodesSpacing();
-			p.setFocussedNode(focusXPos, focusYPos, storyArray.nodeKeys[storyArray.selectedIndex()]);
-			setStoryNodesSpacing();
+
 		}
 		
 		// SPACE = Pull up currently selected property
 		if (p.key == 32)
 		{
-			// Insert new object in focus key at beginning of history array
-			nodeFocus.unshift(nodeFocusPropertySelection.selectedObject())
-			p.setFocussedNode(focusXPos, focusYPos, nodeFocusPropertySelection.selectedObject());
-			setStoryNodesSpacing();
+
 		}
 		
 		// ESC = Go back to last selected property
 		// if (p.key == p.ESC)
 		if (p.key == 27)
 		{
-			if (nodeFocus.length > 1)
-			{
-				nodeFocus.shift();
-				p.setFocussedNode(focusXPos, focusYPos, nodeFocus[0]);
-				setStoryNodesSpacing();
-			}
+
 		}
 		
 		// UP = Select node above
 		//if (p.keyCode == p.UP) 
 		if (p.keyCode == 38) 
 		{
-			nodeFocusPropertySelection.selectionDown();
+
 		}
 		
 		// DOWN = Select node below
 		//if (p.keyCode == p.DOWN) 
 		if (p.keyCode == 40) 
 		{
-			nodeFocusPropertySelection.selectionUp();
+
 		}
 	}
 

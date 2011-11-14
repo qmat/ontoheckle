@@ -68,7 +68,7 @@
 //// SETUP SPARQL
 	
 // Create SPARQL service and make globally accessible
-window.sparqler = new SPARQL.Service("/haosparql/");
+window.sparqler = new SPARQL.Service("http://localhost/sparql/");
 
 // Necessary for 4Store to return JSON not XML
 sparqler.setRequestHeader("Accept", "application/sparql-results+json");
