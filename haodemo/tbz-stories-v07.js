@@ -1,45 +1,3 @@
-/***
-
-    H E C K L I N G   A T   O N T O L O G I E S
-    Asking what we can learn from comparing authorial and audience descriptions of the same media object.
-
-	Saul Albert and Toby Harris
-	Media & Arts Technology, Queen Mary University of London
-	
-	http://heckle.at/ontologies
-	
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	This file: Javascript API to query and process HAO triplestore data
-	
-	Code originally developed by Toby Harris as part of 'Digital Narratives at the BBC'
-	http://tobyz.net/bbcstories
-	
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	Copyright (C) 2011 by Saul Albert and Toby Harris
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-	
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-	
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-    
-
-***/
-
 var objectsWithInstantsArray = new Array();
 var objectsWithIntervalsArray = new Array();
 var eventSecsArray = new Array();
@@ -67,6 +25,7 @@ function handleEventAtSec(time)
 			subjectQuery(objectsWithInstantsArray[i].url);
 			
 			// Tell the display...
+			p.triggerObjectWithInstant(objectsWithInstantsArray[i].url);
 		}
 		
 		i++;
@@ -82,8 +41,12 @@ function handleEventAtSec(time)
 		{
 			console.log("Begins: " + objectsWithIntervalsArray[i].url);
 			
+			// Start downloading the object from the triplestore
+			subjectQuery(objectsWithInstantsArray[i].url);
+			
 			// Tell the display...
-			p.setFocussedNode(50,50,objectsWithIntervalsArray[i].url);
+			p.triggerObjectWithInterval(objectsWithInstantsArray[i].url, true);
+			
 		}
 		
 		i++;
@@ -100,7 +63,7 @@ function handleEventAtSec(time)
 			console.log("Ends: " + objectsWithIntervalsArray[i].url);
 			
 			// Tell the display...
-			p.setFocussedNode(50,50,objectsWithIntervalsArray[i].url);
+			p.triggerObjectWithInterval(objectsWithInstantsArray[i].url, false);
 		}
 		
 		i++;
