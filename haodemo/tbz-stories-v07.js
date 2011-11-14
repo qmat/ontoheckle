@@ -42,10 +42,10 @@ function handleEventAtSec(time)
 			console.log("Begins: " + objectsWithIntervalsArray[i].url);
 			
 			// Start downloading the object from the triplestore
-			subjectQuery(objectsWithInstantsArray[i].url);
+			subjectQuery(objectsWithIntervalsArray[i].url);
 			
 			// Tell the display...
-			p.triggerObjectWithInterval(objectsWithInstantsArray[i].url, true);
+			p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, true);
 			
 		}
 		
@@ -63,7 +63,7 @@ function handleEventAtSec(time)
 			console.log("Ends: " + objectsWithIntervalsArray[i].url);
 			
 			// Tell the display...
-			p.triggerObjectWithInterval(objectsWithInstantsArray[i].url, false);
+			p.triggerObjectWithInterval(objectsWithIntervalsArray[i].url, false);
 		}
 		
 		i++;

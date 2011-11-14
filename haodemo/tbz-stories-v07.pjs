@@ -71,10 +71,8 @@ function sketch(p)
 	// Collections for the on-screen nodes
 	var nodeDict = new Object(); // Stores all node objects with url as key
 	var nodeArray = new Array(); // Node keys in last used order
-	addNodeToOnScreenCollections = function(object, key)
+	addNodeToOnScreenCollections = function(key)
 	{
-		console.log("addNodeToOnScreenCollections");
-	
 		// Adding...
 		if (key in nodeDict)
 		{
@@ -92,11 +90,11 @@ function sketch(p)
 		}
 		else
 		{
-			nodeDict[key] = object;
+			nodeDict[key] = new Node(leftXPos, offscreenYPos, key);
 			nodeArray.unshift(key);
 		}
 		
-		// Purging...
+		// Auto-Purge...
 		while (nodeArray.length > maxNodes)
 		{
 			var url = nodeArray[maxNodes];
@@ -105,19 +103,32 @@ function sketch(p)
 			delete nodeDict[url]
 		}
 	}
-	
+	removeNodeFromOnScreenCollections = function(key)
+	{
+		var index = nodeArray.indexOf(key);
+		
+		if (index >= 0)
+		{
+			console.log("Removing node: " + key)
+			nodeArray.splice(index,1)
+			delete nodeDict[key]
+		}
+		else
+		{
+			console.log("Error: Attempted to remove " + key + " from OnScreenCollections, but key not found");
+		}
+	}
 	
 	// PUBLIC METHOD
 	
 	p.triggerObjectWithInstant = function(key)
 	{
-		// create node and start animation
-		var triggeredObject = (key in window.downloadedObjects) ? window.downloadedObjects[key] : new Node(leftXPos, offscreenYPos, key);
-		triggeredObject.moveTo(100,100);
-		
-		// add node to on-screen lists
-		addNodeToOnScreenCollections(triggeredObject, key);
+		// add (and auto-create if necessary) node to on-screen lists
+		addNodeToOnScreenCollections(key);
 		activeArrayForInstants.unshift(key);
+		
+		// start animation
+		nodeDict[key].moveTo(100,100);
 		
 		// animate off, slowly, somehow. use activeArrayForInstants to keep the recent thread, push rest to border, put drift function in update if node is an instant?
 	}
@@ -126,11 +137,27 @@ function sketch(p)
 	{
 		if(isBegin)
 		{
-		
+			// add (and auto-create if necessary) node to on-screen lists
+			addNodeToOnScreenCollections(key);
+			activeArrayForIntervals.unshift(key);
+			
+			// start animation
+			nodeDict[key].moveTo(100,300);
 		}
 		else
 		{
+			// remove node from active list and move to holding area
+			var index = activeArrayForIntervals.indexOf(key);
 		
+			if (index >= 0)
+			{
+				activeArrayForIntervals.splice(index,1);
+				nodeDict[key].moveTo(100, 500);
+			}
+			else
+			{
+				console.log("Error: Key not found");
+			}
 		}
 	}
 
