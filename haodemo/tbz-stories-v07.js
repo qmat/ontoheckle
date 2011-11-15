@@ -91,7 +91,12 @@ function extractLastPathElement(path)
 	index = path.lastIndexOf('#');
 	if (index == -1) index = path.lastIndexOf('/');
 	// might also have to check that its not a trailing slash
-	return path.substring(index+1);
+	
+	var returnString = path.substring(index+1);
+	
+	// console.log("Extracted: " + returnString + " from: " + path);
+	
+	return returnString;
 }
 
 function textFromURI(URI)
@@ -259,6 +264,8 @@ function objectReturn(subject,propertyArray)
 	else
 	{
 		console.log("No type returned for object: " + subject)
+		returnObject["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"] = "Unknown";
+		returnObject.text = { type : {title : "Type: ", text : "Unknown"} , about : {title : "URL: ", text : subject} , lineCount : 2};
 	}
 	
 	// TASK Make the object available
@@ -269,7 +276,7 @@ function objectReturn(subject,propertyArray)
 	// Call the global callback
 	window.objectDownloadedCallback(String(subject));
 	
-	console.log(window.downloadedObjects)
+	// console.log(window.downloadedObjects)
 }
 
 function subjectsReturn(object,propertyArray)
