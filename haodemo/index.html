@@ -29,6 +29,11 @@
 		  if (triggers[s] == now)
 		    {
 		    handleEventAtSec(now);
+		    } 
+		  if (triggers[s] >= 10)
+		    {
+		    v.currentTime = 0;
+		    nodeArray = new Array();
 		    }
 		  }
 	      }
