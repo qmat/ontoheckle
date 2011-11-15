@@ -78,11 +78,7 @@ function sketch(p)
 		{
 			// move key to 'most recently used' position, ie beginning, in array
 			var index = nodeArray.indexOf(key);
-			if (index == -1) 
-			{
-				console.log("Error: " + key + " in nodeDict but not nodeArray");
-			}
-			else 
+			if (index >= 0) 
 			{
 				nodeArray.splice(index, 1);
 			}
@@ -93,15 +89,7 @@ function sketch(p)
 			nodeDict[key] = new Node(leftXPos, offscreenYPos, key);
 			nodeArray.unshift(key);
 		}
-		
-		// Auto-Purge...
-		while (nodeArray.length > maxNodes)
-		{
-			var url = nodeArray[maxNodes];
-			
-			nodeArray.splice(maxNodes,1)
-			delete nodeDict[url]
-		}
+		nodeDict[key].toSubnode = true;
 	}
 	removeNodeFromOnScreenCollections = function(key)
 	{
@@ -111,7 +99,7 @@ function sketch(p)
 		{
 			console.log("Removing node: " + key)
 			nodeArray.splice(index,1)
-			delete nodeDict[key]
+			//delete nodeDict[key]
 		}
 		else
 		{
@@ -126,7 +114,7 @@ function sketch(p)
 		// FIXME
 		for (var loopKey in nodeDict)
 		{
-			nodeDict[loopKey].moveRelative(50,0);
+			nodeDict[loopKey].moveRelative(200,0);
 		}
 	
 		// add (and auto-create if necessary) node to on-screen lists
@@ -157,24 +145,19 @@ function sketch(p)
 		}
 		else
 		{
-			// remove node from active list and move to holding area
-			var index = activeArrayForIntervals.indexOf(key);
-		
-			if (index >= 0)
-			{
-				activeArrayForIntervals.splice(index,1);
-				moveToHoldingArea(key);
-			}
-			else
-			{
-				console.log("Error: Key not found");
-			}
+			// previously: remove node from active list and move to holding area
+			// now: just let animate off and auto-removed on off-screen
 		}
 	}
 
 	// 	SKETCH METHOD - This animates out (sub) properties of a node
 	addSubNodes = function(key)
 	{
+		// Layout parameters
+		var angleDivisor = 9; // Fraction of a half-circle: the bigger, smaller the spread
+		var angleExtend = 120; // Pixels to extend out at the angle
+		var angleStartingDivisor = 1; // The nth division to put the first subnode at
+		
 		console.log("addSubNodes for:" + key)
 		if (!(key in window.downloadedObjects)) {console.log("Error: key not downloaded")}
 		
@@ -190,8 +173,21 @@ function sketch(p)
 			else if (predicateKey == "http://purl.org/ontology/stories/contextualises") {}
 			// Ignore events, for you'll get a long list of them from a story
 			else if (predicateKey == "http://purl.org/ontology/stories/events") {}
+			// Ignore 
+			else if (predicateKey == "http://purl.org/ontology/stories/source") {}
+			else if (predicateKey == "http://www.w3.org/2000/01/rdf-schema#resource") {}
+			else if (predicateKey == "http://xmlns.com/foaf/0.1/page") {}
+			else if (predicateKey == "http://xmlns.com/foaf/0.1/primaryTopic") {}
+			else if (predicateKey == "") {}
+			else if (predicateKey == "") {}
+			else if (predicateKey == "") {}
+			else if (predicateKey == "") {}
+			else if (predicateKey == "") {}
+			else if (predicateKey == "") {}
 			else
 			{
+			console.log("DO WE WANT: " + predicateKey)
+			
 				// The object for the predicate key should be an array of all this predicate's subjects
 				var subjectArray = window.downloadedObjects[key][predicateKey];
 				subjectArraysToAdd.push(subjectArray)
@@ -203,9 +199,10 @@ function sketch(p)
 		yOrigin = nodeDict[key].yPos + nodeDict[key].height/2;
 		for (var i = 0; i < subjectArraysToAdd.length; i++)
 		{
-			var angle = Math.PI / 5;
-			var xOffset = 40 * Math.cos(angle*(i+1));
-			var yOffset = 40 * Math.sin(angle*(i+1));
+		console.log(subjectArraysToAdd.length)
+			var angle = Math.PI / angleDivisor;
+			var xOffset = angleExtend * Math.cos(angle*(i+angleStartingDivisor));
+			var yOffset = angleExtend * Math.sin(angle*(i+angleStartingDivisor));
 			
 			for (var j = 0; j < subjectArraysToAdd[i].length; j++)
 			{
@@ -214,8 +211,11 @@ function sketch(p)
 				
 				var nodeParent = nodeDict[key];
 				var node = nodeDict[subjectKey];
-				node.moveTo(xOrigin + xOffset*(i+j+1), yOrigin + yOffset*(i+j+1));
-				//console.log(element + " added at " + xOffset + ", " + yOffset);
+				node.moveTo(xOrigin + xOffset*(j+1), yOrigin + yOffset*(j+1));
+				
+				//p.stroke(255,0,0);
+				//p.strokeWeight(3);
+				//p.ellipse(xOrigin + xOffset*(j+angleStartingDivisor), yOrigin + yOffset*(j+angleStartingDivisor), 10, 10)
 			}
 		}
 	}
@@ -242,10 +242,19 @@ function sketch(p)
 	objectEndsMoveCallback = function(key)
 	{
 		// Has it been flagged for spawning nodes of its property objects?
-		// TODO: if () goes here
-		addSubNodes(key);
+		
+		if (nodeDict[key].toSubnode == true)
+		{
+			addSubNodes(key);
+			nodeDict[key].toSubnode = false;
+		}
 	}
-
+	
+	objectOffscreenCallback = function(key)
+	{
+		removeNodeFromOnScreenCollections(key);
+	}
+	
 	//  SKETCH METHOD - This is triggered when object is brought in from triplestore.
 	
 	// The node should already have been created, so this is the prompt to rejig display now the contents are known
@@ -286,13 +295,20 @@ function sketch(p)
 	
 	p.draw = function()
 	{
-	  p.background(0,0,0,0);
+		p.background(0,0,0,0);
 		
-	  for (var key in nodeDict)
-	  {
-	  	nodeDict[key].update();
-	  	nodeDict[key].draw();
-	  }
+		// Count down through the ordered array to ensure correct layering of nodes on screen
+		for (var i = nodeArray.length - 1; i >= 0; --i)
+		{
+			// Consistent error when removing keys from nodeArray elsewhere. Multithreaded?
+			var node = nodeDict[nodeArray[i]];
+			if (node != undefined)
+			{
+				node.update();
+				node.draw();
+			}
+			else console.log("Error - nodeArray with index returned undefined in draw loop")
+		}
 	}
 	
 
@@ -379,6 +395,11 @@ function sketch(p)
 					moving = false;
 					objectEndsMoveCallback(key);
 				}
+				
+				if (this.xPos > p.width)
+				{
+					objectOffscreenCallback(key);
+				}
 			}
 			
 			this.draw = function()
@@ -433,7 +454,7 @@ function sketch(p)
 				moveToY += y;
 				moving = true;
 			}
-			
+						
 			this.initFromDownloadedObjectsData = function()
 			{
 				// Work out maximum width
@@ -453,9 +474,6 @@ function sketch(p)
 				// Set Width and Height
 				this.width = maxTextWidth + 2*padding;
 				this.height = padding + textHeaderSize + (this.text.lineCount-1)*textBodySize + padding;
-				
-				console.log("text for: " + this.oKey)
-				console.log(this.text)
 			}
 			
 			this.update = function()
@@ -476,6 +494,11 @@ function sketch(p)
 				{
 					moving = false;
 					objectEndsMoveCallback(this.oKey);
+				}
+				
+				if (this.xPos > p.width)
+				{
+					objectOffscreenCallback(this.oKey);
 				}
 			}
 	
