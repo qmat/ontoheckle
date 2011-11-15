@@ -200,7 +200,7 @@ function sketch(p)
 	
 	p.setup = function()
 	{
-	    p.size(1280, 720);
+	    //p.size(1280, 720);
 	  
 	  // FIXME: 
 	  // Oct'11 - Using native fonts and no performance impact now looks doable. Work out how to load font into the canvas element, so pjs can then pick it up.
