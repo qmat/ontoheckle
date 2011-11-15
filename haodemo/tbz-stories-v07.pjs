@@ -199,8 +199,11 @@ function sketch(p)
 	//// PROCESSING SETUP METHOD
 	
 	p.setup = function()
+	//// Grab window width as X and height as y
+	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
 	{
-	    //p.size(1280, 720);
+	    //p.size(1281, 720);
+	    p.size(x, y);
 	  
 	  // FIXME: 
 	  // Oct'11 - Using native fonts and no performance impact now looks doable. Work out how to load font into the canvas element, so pjs can then pick it up.
