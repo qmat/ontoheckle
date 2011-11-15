@@ -110,7 +110,7 @@ function sketch(p)
 	// DEMO FUNCTION
 	p.clearNodes = function()
 	{
-	  nodeArray = new Array();
+	  nodeArray.splice(0, nodeArray.length);
 	}
 	
 	// PUBLIC METHOD - To be called by video playback when at an instant time
