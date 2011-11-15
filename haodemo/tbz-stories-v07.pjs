@@ -53,8 +53,8 @@ function sketch(p)
 	var focusYPos = 10;
 	var offscreenYPos = 600;
 	
-	var maxNodes = 50;
-	
+	//var maxNodes = 50;
+	var maxNodes = 999;
 	
 	//// SKETCH VARS
 	
@@ -76,11 +76,11 @@ function sketch(p)
 		// Adding...
 		if (key in nodeDict)
 		{
-			// move key to 'most recently used' position in array
-			var index = nodeDict.indexOf(key);
-			if (index = -1) 
+			// move key to 'most recently used' position, ie beginning, in array
+			var index = nodeArray.indexOf(key);
+			if (index == -1) 
 			{
-				console.log("Error: url in nodeDict but not nodeArray");
+				console.log("Error: " + key + " in nodeDict but not nodeArray");
 			}
 			else 
 			{
@@ -123,6 +123,12 @@ function sketch(p)
 	
 	p.triggerObjectWithInstant = function(key)
 	{
+		// FIXME
+		for (var loopKey in nodeDict)
+		{
+			nodeDict[loopKey].moveRelative(50,0);
+		}
+	
 		// add (and auto-create if necessary) node to on-screen lists
 		addNodeToOnScreenCollections(key);
 		activeArrayForInstants.unshift(key);
@@ -145,6 +151,9 @@ function sketch(p)
 			
 			// start animation
 			nodeDict[key].moveTo(100,300);
+			
+			// flag to add sub nodes
+			// TODO
 		}
 		else
 		{
@@ -163,6 +172,55 @@ function sketch(p)
 		}
 	}
 
+	// 	SKETCH METHOD - This animates out (sub) properties of a node
+	addSubNodes = function(key)
+	{
+		console.log("addSubNodes for:" + key)
+		if (!(key in window.downloadedObjects)) {console.log("Error: key not downloaded")}
+		
+		var subjectArraysToAdd = new Array();
+		// Loop through properties of node making a list of the ones we want
+		for (var predicateKey in window.downloadedObjects[key])
+		{
+			// Ignore RDF-type, its aggregated into node
+			if (predicateKey == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {}
+			// Ignore text array, its for display in the node
+			else if (predicateKey == "text") {}
+			// Ignore contextualises, for you'll get every scene a story contextualises
+			else if (predicateKey == "http://purl.org/ontology/stories/contextualises") {}
+			// Ignore events, for you'll get a long list of them from a story
+			else if (predicateKey == "http://purl.org/ontology/stories/events") {}
+			else
+			{
+				// The object for the predicate key should be an array of all this predicate's subjects
+				var subjectArray = window.downloadedObjects[key][predicateKey];
+				subjectArraysToAdd.push(subjectArray)
+			}
+		}
+		
+		// Display
+		xOrigin = nodeDict[key].xPos;
+		yOrigin = nodeDict[key].yPos + nodeDict[key].height/2;
+		for (var i = 0; i < subjectArraysToAdd.length; i++)
+		{
+			var angle = Math.PI / 5;
+			var xOffset = 40 * Math.cos(angle*(i+1));
+			var yOffset = 40 * Math.sin(angle*(i+1));
+			
+			for (var j = 0; j < subjectArraysToAdd[i].length; j++)
+			{
+				var subjectKey = subjectArraysToAdd[i][j]
+				addNodeToOnScreenCollections(subjectKey);
+				
+				var nodeParent = nodeDict[key];
+				var node = nodeDict[subjectKey];
+				node.moveTo(xOrigin + xOffset*(i+j+1), yOrigin + yOffset*(i+j+1));
+				//console.log(element + " added at " + xOffset + ", " + yOffset);
+			}
+		}
+	}
+
+
 	//	SKETCH METHOD - This animates a node to somewhere in the 'holding area'
 	moveToHoldingArea = function(key)
 	{
@@ -178,6 +236,14 @@ function sketch(p)
 		holdHeight -= Math.max(node.height, 0);
 		
 		node.moveTo(holdXOrigin + Math.random()*holdWidth, holdYOrigin + Math.random()*holdHeight)
+	}
+
+	// SKETCH METHOD - This is triggered when object reaches its desired position
+	objectEndsMoveCallback = function(key)
+	{
+		// Has it been flagged for spawning nodes of its property objects?
+		// TODO: if () goes here
+		addSubNodes(key);
 	}
 
 	//  SKETCH METHOD - This is triggered when object is brought in from triplestore.
@@ -291,6 +357,7 @@ function sketch(p)
 			{
 				moveToX = x;
 				moveToY = y;
+				moving = true;
 			}
 			
 			this.update = function()
@@ -301,8 +368,17 @@ function sketch(p)
 				
 				// If we're close enough, snap to position rather than multiplying increasingly minute numbers
 				var animThreshold = 0.1;
-				this.xPos = Math.abs(xDelta) < animThreshold ? moveToX : this.xPos + xDelta*dampen;
-				this.yPos = Math.abs(yDelta) < animThreshold ? moveToY : this.yPos + yDelta*dampen;
+				var stoppedX = Math.abs(xDelta) < animThreshold;
+				var stoppedY = Math.abs(yDelta) < animThreshold;
+				this.xPos = stoppedX ? moveToX : this.xPos + xDelta*dampen;
+				this.yPos = stoppedY ? moveToY : this.yPos + yDelta*dampen;
+				
+				// Fire sketch finished moving function (better + more flexible to override a function of this class, but expediency bites).
+				if (moving && stoppedX && stoppedY)
+				{
+					moving = false;
+					objectEndsMoveCallback(key);
+				}
 			}
 			
 			this.draw = function()
@@ -336,6 +412,7 @@ function sketch(p)
 			
 			var moveToX = x;
 			var moveToY = y;
+			var moving = false;
 	}
 	
 	// NODE CLASS - This is the object that represents a RDF object and its rolled-in properties such as type.
@@ -347,6 +424,14 @@ function sketch(p)
 			{
 				moveToX = x;
 				moveToY = y;
+				moving = true;
+			}
+			
+			this.moveRelative = function(x,y)
+			{
+				moveToX += x;
+				moveToY += y;
+				moving = true;
 			}
 			
 			this.initFromDownloadedObjectsData = function()
@@ -368,6 +453,9 @@ function sketch(p)
 				// Set Width and Height
 				this.width = maxTextWidth + 2*padding;
 				this.height = padding + textHeaderSize + (this.text.lineCount-1)*textBodySize + padding;
+				
+				console.log("text for: " + this.oKey)
+				console.log(this.text)
 			}
 			
 			this.update = function()
@@ -378,8 +466,17 @@ function sketch(p)
 				
 				// If we're close enough, snap to position rather than multiplying increasingly minute numbers
 				var animThreshold = 0.1;
-				this.xPos = Math.abs(xDelta) < animThreshold ? moveToX : this.xPos + xDelta*dampen;
-				this.yPos = Math.abs(yDelta) < animThreshold ? moveToY : this.yPos + yDelta*dampen;
+				var stoppedX = Math.abs(xDelta) < animThreshold;
+				var stoppedY = Math.abs(yDelta) < animThreshold;
+				this.xPos = stoppedX ? moveToX : this.xPos + xDelta*dampen;
+				this.yPos = stoppedY ? moveToY : this.yPos + yDelta*dampen;
+				
+				// Fire sketch finished moving function (better + more flexible to override a function of this class, but expediency bites).
+				if (moving && stoppedX && stoppedY)
+				{
+					moving = false;
+					objectEndsMoveCallback(this.oKey);
+				}
 			}
 	
 			this.draw = function(selected)
@@ -463,6 +560,7 @@ function sketch(p)
 			
 			var moveToX = x;
 			var moveToY = y;
+			var moving = false;
 			
 			var radius = 10;
 			var padding = 5;
@@ -474,6 +572,10 @@ function sketch(p)
 			if (objectKey in window.downloadedObjects) 
 			{
 				this.initFromDownloadedObjectsData();
+			}
+			else
+			{
+				subjectQuery(this.oKey);
 			}
 	}
 
