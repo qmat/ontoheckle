@@ -202,7 +202,7 @@ function sketch(p)
 	//// Grab window width as X and height as y
 	// var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
 	{
-	    //p.size(1281, 720);
+	    p.size(1440, 900);
 	    // p.size(x, y);
 	  
 	  // FIXME: 
