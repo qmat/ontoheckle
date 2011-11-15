@@ -31,9 +31,11 @@
 		    handleEventAtSec(now);
 		    } 
 		  if (now >= 10)
-		    {
-		    v.currentTime = 0;
-		    p.clearNodes();
+		  {
+		    window.location.reload();
+		  // FIXME: this is shit. fix it.
+		    //v.currentTime = 0;
+		    //p.clearNodes();
 		    //var canvas = document.getElementsByTagName('pCanvas')[0];
 		    //canvas.redraw();
 		    }
