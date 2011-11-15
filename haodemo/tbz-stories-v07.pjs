@@ -529,7 +529,7 @@ function sketch(p)
 				else									
 					p.stroke(0);
 				p.strokeWeight(3);
-				p.fill(255);
+				p.fill(255,255,255,128);
 				p.roundedRect(this.xPos, this.yPos, this.width, this.height, radius);
 				
 				// If there is the prettified text, display it.			
