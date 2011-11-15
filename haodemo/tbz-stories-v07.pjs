@@ -111,11 +111,8 @@ function sketch(p)
 	
 	p.triggerObjectWithInstant = function(key)
 	{
-		// FIXME
-		for (var loopKey in nodeDict)
-		{
-			nodeDict[loopKey].moveRelative(200,0);
-		}
+		// HACKATTACK
+		hackMoveRelativeTheps();
 	
 		// add (and auto-create if necessary) node to on-screen lists
 		addNodeToOnScreenCollections(key);
@@ -133,15 +130,17 @@ function sketch(p)
 	{
 		if(isBegin)
 		{
+			// HACKATTACK
+			// Doing this here as it moves on before new node is created
+			// Should really be at end time, but hey
+			hackMoveRelativeNonTheps();		
+		
 			// add (and auto-create if necessary) node to on-screen lists
 			addNodeToOnScreenCollections(key);
 			activeArrayForIntervals.unshift(key);
 			
 			// start animation
 			nodeDict[key].moveTo(100,300);
-			
-			// flag to add sub nodes
-			// TODO
 		}
 		else
 		{
@@ -154,9 +153,9 @@ function sketch(p)
 	addSubNodes = function(key)
 	{
 		// Layout parameters
-		var angleDivisor = 9; // Fraction of a half-circle: the bigger, smaller the spread
-		var angleExtend = 120; // Pixels to extend out at the angle
-		var angleStartingDivisor = 1; // The nth division to put the first subnode at
+		var angleDivisor = 7; // Fraction of a half-circle: the bigger, smaller the spread
+		var angleExtend = 150; // Pixels to extend out at the angle
+		var angleStartingDivisor = 0.6; // The nth division to put the first subnode at
 		
 		console.log("addSubNodes for:" + key)
 		if (!(key in window.downloadedObjects)) {console.log("Error: key not downloaded")}
@@ -255,6 +254,26 @@ function sketch(p)
 		removeNodeFromOnScreenCollections(key);
 	}
 	
+	hackMoveRelativeTheps = function()
+	{
+		for (var key in nodeDict)
+		{
+			if (key.slice(0,16) == "http://theps.net")
+			{
+				nodeDict[key].moveRelative(300,0);
+			}
+		}
+	}
+	hackMoveRelativeNonTheps = function()
+	{
+		for (var key in nodeDict)
+		{
+			if (key.slice(0,16) != "http://theps.net")
+			{
+				nodeDict[key].moveRelative(300,0);
+			}
+		}
+	}	
 	//  SKETCH METHOD - This is triggered when object is brought in from triplestore.
 	
 	// The node should already have been created, so this is the prompt to rejig display now the contents are known
