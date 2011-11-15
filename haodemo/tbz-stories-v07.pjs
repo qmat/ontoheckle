@@ -106,6 +106,12 @@ function sketch(p)
 			console.log("Error: Attempted to remove " + key + " from OnScreenCollections, but key not found");
 		}
 	}
+
+	// DEMO FUNCTION
+	p.clearNodes = function()
+	{
+	  nodeArray = new Array();
+	}
 	
 	// PUBLIC METHOD - To be called by video playback when at an instant time
 	

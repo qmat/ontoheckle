@@ -30,12 +30,12 @@
 		    {
 		    handleEventAtSec(now);
 		    } 
-		  if (now >= 20)
+		  if (now >= 960)
 		    {
 		    v.currentTime = 0;
-		    var canvas = document.getElementsByTagName('pCanvas')[0];
-		    p.nodeArray = new Array();
-		    canvas.redraw();
+		    p.clearNodes();
+		    //var canvas = document.getElementsByTagName('pCanvas')[0];
+		    //canvas.redraw();
 		    }
 		  }
 	      }
