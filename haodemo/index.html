@@ -33,7 +33,9 @@
 		  if (now >= 20)
 		    {
 		    v.currentTime = 0;
-		    document.getElementById('pCanvas').redraw();
+		    var canvas = document.getElementsByTagName('pCanvas')[0];
+		    p.nodeArray = new Array();
+		    canvas.redraw();
 		    }
 		  }
 	      }
