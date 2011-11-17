@@ -1,0 +1,8 @@
+.slide-out-div {
+    padding: 20px;
+    width: 250px;
+    background: #ccc;
+    z-index:1000;
+    font-family:georgia,garamond,serif;
+    font-size:95%;
+}      
