@@ -4,5 +4,6 @@
     background: #ccc;
     z-index:1000;
     font-family:georgia,garamond,serif;
+    border: 3px solid black;
     font-size:95%;
 }      
