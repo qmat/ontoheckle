@@ -3,7 +3,7 @@
     width: 250px;
     background: #ccc;
     z-index:1000;
-    font-family:georgia,garamond,serif;
+    font-family:helvetica,arial,sans-serif;
     border: 3px solid black;
     font-size:95%;
 }      
